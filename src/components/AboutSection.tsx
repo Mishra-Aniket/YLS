@@ -60,14 +60,14 @@ export default function AboutSection() {
                 />
               </div>
 
-              {/* Yellow YLS Circular Seal Badge from PDF */}
-              <div className="absolute -top-6 -right-2 sm:right-6 z-20 w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-white shadow-2xl border-4 border-white flex items-center justify-center transform rotate-6 hover:rotate-0 transition-transform">
+              {/* Authentic YLS Circular Emblem Badge from uploaded graphic */}
+              <div className="absolute -top-8 -right-2 sm:right-6 z-20 w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-white shadow-2xl border-4 border-white flex items-center justify-center transform rotate-3 hover:rotate-0 transition-transform overflow-hidden">
                 <Image
-                  src="/logo/yls-circular-seal.png"
-                  alt="YES LOGISTICS SERVICE PUNE Circular Seal"
-                  width={120}
-                  height={120}
-                  className="object-contain rounded-full drop-shadow-sm"
+                  src="/logo/yls_circular_badge.png"
+                  alt="YES LOGISTICS SERVICE Official Emblem"
+                  width={144}
+                  height={144}
+                  className="object-contain rounded-full drop-shadow-md"
                 />
               </div>
             </div>
