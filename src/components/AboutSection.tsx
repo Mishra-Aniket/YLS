@@ -60,15 +60,15 @@ export default function AboutSection() {
                 />
               </div>
 
-              {/* Yellow YLS Badge */}
-              <div className="absolute -top-6 -right-2 sm:right-6 z-20 w-28 h-28 rounded-full bg-gradient-to-tr from-brand-yellow to-[#ffdc60] p-3 text-[#06112E] shadow-card border-4 border-white flex flex-col items-center justify-center text-center transform rotate-6 hover:rotate-0 transition-transform">
-                <Award className="w-6 h-6 text-primary mb-1" />
-                <span className="text-xl font-black font-display leading-none">
-                  2021
-                </span>
-                <span className="text-[9px] font-black uppercase tracking-tight leading-tight mt-0.5">
-                  ESTABLISHED IN PUNE
-                </span>
+              {/* Yellow YLS Circular Seal Badge from PDF */}
+              <div className="absolute -top-6 -right-2 sm:right-6 z-20 w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-white shadow-2xl border-4 border-white flex items-center justify-center transform rotate-6 hover:rotate-0 transition-transform">
+                <Image
+                  src="/logo/yls-circular-seal.png"
+                  alt="YES LOGISTICS SERVICE PUNE Circular Seal"
+                  width={120}
+                  height={120}
+                  className="object-contain rounded-full drop-shadow-sm"
+                />
               </div>
             </div>
           </div>

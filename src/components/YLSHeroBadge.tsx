@@ -6,42 +6,42 @@ import Image from "next/image";
 export default function YLSHeroBadge({ className = "" }: { className?: string }) {
   return (
     <div
-      className={`relative inline-flex items-center justify-center w-28 h-28 sm:w-32 sm:h-32 select-none group ${className}`}
-      aria-label="YES LOGISTICS SERVICE PUNE ODC SPECIALIST Badge"
+      className={`relative inline-flex items-center justify-center w-[180px] h-[180px] select-none pointer-events-auto ${className}`}
+      aria-label="YES LOGISTICS SERVICE - PUNE - ODC SPECIALIST"
     >
-      {/* Rotating Circular Text Ring */}
+      {/* 1. Outer Rotating Circular Text Ring (180px) */}
       <svg
-        className="w-full h-full animate-spin-slow"
-        viewBox="0 0 160 160"
+        className="w-full h-full animate-[spin_12s_linear_infinite]"
+        viewBox="0 0 180 180"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
           <path
             id="ylsCirclePath"
-            d="M 80, 80 m -62, 0 a 62,62 0 1,1 124,0 a 62,62 0 1,1 -124,0"
+            d="M 90, 90 m -70, 0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0"
             fill="none"
           />
         </defs>
 
-        {/* Text along circular path */}
-        <text className="fill-white text-[10.5px] font-bold tracking-[0.19em] uppercase">
+        <text className="fill-white text-[11px] font-extrabold tracking-[0.22em] uppercase font-display">
           <textPath href="#ylsCirclePath" startOffset="0%">
             ★ YES LOGISTICS SERVICE ★ PUNE ★ ODC SPECIALIST
           </textPath>
         </text>
       </svg>
 
-      {/* Center Circle with Yellow & Blue Emblem */}
-      <div className="absolute inset-0 m-auto w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-gradient-to-tr from-brand-yellow to-[#ffe066] border-2 border-white shadow-glow flex flex-col items-center justify-center text-center transition-transform group-hover:scale-105 duration-300">
-        <span className="text-[#06112E] font-black text-xs sm:text-sm tracking-tight leading-none font-display">
-          YLS
-        </span>
-        <span className="text-[#175A9D] font-extrabold text-[8px] tracking-wider uppercase leading-none mt-0.5">
-          PUNE
-        </span>
-        <span className="text-[7px] text-[#06112E] font-bold tracking-tighter opacity-80">
-          ESTD 2021
-        </span>
+      {/* 2. Translucent Frosted Glass Ring (130px) */}
+      <div className="absolute inset-0 m-auto w-[130px] h-[130px] rounded-full bg-white/20 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-2xl pointer-events-none" />
+
+      {/* 3. Solid Primary Red Center Circle (100px) with Bookmark / Award Medal Icon */}
+      <div className="absolute inset-0 m-auto w-[100px] h-[100px] rounded-full bg-[#fd5523] flex items-center justify-center shadow-glow transition-transform duration-300 hover:scale-105">
+        <Image
+          src="/images/bookmark.png"
+          alt="Best Logistics Quality Award"
+          width={46}
+          height={46}
+          className="object-contain brightness-0 invert drop-shadow-md"
+        />
       </div>
     </div>
   );

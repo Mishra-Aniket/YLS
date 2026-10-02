@@ -9,18 +9,11 @@ import {
   Search,
   Menu,
   ArrowRight,
-  Phone,
-  ShieldCheck,
-  Truck,
-  Warehouse,
-  FileText,
-  MapPin,
-  Clock,
 } from "lucide-react";
 import YLSLogo from "./YLSLogo";
 import SearchModal from "./SearchModal";
 import OffcanvasDrawer from "./OffcanvasDrawer";
-import { COMPANY, PRIMARY_SERVICES, BRANCHES } from "@/lib/constants";
+import { PRIMARY_SERVICES } from "@/lib/constants";
 
 interface NavbarProps {
   variant?: "floating" | "solid";
@@ -36,7 +29,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 30);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -47,37 +40,75 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
       <header
         className={`w-full z-40 transition-all duration-300 ${
           variant === "floating"
-            ? "absolute top-4 sm:top-6 inset-x-0"
-            : "sticky top-0 bg-navy-dark border-b border-white/10 shadow-lg"
+            ? isScrolled
+              ? "fixed top-3 inset-x-0 px-4"
+              : "absolute top-5 sm:top-7 inset-x-0"
+            : "sticky top-0 bg-[#020e28] border-b border-white/10 shadow-lg"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* White Pill-Shaped Container */}
+        <div className="max-w-[1365px] mx-auto px-4 sm:px-6 lg:px-8">
+          {/* White Pill-Shaped Container with TransHub header-bg.png on Desktop */}
           <div
-            className={`relative flex items-center justify-between bg-white rounded-full px-4 sm:px-6 py-2.5 sm:py-3 shadow-pill border border-slate-100 transition-all duration-300 ${
-              isScrolled ? "shadow-card bg-white/95 backdrop-blur-md" : ""
+            className={`relative flex items-center justify-between transition-all duration-300 ${
+              isScrolled
+                ? "bg-white/95 backdrop-blur-md rounded-full px-5 py-2.5 shadow-2xl border border-slate-100"
+                : "bg-white rounded-full px-4 sm:px-6 py-2.5 xl:bg-[url('/images/header-bg.png')] xl:bg-no-repeat xl:bg-center xl:bg-contain xl:bg-transparent xl:border-none xl:shadow-none xl:py-4 xl:px-6 xl:min-h-[96px]"
             }`}
           >
-            {/* Left: Angled Logo Area */}
-            <div className="flex items-center">
-              <div className="relative pr-4 sm:pr-6 border-r border-slate-200">
-                <YLSLogo variant="light" size="sm" />
-              </div>
+            {/* Left: Logo Area (fits seamlessly into angled cut of header-bg.png on Desktop) */}
+            <div className="flex items-center shrink-0 xl:w-[270px] xl:pl-2">
+              <YLSLogo variant="light" size="sm" />
             </div>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden xl:flex items-center space-x-1 lg:space-x-2 text-[15px] font-semibold text-slate-800">
+            <nav className="hidden xl:flex items-center space-x-1 lg:space-x-2 text-[15px] font-semibold text-[#020e28]">
               {/* Home */}
-              <Link
-                href="/"
-                className={`px-3.5 py-2 rounded-full transition-colors ${
-                  pathname === "/"
-                    ? "text-primary font-bold"
-                    : "text-slate-800 hover:text-primary"
-                }`}
+              <div
+                className="relative group"
+                onMouseEnter={() => setActiveDropdown("home")}
+                onMouseLeave={() => setActiveDropdown(null)}
               >
-                Home
-              </Link>
+                <Link
+                  href="/"
+                  className={`flex items-center gap-1 px-3.5 py-2 rounded-full transition-colors ${
+                    pathname === "/"
+                      ? "text-[#fd5523] font-bold"
+                      : "text-[#020e28] hover:text-[#fd5523]"
+                  }`}
+                >
+                  <span>Home</span>
+                  <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
+                </Link>
+
+                <div
+                  className={`absolute top-full left-0 w-48 pt-2 z-50 transition-all duration-200 ${
+                    activeDropdown === "home"
+                      ? "opacity-100 visible translate-y-0"
+                      : "opacity-0 invisible -translate-y-2 pointer-events-none"
+                  }`}
+                >
+                  <div className="bg-white rounded-2xl p-2 shadow-2xl border border-slate-100 space-y-1">
+                    <Link
+                      href="/"
+                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-[#fd5523] font-bold text-sm"
+                    >
+                      Home 1 (Default)
+                    </Link>
+                    <Link
+                      href="/#services-section"
+                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium"
+                    >
+                      Home 2 (Fleet View)
+                    </Link>
+                    <Link
+                      href="/#process-section"
+                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium"
+                    >
+                      Home 3 (Logistics Hub)
+                    </Link>
+                  </div>
+                </div>
+              </div>
 
               {/* Services with Dropdown */}
               <div
@@ -89,31 +120,31 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
                   href="/services"
                   className={`flex items-center gap-1 px-3.5 py-2 rounded-full transition-colors ${
                     pathname.startsWith("/services")
-                      ? "text-primary font-bold"
-                      : "text-slate-800 hover:text-primary"
+                      ? "text-[#fd5523] font-bold"
+                      : "text-[#020e28] hover:text-[#fd5523]"
                   }`}
                 >
                   <span>Services</span>
-                  <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                  <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
                 </Link>
 
                 {/* Dropdown Menu */}
                 <div
-                  className={`absolute top-full left-0 w-72 pt-3 z-50 transition-all duration-200 ${
+                  className={`absolute top-full left-0 w-72 pt-2 z-50 transition-all duration-200 ${
                     activeDropdown === "services"
                       ? "opacity-100 visible translate-y-0"
                       : "opacity-0 invisible -translate-y-2 pointer-events-none"
                   }`}
                 >
-                  <div className="bg-white rounded-2xl p-3 shadow-card border border-slate-100 space-y-1">
+                  <div className="bg-white rounded-2xl p-3 shadow-2xl border border-slate-100 space-y-1">
                     {PRIMARY_SERVICES.map((srv) => (
                       <Link
                         key={srv.id}
                         href="/services"
-                        className="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium transition"
+                        className="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
                       >
                         <span className="flex items-center gap-2.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#fd5523]" />
                           {srv.title}
                         </span>
                         <span className="text-[11px] font-bold text-slate-400">
@@ -124,7 +155,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
                     <div className="pt-2 mt-1 border-t border-slate-100">
                       <Link
                         href="/services"
-                        className="flex items-center justify-between px-3 py-2 rounded-xl bg-slate-50 hover:bg-primary hover:text-white text-xs font-bold text-slate-700 transition"
+                        className="flex items-center justify-between px-3 py-2 rounded-xl bg-slate-50 hover:bg-[#fd5523] hover:text-white text-xs font-bold text-slate-700 transition"
                       >
                         <span>View All 15+ Services</span>
                         <ArrowRight className="w-3.5 h-3.5" />
@@ -142,47 +173,47 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
               >
                 <button
                   type="button"
-                  className="flex items-center gap-1 px-3.5 py-2 rounded-full text-slate-800 hover:text-primary transition-colors cursor-pointer"
+                  className="flex items-center gap-1 px-3.5 py-2 rounded-full text-[#020e28] hover:text-[#fd5523] transition-colors cursor-pointer"
                 >
                   <span>Pages</span>
-                  <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                  <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
                 </button>
 
                 <div
-                  className={`absolute top-full left-0 w-64 pt-3 z-50 transition-all duration-200 ${
+                  className={`absolute top-full left-0 w-64 pt-2 z-50 transition-all duration-200 ${
                     activeDropdown === "pages"
                       ? "opacity-100 visible translate-y-0"
                       : "opacity-0 invisible -translate-y-2 pointer-events-none"
                   }`}
                 >
-                  <div className="bg-white rounded-2xl p-3 shadow-card border border-slate-100 space-y-1">
+                  <div className="bg-white rounded-2xl p-3 shadow-2xl border border-slate-100 space-y-1">
                     <Link
                       href="/about-us"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium transition"
+                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
                     >
                       About Our Company
                     </Link>
                     <Link
                       href="/services"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium transition"
+                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
                     >
                       Fleet & ODC Services
                     </Link>
                     <Link
                       href="/#tracking-section"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium transition"
+                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
                     >
                       Shipment Tracking
                     </Link>
                     <Link
                       href="/quote"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium transition"
+                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
                     >
                       Request a Freight Quote
                     </Link>
                     <Link
                       href="/contact-us"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium transition"
+                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
                     >
                       All-India Branches (5 Hubs)
                     </Link>
@@ -200,43 +231,43 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
                   href="/case-studies"
                   className={`flex items-center gap-1 px-3.5 py-2 rounded-full transition-colors ${
                     pathname.startsWith("/case-studies")
-                      ? "text-primary font-bold"
-                      : "text-slate-800 hover:text-primary"
+                      ? "text-[#fd5523] font-bold"
+                      : "text-[#020e28] hover:text-[#fd5523]"
                   }`}
                 >
                   <span>Case Study</span>
-                  <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                  <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
                 </Link>
 
                 <div
-                  className={`absolute top-full left-0 w-72 pt-3 z-50 transition-all duration-200 ${
+                  className={`absolute top-full left-0 w-72 pt-2 z-50 transition-all duration-200 ${
                     activeDropdown === "casestudy"
                       ? "opacity-100 visible translate-y-0"
                       : "opacity-0 invisible -translate-y-2 pointer-events-none"
                   }`}
                 >
-                  <div className="bg-white rounded-2xl p-3 shadow-card border border-slate-100 space-y-1">
+                  <div className="bg-white rounded-2xl p-3 shadow-2xl border border-slate-100 space-y-1">
                     <Link
                       href="/case-studies"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium transition"
+                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
                     >
                       ODC Girder Transport (52m)
                     </Link>
                     <Link
                       href="/case-studies"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium transition"
+                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
                     >
                       Pune Warehouse Staging
                     </Link>
                     <Link
                       href="/case-studies"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium transition"
+                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
                     >
                       Multi-State Fleet Delivery
                     </Link>
                     <Link
                       href="/case-studies"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium transition"
+                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
                     >
                       50-Ton Crane Handover
                     </Link>
@@ -254,37 +285,37 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
                   href="/blog"
                   className={`flex items-center gap-1 px-3.5 py-2 rounded-full transition-colors ${
                     pathname.startsWith("/blog")
-                      ? "text-primary font-bold"
-                      : "text-slate-800 hover:text-primary"
+                      ? "text-[#fd5523] font-bold"
+                      : "text-[#020e28] hover:text-[#fd5523]"
                   }`}
                 >
                   <span>Blog</span>
-                  <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                  <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
                 </Link>
 
                 <div
-                  className={`absolute top-full left-0 w-72 pt-3 z-50 transition-all duration-200 ${
+                  className={`absolute top-full left-0 w-72 pt-2 z-50 transition-all duration-200 ${
                     activeDropdown === "blog"
                       ? "opacity-100 visible translate-y-0"
                       : "opacity-0 invisible -translate-y-2 pointer-events-none"
                   }`}
                 >
-                  <div className="bg-white rounded-2xl p-3 shadow-card border border-slate-100 space-y-1">
+                  <div className="bg-white rounded-2xl p-3 shadow-2xl border border-slate-100 space-y-1">
                     <Link
                       href="/blog"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium transition"
+                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
                     >
                       Safer ODC Movements in India
                     </Link>
                     <Link
                       href="/blog"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium transition"
+                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
                     >
                       How to Reduce Transport Delays
                     </Link>
                     <Link
                       href="/blog"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium transition"
+                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
                     >
                       Why Warehousing Belongs in Logistics
                     </Link>
@@ -297,25 +328,25 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
                 href="/contact-us"
                 className={`px-3.5 py-2 rounded-full transition-colors ${
                   pathname === "/contact-us"
-                    ? "text-primary font-bold"
-                    : "text-slate-800 hover:text-primary"
+                    ? "text-[#fd5523] font-bold"
+                    : "text-[#020e28] hover:text-[#fd5523]"
                 }`}
               >
                 Contact
               </Link>
             </nav>
 
-            {/* Right Side Icons & Free Quote Button */}
-            <div className="flex items-center gap-2 sm:gap-3">
+            {/* Right Side Icons & Free Quote Button (TransHub Style) */}
+            <div className="flex items-center gap-2 sm:gap-2.5">
               {/* Cart Icon Button */}
               <button
                 onClick={() => setCartCount((prev) => (prev > 0 ? 0 : 1))}
-                className="relative w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 flex items-center justify-center transition"
+                className="relative w-10 h-10 rounded-full bg-[#f7f7f7] hover:bg-slate-200 text-[#020e28] flex items-center justify-center transition"
                 aria-label="View logistics cart"
                 title="Service Inquiry Bag"
               >
-                <ShoppingCart className="w-4 h-4 text-slate-700" />
-                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-primary text-white text-[10px] font-bold flex items-center justify-center shadow-sm">
+                <ShoppingCart className="w-4 h-4 text-[#020e28]" />
+                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#fd5523] text-white text-[10px] font-bold flex items-center justify-center shadow-sm">
                   {cartCount}
                 </span>
               </button>
@@ -323,25 +354,36 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
               {/* Search Icon Button */}
               <button
                 onClick={() => setIsSearchOpen(true)}
-                className="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 flex items-center justify-center transition"
+                className="w-10 h-10 rounded-full bg-[#f7f7f7] hover:bg-slate-200 text-[#020e28] flex items-center justify-center transition"
                 aria-label="Search site"
               >
-                <Search className="w-4 h-4 text-slate-700" />
+                <Search className="w-4 h-4 text-[#020e28]" />
               </button>
 
-              {/* Menu / Hamburger Icon Button (Offcanvas Trigger) */}
+              {/* Burger Menu Button (TransHub SVG Icon) */}
               <button
                 onClick={() => setIsDrawerOpen(true)}
-                className="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 flex items-center justify-center transition"
+                className="w-10 h-10 rounded-full bg-[#f7f7f7] hover:bg-slate-200 text-[#020e28] flex items-center justify-center transition"
                 aria-label="Open detailed menu"
               >
-                <Menu className="w-4 h-4 text-slate-700" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="12"
+                  fill="none"
+                  viewBox="0 0 14 12"
+                >
+                  <path
+                    fill="#020e28"
+                    d="M0 .75Q.063.063.75 0h12.5q.687.063.75.75-.063.687-.75.75H.75Q.063 1.437 0 .75m0 5Q.063 5.063.75 5h12.5q.687.063.75.75-.063.687-.75.75H.75Q.063 6.437 0 5.75m13.25 5.75H.75q-.687-.063-.75-.75.063-.687.75-.75h12.5q.687.063.75.75-.063.687-.75.75"
+                  />
+                </svg>
               </button>
 
               {/* Free Quote Button (Orange-Red Pill) */}
               <Link
                 href="/quote"
-                className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 rounded-full bg-primary hover:bg-primary-hover text-white font-bold text-xs sm:text-sm tracking-wide shadow-glow transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 rounded-full bg-[#fd5523] hover:bg-[#e04414] text-white font-bold text-xs sm:text-sm tracking-wide shadow-glow transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span>Free Quote</span>
                 <ArrowRight className="w-4 h-4" />

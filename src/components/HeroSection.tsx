@@ -3,19 +3,19 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight, CheckCircle2, ShieldCheck, MapPin } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
 import YLSHeroBadge from "./YLSHeroBadge";
 
 const HERO_SLIDES = [
   {
     image: "/images/slide-m1.jpg",
     alt: "YES Logistics Service Heavy Transportation Fleet on Highway at Sunset",
-    truckModel: "Taurus Multi-Axle Long Haul Carrier",
+    caption: "Taurus Multi-Axle Long Haul Carrier",
   },
   {
     image: "/images/slide-m2.jpg",
     alt: "YES Logistics Service ODC Hydraulic Trailer on Golden Hour Highway",
-    truckModel: "Hydraulic Multi-Axle ODC Trailer",
+    caption: "Hydraulic Multi-Axle ODC Trailer",
   },
 ];
 
@@ -31,9 +31,9 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative w-full min-h-[780px] lg:h-[820px] bg-navy-dark overflow-hidden flex flex-col justify-between pt-28 sm:pt-36 pb-12 lg:pb-16 select-none">
-      {/* Background Truck Line-Art Pattern on Lower-Left */}
-      <div className="absolute left-0 bottom-0 pointer-events-none z-10 opacity-20 sm:opacity-30">
+    <section className="relative w-full min-h-[780px] lg:h-[840px] bg-[#020e28] overflow-hidden flex flex-col justify-between pt-28 sm:pt-36 pb-12 lg:pb-16 select-none">
+      {/* 1. Background Truck Line-Art Pattern on Lower-Left (from TransHub tranck-v.png) */}
+      <div className="absolute left-0 bottom-0 pointer-events-none z-10 opacity-25 sm:opacity-35">
         <Image
           src="/images/tranck-v.png"
           alt="Truck vector pattern"
@@ -43,7 +43,7 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Geometric Overlay Shape from TransHub */}
+      {/* 2. Geometric Overlay Shape from TransHub (slide-sh1.png) */}
       <div className="absolute top-0 right-0 pointer-events-none z-10 opacity-30">
         <Image
           src="/images/slide-sh1.png"
@@ -54,7 +54,7 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Background Split: Right Image with Left Gradient Overlay */}
+      {/* 3. Background Split: Right Image with Left Navy Gradient Overlay */}
       <div className="absolute inset-0 z-0">
         {HERO_SLIDES.map((slide, idx) => (
           <div
@@ -74,57 +74,56 @@ export default function HeroSection() {
               />
             </div>
 
-            {/* Dark Navy Gradient Overlay: Deep solid on the left, fading towards the right */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#06112E] via-[#06112E]/90 to-[#06112E]/30 lg:to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#06112E] via-transparent to-[#06112E]/50 lg:hidden" />
+            {/* Dark Navy Gradient Overlay: Deep solid #020e28 on the left, fading towards the right */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#020e28] via-[#020e28]/95 to-[#020e28]/20 lg:to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#020e28] via-transparent to-[#020e28]/50 lg:hidden" />
           </div>
         ))}
       </div>
 
-      {/* Hero Content Container */}
+      {/* 4. Hero Content Container */}
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Left Side Content Panel (7 Cols) */}
-          <div className="lg:col-span-7 xl:col-span-8 text-white space-y-6 pt-4 sm:pt-0">
-            {/* Center-Top Circular Badge Area */}
-            <div className="flex items-center gap-4">
+          {/* Left Side Content Panel (Col 7 / 12) */}
+          <div className="lg:col-span-7 xl:col-span-7 text-white relative pt-4 sm:pt-0">
+            {/* Circular Rotating Trust Badge Positioned exactly at top-right seam (Desktop) */}
+            <div className="hidden lg:block absolute -top-16 left-[calc(100%-75px)] z-30">
               <YLSHeroBadge />
-              <div className="hidden sm:block">
-                <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-brand-yellow text-xs font-bold tracking-wider uppercase">
-                  <ShieldCheck className="w-4 h-4 text-brand-yellow" />
-                  Fleet Owner &amp; Transport Contractor
-                </span>
-              </div>
+            </div>
+
+            {/* Mobile / Tablet Rotating Badge */}
+            <div className="lg:hidden mb-4">
+              <YLSHeroBadge className="scale-75 origin-left" />
             </div>
 
             {/* Eyebrow */}
-            <div className="flex items-center gap-2">
-              <span className="w-6 h-0.5 bg-primary" />
-              <p className="text-primary font-bold text-xs sm:text-sm tracking-[0.2em] uppercase font-display">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-8 h-[3px] bg-[#fd5523] rounded-full" />
+              <p className="text-[#fd5523] font-extrabold text-xs sm:text-sm tracking-[0.22em] uppercase font-display">
                 LOGISTIC TRANSPORTATION
               </p>
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white font-display leading-[1.08] tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white font-display leading-[1.08] tracking-tight mb-5">
               The Bridge to Your <br className="hidden sm:inline" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-300">
+              <span className="text-white">
                 Logistics Success
               </span>
             </h1>
 
             {/* Description */}
-            <p className="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+            <p className="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed mb-8">
               Optimizing fleet, routes, technology and experienced transport teams,{" "}
               <strong className="text-white font-bold">YES Logistics Service</strong> delivers safe and dependable movement across India.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-4">
               {/* Primary Button */}
               <Link
                 href="/quote"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-primary hover:bg-primary-hover text-white font-bold text-base shadow-glow transition-all duration-300 hover:scale-105 active:scale-95 group"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#fd5523] hover:bg-[#e04414] text-white font-bold text-base shadow-glow transition-all duration-300 hover:scale-105 active:scale-95 group"
               >
                 <span>Let’s Get Started</span>
                 <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center transition-transform group-hover:translate-x-1">
@@ -135,104 +134,75 @@ export default function HeroSection() {
               {/* Secondary Button */}
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-base backdrop-blur-sm border border-white/20 transition-all duration-300 hover:border-brand-yellow"
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-base backdrop-blur-sm border border-white/20 transition-all duration-300 hover:border-[#fd5523]"
               >
                 <span>Explore Services</span>
               </Link>
             </div>
 
-            {/* Fast Highlights Checklist */}
-            <div className="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-300 font-medium">
+            {/* Key Trust Checkmarks */}
+            <div className="pt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-300 font-medium">
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-brand-yellow" />
+                <CheckCircle2 className="w-4 h-4 text-[#fd5523]" />
                 ODC Consignment Specialist
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-brand-yellow" />
+                <CheckCircle2 className="w-4 h-4 text-[#fd5523]" />
                 All India Transport Network
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-brand-yellow" />
+                <CheckCircle2 className="w-4 h-4 text-[#fd5523]" />
                 Pune HQ (Chinchwad)
               </span>
             </div>
           </div>
 
-          {/* Right Side Spacer / Interactive Truck Info */}
-          <div className="lg:col-span-5 xl:col-span-4 hidden lg:flex flex-col items-end justify-end h-full">
-            {/* White Rounded Statistics Card on Bottom-Right */}
-            <div className="bg-white rounded-3xl p-6 sm:p-7 shadow-card border border-slate-100 max-w-sm w-full transform transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <span className="text-3xl font-black text-[#06112E] font-display">
-                      2021
-                    </span>
-                    <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                      Established in Pune
-                    </p>
-                  </div>
-                </div>
-                <span className="px-2.5 py-1 rounded-full bg-brand-yellow/20 text-[#06112E] text-[11px] font-black tracking-wider uppercase">
-                  Verified
-                </span>
-              </div>
-
-              <div className="pt-4 flex items-center justify-between">
-                <div>
-                  <p className="text-base font-black text-[#06112E]">
-                    All India Operations
-                  </p>
-                  <p className="text-xs text-slate-500">
-                    5 Major Branch Hubs across 5 States
-                  </p>
-                </div>
-                <div className="w-9 h-9 rounded-full bg-navy-dark text-brand-yellow flex items-center justify-center font-bold text-xs">
-                  5★
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Right Side Spacer */}
+          <div className="lg:col-span-5 xl:col-span-5 hidden lg:block" />
         </div>
       </div>
 
-      {/* Hero Bottom Bar with Slider Buttons & Mobile Stats */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-8">
-        <div className="flex items-center justify-between">
-          {/* Two Orange-Red Slider Navigation Buttons */}
-          <div className="flex items-center gap-2">
-            <button
-              onClick={prevSlide}
-              className="w-11 h-11 rounded-full bg-primary hover:bg-primary-hover text-white flex items-center justify-center shadow-glow transition-all active:scale-95"
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="w-11 h-11 rounded-full bg-primary hover:bg-primary-hover text-white flex items-center justify-center shadow-glow transition-all active:scale-95"
-              aria-label="Next slide"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-            <span className="ml-3 text-xs font-bold text-slate-400 uppercase tracking-widest hidden sm:inline">
-              Fleet Slide 0{currentSlide + 1} / 0{HERO_SLIDES.length}
-            </span>
-          </div>
+      {/* 5. TransHub Hero Bottom Elements */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-between">
+        {/* Slider Navigation Arrows (TransHub Style) */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={prevSlide}
+            aria-label="Previous slide"
+            className="w-12 h-12 rounded-full bg-[#fd5523] hover:bg-white hover:text-[#020e28] text-white flex items-center justify-center shadow-lg transition-all duration-200 active:scale-95 cursor-pointer"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={nextSlide}
+            aria-label="Next slide"
+            className="w-12 h-12 rounded-full bg-[#fd5523] hover:bg-white hover:text-[#020e28] text-white flex items-center justify-center shadow-lg transition-all duration-200 active:scale-95 cursor-pointer"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
 
-          {/* Mobile view of the 2021 Established stats card */}
-          <div className="lg:hidden flex items-center gap-3 bg-white/95 rounded-2xl px-4 py-2 shadow-card text-[#06112E]">
-            <div>
-              <span className="text-lg font-black leading-none block">2021</span>
-              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">
-                Pune Established
-              </span>
-            </div>
-            <span className="w-px h-6 bg-slate-200" />
-            <span className="text-xs font-bold text-primary">All India</span>
+        {/* TransHub Stat Card on Bottom Right */}
+        <div className="hidden sm:flex items-center gap-4 bg-white px-8 py-4 rounded-full shadow-2xl border border-slate-100 transition-all hover:scale-105">
+          <div className="shrink-0 flex items-center">
+            <Image
+              src="/images/clients-1.png"
+              alt="Happy Logistics Clients"
+              width={95}
+              height={44}
+              className="object-contain"
+            />
+          </div>
+          <div className="flex flex-col border-l border-slate-100 pl-4">
+            <span className="text-2xl sm:text-3xl font-black text-[#fd5523] font-display leading-none">
+              2021
+            </span>
+            <h2 className="text-xs sm:text-sm font-bold text-[#020e28] leading-tight mt-0.5">
+              Established in Pune
+            </h2>
+            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+              All India Operations
+            </p>
           </div>
         </div>
       </div>

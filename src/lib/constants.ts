@@ -77,8 +77,8 @@ export const COMPANY = {
   },
   registration: {
     firmType: "Fleet Owner & Transport Contractor",
-    pan: "AYYPM5626L",
-    gst: "27AYYPM5626L1ZH",
+    pan: "AYYPM*****",
+    gst: "27AYYPM*****1ZH",
     udyam: "UDAM-MH-26-0145431",
     shopAct: "2131000315404073",
     bank: "HDFC Bank LTD",
