@@ -1,16 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
+import TruckIcon from "./TruckIcon";
 import {
   Phone,
   Mail,
   MapPin,
-  ArrowRight,
   CheckCircle2,
   AlertCircle,
   Loader2,
-  ShieldCheck,
-  Building,
 } from "lucide-react";
 import { COMPANY, BRANCHES } from "@/lib/constants";
 
@@ -61,7 +59,6 @@ export default function QuoteSection() {
           quoteId: data.quoteId,
           message: data.message,
         });
-        // Reset form
         setFormData({
           fullName: "",
           email: "",
@@ -83,22 +80,19 @@ export default function QuoteSection() {
   };
 
   return (
-    <section id="quote-section" className="py-20 lg:py-28 bg-[#F5F7FA] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl shadow-card border border-slate-100 overflow-hidden">
+    <section id="quote-section" className="py-24 lg:py-32 bg-shade relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <div className="bg-white rounded-[30px] shadow-[0_15px_45px_rgba(0,0,0,0.08)] border border-slate-100 overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12">
-            {/* Left Side: Contact Information & Office Details */}
-            <div className="lg:col-span-5 bg-navy-dark text-white p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden">
-              {/* Subtle ambient light */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-
+            {/* Left Column: Dark Panel matching TransHub */}
+            <div className="lg:col-span-5 bg-dark text-white p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden">
               <div className="relative z-10 space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-brand-yellow text-xs font-bold uppercase tracking-wider">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  <span>TRANSPARENT QUOTATIONS</span>
-                </div>
+                <span className="sub-title">
+                  <TruckIcon />
+                  TRANSPARENT QUOTATIONS
+                </span>
 
-                <h2 className="text-3xl sm:text-4xl font-black text-white font-display leading-tight">
+                <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white leading-tight">
                   Do You Have Any Project on Your Mind?
                 </h2>
 
@@ -112,7 +106,7 @@ export default function QuoteSection() {
                   <div className="flex items-start gap-4">
                     <a
                       href={`tel:${COMPANY.primaryPhone.replace(/\s+/g, "")}`}
-                      className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-primary text-brand-yellow hover:text-white flex items-center justify-center shrink-0 transition"
+                      className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-primary text-white flex items-center justify-center shrink-0 transition"
                     >
                       <Phone className="w-5 h-5" />
                     </a>
@@ -122,7 +116,7 @@ export default function QuoteSection() {
                       </p>
                       <a
                         href={`tel:${COMPANY.primaryPhone.replace(/\s+/g, "")}`}
-                        className="text-base sm:text-lg font-black text-white hover:text-brand-yellow transition"
+                        className="text-base sm:text-lg font-heading font-bold text-white hover:text-primary transition"
                       >
                         {COMPANY.primaryPhone}
                       </a>
@@ -136,7 +130,7 @@ export default function QuoteSection() {
                   <div className="flex items-start gap-4">
                     <a
                       href={`mailto:${COMPANY.email}`}
-                      className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-primary text-brand-yellow hover:text-white flex items-center justify-center shrink-0 transition"
+                      className="w-12 h-12 rounded-2xl bg-white/10 hover:bg-primary text-white flex items-center justify-center shrink-0 transition"
                     >
                       <Mail className="w-5 h-5" />
                     </a>
@@ -146,7 +140,7 @@ export default function QuoteSection() {
                       </p>
                       <a
                         href={`mailto:${COMPANY.email}`}
-                        className="text-base sm:text-lg font-bold text-white hover:text-brand-yellow transition"
+                        className="text-base sm:text-lg font-heading font-bold text-white hover:text-primary transition"
                       >
                         {COMPANY.email}
                       </a>
@@ -155,14 +149,14 @@ export default function QuoteSection() {
 
                   {/* Registered Office */}
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-white/10 text-brand-yellow flex items-center justify-center shrink-0">
+                    <div className="w-12 h-12 rounded-2xl bg-white/10 text-primary flex items-center justify-center shrink-0">
                       <MapPin className="w-5 h-5" />
                     </div>
                     <div>
                       <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                        Registered Office
+                        Registered Office (Pune)
                       </p>
-                      <p className="text-sm font-semibold text-slate-200 mt-0.5 leading-relaxed">
+                      <p className="text-sm font-medium text-slate-200 mt-0.5 leading-relaxed">
                         {COMPANY.registeredOffice.full}
                       </p>
                     </div>
@@ -172,14 +166,14 @@ export default function QuoteSection() {
 
               {/* Branch Network Indicator */}
               <div className="relative z-10 pt-8 mt-8 border-t border-white/10">
-                <p className="text-xs font-bold uppercase tracking-wider text-brand-yellow mb-2">
-                  5 Interstate Branch Hubs
+                <p className="text-xs font-bold uppercase tracking-wider text-primary mb-2">
+                  5 All-India Branch Hubs
                 </p>
                 <div className="flex flex-wrap gap-2 text-xs">
                   {BRANCHES.map((b) => (
                     <span
                       key={b.city}
-                      className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-200 font-medium"
+                      className="px-3 py-1 rounded-full bg-white/10 text-slate-200 font-medium"
                     >
                       {b.city} ({b.stateCode})
                     </span>
@@ -188,11 +182,11 @@ export default function QuoteSection() {
               </div>
             </div>
 
-            {/* Right Side: Quote Form */}
+            {/* Right Column: Quote Form */}
             <div className="lg:col-span-7 p-8 sm:p-12 bg-white">
               <div className="max-w-xl">
                 <div className="mb-6">
-                  <h3 className="text-2xl font-black text-[#06112E] font-display">
+                  <h3 className="text-2xl font-heading font-bold text-dark">
                     Request an Instant Quote
                   </h3>
                   <p className="text-slate-500 text-sm mt-1">
@@ -202,12 +196,12 @@ export default function QuoteSection() {
 
                 {/* Success Notification */}
                 {successData && (
-                  <div className="mb-6 p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 space-y-2 animate-in fade-in">
+                  <div className="mb-6 p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 space-y-2 animate-in fade-in">
                     <div className="flex items-center gap-2 font-bold text-base text-emerald-800">
                       <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                       <span>Request Successfully Submitted!</span>
                     </div>
-                    <p className="text-sm text-emerald-800 leading-relaxed">
+                    <p className="text-sm text-emerald-800">
                       {successData.message}
                     </p>
                     <div className="pt-2 flex items-center gap-2 text-xs font-mono text-emerald-700">
@@ -227,11 +221,11 @@ export default function QuoteSection() {
                   </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
-                  {/* Row 1: Full Name & Email */}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Row 1 */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                      <label className="block text-xs font-bold uppercase tracking-wider text-dark mb-1.5">
                         Full Name <span className="text-primary">*</span>
                       </label>
                       <input
@@ -245,7 +239,7 @@ export default function QuoteSection() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                      <label className="block text-xs font-bold uppercase tracking-wider text-dark mb-1.5">
                         Email Address <span className="text-primary">*</span>
                       </label>
                       <input
@@ -259,10 +253,10 @@ export default function QuoteSection() {
                     </div>
                   </div>
 
-                  {/* Row 2: Phone & Freight Type */}
+                  {/* Row 2 */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                      <label className="block text-xs font-bold uppercase tracking-wider text-dark mb-1.5">
                         Phone Number <span className="text-primary">*</span>
                       </label>
                       <input
@@ -276,7 +270,7 @@ export default function QuoteSection() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                      <label className="block text-xs font-bold uppercase tracking-wider text-dark mb-1.5">
                         Freight Service Type
                       </label>
                       <select
@@ -293,10 +287,10 @@ export default function QuoteSection() {
                     </div>
                   </div>
 
-                  {/* Row 3: Goods Type & Pickup City */}
+                  {/* Row 3 */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                      <label className="block text-xs font-bold uppercase tracking-wider text-dark mb-1.5">
                         Type of Goods
                       </label>
                       <input
@@ -309,7 +303,7 @@ export default function QuoteSection() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                      <label className="block text-xs font-bold uppercase tracking-wider text-dark mb-1.5">
                         Pickup City
                       </label>
                       <input
@@ -322,10 +316,10 @@ export default function QuoteSection() {
                     </div>
                   </div>
 
-                  {/* Row 4: Delivery City & Dimensions */}
+                  {/* Row 4 */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                      <label className="block text-xs font-bold uppercase tracking-wider text-dark mb-1.5">
                         Delivery City
                       </label>
                       <input
@@ -338,7 +332,7 @@ export default function QuoteSection() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                      <label className="block text-xs font-bold uppercase tracking-wider text-dark mb-1.5">
                         Dimensions / Weight
                       </label>
                       <input
@@ -351,9 +345,9 @@ export default function QuoteSection() {
                     </div>
                   </div>
 
-                  {/* Notes / Special Requirements */}
+                  {/* Notes */}
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-dark mb-1.5">
                       Special Requirements or Route Notes
                     </label>
                     <textarea
@@ -365,12 +359,12 @@ export default function QuoteSection() {
                     />
                   </div>
 
-                  {/* Submit Button */}
+                  {/* Submit */}
                   <div className="pt-2">
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full py-4 px-8 rounded-full bg-primary hover:bg-primary-hover text-white font-bold text-base shadow-glow flex items-center justify-center gap-2 transition-all active:scale-[0.99] disabled:opacity-75"
+                      className="btn-primary w-full py-4 text-base justify-center disabled:opacity-75"
                     >
                       {loading ? (
                         <>
@@ -380,13 +374,10 @@ export default function QuoteSection() {
                       ) : (
                         <>
                           <span>Submit Request</span>
-                          <ArrowRight className="w-5 h-5" />
+                          <i className="fa fa-arrow-right text-sm" aria-hidden="true"></i>
                         </>
                       )}
                     </button>
-                    <p className="text-[11px] text-slate-400 text-center mt-2.5">
-                      By submitting, you agree to receive a direct call or email from our transport coordinator.
-                    </p>
                   </div>
                 </form>
               </div>

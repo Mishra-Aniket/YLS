@@ -1,18 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
+import TruckIcon from "./TruckIcon";
 import {
   Search,
   ArrowRight,
   CheckCircle2,
   AlertTriangle,
   Loader2,
-  Truck,
-  MapPin,
-  Calendar,
   Phone,
-  ShieldCheck,
-  RotateCcw,
+  MapPin,
 } from "lucide-react";
 
 interface TimelineStep {
@@ -58,11 +55,6 @@ export default function TrackingSection() {
       return;
     }
 
-    if (query.length < 4) {
-      setValidationError("Tracking reference must be at least 4 characters.");
-      return;
-    }
-
     setLoading(true);
     try {
       const res = await fetch(`/api/track?trackingId=${encodeURIComponent(query)}`);
@@ -71,7 +63,7 @@ export default function TrackingSection() {
       if (!res.ok || !data.found) {
         setNotFoundData({
           message: data.message || `No active shipment found matching reference "${query}".`,
-          hint: data.hint || "Please verify your LR (Lorry Receipt) docket number with the dispatch depot.",
+          hint: data.hint || "Please verify your LR (Lorry Receipt) docket number with our Pune dispatch depot.",
         });
       } else {
         setShipment(data.shipment);
@@ -93,24 +85,32 @@ export default function TrackingSection() {
   };
 
   return (
-    <section id="tracking-section" className="py-20 lg:py-24 bg-brand-yellow relative overflow-hidden">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-navy-dark text-white text-xs font-black tracking-widest uppercase shadow-sm">
-            <Truck className="w-3.5 h-3.5 text-primary" />
-            <span>REAL-TIME FLEET MONITORING</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#06112E] font-display">
-            Track the Status of Your Shipment Instantly
-          </h2>
-          <p className="text-[#06112E]/80 text-sm sm:text-base font-medium">
+    <section
+      id="tracking-section"
+      className="relative py-24 lg:py-32 bg-cover bg-center bg-no-repeat overflow-hidden text-white"
+      style={{
+        backgroundImage: "url('/images/tracking-bg.jpg')",
+        backgroundColor: "#020e28",
+      }}
+    >
+      {/* TransHub Parallax Overlay */}
+      <div className="absolute inset-0 bg-[#020e28]/90" />
+
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+        {/* Intro */}
+        <div className="sec-intro text-center mx-auto mb-12">
+          <span className="sub-title">
+            <TruckIcon />
+            REAL-TIME TRACKING
+          </span>
+          <h2 className="sec-title text-white">Track the Status of Your Shipment Instantly</h2>
+          <p className="text-slate-300 text-sm sm:text-base mt-4">
             Enter your tracking ID or Lorry Receipt (LR) number to view verified interstate dispatch status and delivery schedule.
           </p>
         </div>
 
-        {/* Tracking Form Box */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-card border border-amber-300 max-w-3xl mx-auto">
+        {/* Tracking Form Box matching TransHub styling */}
+        <div className="bg-white rounded-[30px] p-6 sm:p-8 shadow-2xl text-dark">
           <form onSubmit={handleTrack} className="flex flex-col sm:flex-row gap-3 items-stretch">
             <div className="relative flex-1">
               <Search className="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -129,7 +129,7 @@ export default function TrackingSection() {
             <button
               type="submit"
               disabled={loading}
-              className="px-8 py-4 rounded-full bg-primary hover:bg-primary-hover text-white font-bold text-sm sm:text-base tracking-wide shadow-glow flex items-center justify-center gap-2 shrink-0 transition-all active:scale-95 disabled:opacity-75"
+              className="btn-primary py-4 px-8 text-base shadow-glow flex items-center justify-center gap-2 shrink-0 disabled:opacity-75"
             >
               {loading ? (
                 <>
@@ -139,7 +139,7 @@ export default function TrackingSection() {
               ) : (
                 <>
                   <span>Track Now</span>
-                  <ArrowRight className="w-5 h-5" />
+                  <i className="fa fa-arrow-right text-sm" aria-hidden="true"></i>
                 </>
               )}
             </button>
@@ -153,14 +153,14 @@ export default function TrackingSection() {
                 key={chip}
                 type="button"
                 onClick={() => setSampleTracking(chip)}
-                className="px-2.5 py-1 rounded-full bg-slate-100 hover:bg-navy-dark hover:text-white text-slate-700 font-semibold transition"
+                className="px-3 py-1 rounded-full bg-slate-100 hover:bg-dark hover:text-white text-slate-700 font-semibold transition"
               >
                 {chip}
               </button>
             ))}
           </div>
 
-          {/* Validation Error State */}
+          {/* Validation Error */}
           {validationError && (
             <div className="mt-4 p-4 rounded-2xl bg-red-50 border border-red-200 flex items-center gap-3 text-red-700 text-sm animate-in fade-in">
               <AlertTriangle className="w-5 h-5 shrink-0 text-red-500" />
@@ -168,7 +168,7 @@ export default function TrackingSection() {
             </div>
           )}
 
-          {/* Not-Found State */}
+          {/* Not Found */}
           {notFoundData && (
             <div className="mt-6 p-6 rounded-2xl bg-amber-50 border border-amber-200 space-y-3 animate-in fade-in">
               <div className="flex items-start gap-3">
@@ -195,27 +195,26 @@ export default function TrackingSection() {
 
           {/* Success State */}
           {shipment && (
-            <div className="mt-6 rounded-3xl bg-slate-50 border border-slate-200 p-6 sm:p-8 space-y-6 animate-in fade-in">
-              {/* Top Banner: Docket Info & Status */}
+            <div className="mt-6 rounded-2xl bg-slate-50 border border-slate-200 p-6 sm:p-8 space-y-6 animate-in fade-in">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full bg-primary text-white text-[11px] font-black uppercase tracking-wider">
+                    <span className="px-3 py-1 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-wider">
                       {shipment.carrierType}
                     </span>
                     <span className="text-xs font-bold text-slate-500">
                       Docket #{shipment.consignmentNote}
                     </span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-black text-[#06112E] font-display mt-1">
+                  <h3 className="text-2xl font-heading font-bold text-dark mt-1">
                     {shipment.trackingId}
                   </h3>
                   <p className="text-xs text-slate-600 font-medium">{shipment.cargoDescription}</p>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div>
                   <span
-                    className="px-4 py-2 rounded-full text-xs font-black uppercase tracking-wider text-white shadow-sm flex items-center gap-1.5"
+                    className="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-white shadow-sm flex items-center gap-1.5"
                     style={{ backgroundColor: shipment.statusColor }}
                   >
                     <CheckCircle2 className="w-4 h-4" />
@@ -224,35 +223,29 @@ export default function TrackingSection() {
                 </div>
               </div>
 
-              {/* Origin to Destination Cards */}
+              {/* Origin to Destination */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 rounded-2xl bg-white border border-slate-200">
-                  <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Origin
-                  </p>
-                  <p className="text-base font-bold text-[#06112E] mt-0.5">{shipment.origin}</p>
+                <div className="p-4 rounded-xl bg-white border border-slate-200">
+                  <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Origin</p>
+                  <p className="text-base font-bold text-dark mt-0.5">{shipment.origin}</p>
                   <p className="text-xs text-slate-500 mt-1">Dispatched: {shipment.dispatchDate}</p>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-white border border-slate-200">
-                  <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Destination
-                  </p>
-                  <p className="text-base font-bold text-[#06112E] mt-0.5">{shipment.destination}</p>
-                  <p className="text-xs text-primary font-bold mt-1">
-                    Estimated: {shipment.estimatedDelivery}
-                  </p>
+                <div className="p-4 rounded-xl bg-white border border-slate-200">
+                  <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Destination</p>
+                  <p className="text-base font-bold text-dark mt-0.5">{shipment.destination}</p>
+                  <p className="text-xs text-primary font-bold mt-1">Estimated: {shipment.estimatedDelivery}</p>
                 </div>
               </div>
 
-              {/* Current Transit Milestone */}
-              <div className="p-4 rounded-2xl bg-navy-dark text-white flex items-center justify-between">
+              {/* Current Location */}
+              <div className="p-4 rounded-xl bg-dark text-white flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-brand-yellow text-[#06112E] flex items-center justify-center font-bold">
+                  <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-brand-yellow">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-primary">
                       Current Verified Location
                     </span>
                     <p className="text-sm font-bold text-white">{shipment.currentLocation}</p>
@@ -263,47 +256,34 @@ export default function TrackingSection() {
                 </span>
               </div>
 
-              {/* Step Timeline */}
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4">
-                  Consignment Milestone History
-                </h4>
-                <div className="space-y-3">
-                  {shipment.timeline.map((item, idx) => (
-                    <div
-                      key={item.step}
-                      className="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-100"
-                    >
-                      <div
-                        className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 ${
-                          item.completed
-                            ? "bg-emerald-500 text-white"
-                            : "bg-slate-200 text-slate-500"
-                        }`}
-                      >
+              {/* Milestone steps */}
+              <div className="space-y-2">
+                {shipment.timeline.map((item, idx) => (
+                  <div
+                    key={item.step}
+                    className="flex items-center justify-between p-3 rounded-lg bg-white border border-slate-100 text-xs"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${item.completed ? "bg-emerald-500 text-white" : "bg-slate-200 text-slate-600"}`}>
                         {item.completed ? "✓" : idx + 1}
-                      </div>
-                      <div className="flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                        <div>
-                          <p className="text-sm font-bold text-slate-800">{item.step}</p>
-                          <p className="text-xs text-slate-500">{item.location}</p>
-                        </div>
-                        <span className="text-xs font-semibold text-slate-400">{item.time}</span>
-                      </div>
+                      </span>
+                      <span className="font-bold text-dark">{item.step}</span>
+                      <span className="text-slate-500">({item.location})</span>
                     </div>
-                  ))}
-                </div>
+                    <span className="text-slate-400 font-medium">{item.time}</span>
+                  </div>
+                ))}
               </div>
 
-              {/* Branch Handler Card */}
-              <div className="p-4 rounded-2xl bg-white border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+              {/* Branch Handler */}
+              <div className="p-4 rounded-xl bg-white border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                 <div>
                   <span className="text-slate-400 font-bold uppercase">Route Coordinator:</span>
-                  <p className="text-sm font-bold text-[#06112E]">{shipment.branchHandler}</p>
+                  <p className="text-sm font-bold text-dark">{shipment.branchHandler}</p>
                 </div>
                 <a
                   href={`tel:${shipment.branchPhone.replace(/\s+/g, "")}`}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary hover:bg-primary-hover text-white font-bold transition"
+                  className="btn-primary py-2 px-4 text-xs"
                 >
                   <Phone className="w-3.5 h-3.5" />
                   <span>Call Handler: {shipment.branchPhone}</span>

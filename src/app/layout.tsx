@@ -41,8 +41,13 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..900&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap"
           rel="stylesheet"
         />
+        {/* Font Awesome for TransHub-matching icons */}
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
       </head>
-      <body className="min-h-screen flex flex-col bg-white text-[#06112E] antialiased">
+      <body className="font-body text-dark antialiased">
         {children}
       </body>
     </html>

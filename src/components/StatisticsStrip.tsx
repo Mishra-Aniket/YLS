@@ -1,47 +1,82 @@
 "use client";
 
 import React from "react";
-import { MapPin, Clock, ShieldCheck, Globe2 } from "lucide-react";
-import { STATS } from "@/lib/constants";
+import Image from "next/image";
 
-const STAT_ICONS = [MapPin, Clock, ShieldCheck, Globe2];
+const STAT_ITEMS = [
+  {
+    icon: "/images/stat1.png",
+    value: "05",
+    suffix: "",
+    title: "Branch Locations",
+    subtitle: "Pune, BLR, Vadodara, Jeypore, Prayagraj",
+  },
+  {
+    icon: "/images/sta2.png",
+    value: "24/7",
+    suffix: "",
+    title: "Response Support",
+    subtitle: "Dedicated Transport Coordinators",
+  },
+  {
+    icon: "/images/stat3.png",
+    value: "100%",
+    suffix: "",
+    title: "Safety Focus",
+    subtitle: "Under Motor Vehicles Act",
+  },
+  {
+    icon: "/images/stat4.png",
+    value: "2021",
+    suffix: "",
+    title: "Established in Pune",
+    subtitle: "All India Fleet Operations",
+  },
+];
 
 export default function StatisticsStrip() {
   return (
-    <section className="relative z-30 -mt-6 sm:-mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="bg-white rounded-3xl shadow-card border border-slate-100 p-6 sm:p-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
-          {STATS.map((stat, idx) => {
-            const Icon = STAT_ICONS[idx % STAT_ICONS.length];
-            return (
-              <div
-                key={stat.label}
-                className={`flex items-center gap-4 ${
-                  idx !== 0 ? "pt-5 sm:pt-0 sm:pl-6 lg:pl-8" : ""
-                }`}
-              >
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-slate-50 to-slate-100 border border-slate-100 flex items-center justify-center text-primary shrink-0 shadow-sm transition-transform hover:scale-105">
-                  <Icon className="w-7 h-7" />
-                </div>
-                <div>
-                  <div className="flex items-baseline gap-1.5">
-                    <span className="text-3xl sm:text-4xl font-black text-[#06112E] font-display tracking-tight">
-                      {stat.value}
-                    </span>
-                    <span className="text-[10px] font-black uppercase tracking-wider text-primary">
-                      {stat.highlight}
-                    </span>
-                  </div>
-                  <h4 className="text-sm font-bold text-slate-800 leading-snug">
-                    {stat.label}
-                  </h4>
-                  <p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
-                    {stat.sub}
-                  </p>
-                </div>
+    <section
+      className="relative z-20 py-16 lg:py-20 bg-cover bg-center bg-no-repeat text-white overflow-hidden"
+      style={{
+        backgroundImage: "url('/images/stat-bg.jpg')",
+        backgroundColor: "#020e28",
+      }}
+    >
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-[#020e28]/90" />
+
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+          {STAT_ITEMS.map((item, idx) => (
+            <div
+              key={item.title}
+              className="flex items-center gap-4 sm:gap-5 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/40 transition-all duration-300"
+            >
+              <div className="w-16 h-16 shrink-0 rounded-2xl bg-primary/20 flex items-center justify-center p-3">
+                <Image
+                  src={item.icon}
+                  alt={item.title}
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                />
               </div>
-            );
-          })}
+
+              <div>
+                <h3 className="text-3xl sm:text-4xl font-heading font-bold text-white tracking-tight leading-none mb-1">
+                  {item.value}
+                  {item.suffix && <span className="text-primary">{item.suffix}</span>}
+                </h3>
+                <p className="text-sm font-heading font-semibold text-slate-200">
+                  {item.title}
+                </p>
+                <p className="text-xs text-slate-400 mt-0.5 line-clamp-1">
+                  {item.subtitle}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

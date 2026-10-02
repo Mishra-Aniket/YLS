@@ -9,59 +9,39 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: {
-          dark: "#06112E",
-          DEFAULT: "#07152F",
-          light: "#0D2146",
-          card: "#0A1B3B",
-        },
+        // Exact TransHub CSS variables
         primary: {
-          DEFAULT: "#F15A38",
-          hover: "#e04b28",
-          light: "#ff7454",
+          DEFAULT: "#fd5523",
+          hover: "#eb3802",
         },
-        brand: {
-          yellow: "#F8C62E",
-          yellowHover: "#e5b420",
-          blue: "#175A9D",
-          blueDark: "#0F4172",
-        },
-        light: {
-          bg: "#F5F7FA",
-          card: "#FFFFFF",
-          border: "#E2E8F0",
-        },
-        muted: {
-          DEFAULT: "#6C7890",
-          light: "#94A3B8",
-          dark: "#475569",
-        },
+        dark: "#020e28",
+        shade: "#f5f7fa",
+        mute: "#788094",
+        "brand-yellow": "#F8C62E",
+        "logo-blue": "#175A9D",
       },
       fontFamily: {
-        sans: ["var(--font-rethink)", "Inter", "system-ui", "sans-serif"],
-        display: ["var(--font-dm)", "var(--font-rethink)", "system-ui", "sans-serif"],
+        body: ['"DM Sans"', "system-ui", "sans-serif"],
+        heading: ['"Rethink Sans"', '"DM Sans"', "system-ui", "sans-serif"],
       },
-      borderRadius: {
-        pill: "9999px",
-        xl: "1rem",
-        "2xl": "1.25rem",
-        "3xl": "1.75rem",
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "1rem",
+          sm: "1.5rem",
+          lg: "2rem",
+        },
+        screens: {
+          sm: "540px",
+          md: "720px",
+          lg: "960px",
+          xl: "1140px",
+          "2xl": "1320px",
+        },
       },
       boxShadow: {
-        soft: "0 10px 30px -5px rgba(6, 17, 46, 0.08)",
-        card: "0 14px 40px -10px rgba(6, 17, 46, 0.12)",
-        glow: "0 0 25px rgba(241, 90, 56, 0.35)",
-        pill: "0 4px 20px rgba(0, 0, 0, 0.08)",
-      },
-      animation: {
-        "float-slow": "float 6s ease-in-out infinite",
-        "spin-slow": "spin 20s linear infinite",
-      },
-      keyframes: {
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
+        card: "0 14px 40px -10px rgba(2, 14, 40, 0.12)",
+        glow: "0 0 25px rgba(253, 85, 35, 0.35)",
       },
     },
   },

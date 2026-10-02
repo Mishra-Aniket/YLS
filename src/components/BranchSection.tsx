@@ -1,118 +1,116 @@
 "use client";
 
 import React from "react";
-import { MapPin, Phone, User, Mail, ArrowUpRight, Building2 } from "lucide-react";
+import TruckIcon from "./TruckIcon";
+import { Phone, MapPin, Mail, ArrowUpRight } from "lucide-react";
 import { BRANCHES } from "@/lib/constants";
 
 export default function BranchSection() {
   return (
-    <section className="py-20 lg:py-28 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="w-6 h-0.5 bg-primary" />
-              <p className="text-primary font-bold text-xs sm:text-sm tracking-[0.2em] uppercase font-display">
-                NATIONWIDE PRESENCE
-              </p>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#06112E] font-display">
-              Our Branch Network Across India
-            </h2>
-          </div>
-          <p className="text-slate-500 text-sm max-w-md">
-            Direct on-ground dispatch personnel stationed in key industrial and logistics transit corridors for immediate coordination.
+    <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="sec-intro text-center mx-auto mb-16">
+          <span className="sub-title">
+            <TruckIcon />
+            ALL-INDIA NETWORK
+          </span>
+          <h2 className="sec-title">5 Key Interstate Branch Hubs</h2>
+          <p className="text-slate-600 text-sm sm:text-base mt-4">
+            With registered branch managers across five strategic states, YES Logistics Service ensures seamless route management and immediate ground assistance.
           </p>
         </div>
 
-        {/* 5 Branch Cards */}
+        {/* 5 Branches Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {BRANCHES.map((branch) => (
             <div
               key={branch.city}
-              className={`rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 ${
+              className={`group p-6 rounded-[26px] transition-all duration-300 flex flex-col justify-between ${
                 branch.isHeadquarter
-                  ? "bg-navy-dark text-white shadow-card border-2 border-primary/30"
-                  : "bg-[#F5F7FA] text-slate-800 border border-slate-200/80 hover:bg-white hover:shadow-card"
+                  ? "bg-dark text-white shadow-xl hover:-translate-y-2 border-2 border-primary"
+                  : "bg-shade text-dark shadow-sm hover:shadow-xl hover:-translate-y-2 border border-slate-100"
               }`}
             >
               <div>
-                {/* Top: City & State Badge */}
-                <div className="flex items-center justify-between gap-2 mb-4">
+                {/* Header */}
+                <div className="flex items-center justify-between mb-4">
                   <span
-                    className={`px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider ${
+                    className={`px-3 py-1 rounded-full text-[11px] font-heading font-bold uppercase tracking-wider ${
                       branch.isHeadquarter
                         ? "bg-primary text-white"
-                        : "bg-white text-[#175A9D] border border-slate-200 shadow-sm"
+                        : "bg-white text-dark"
                     }`}
                   >
-                    {branch.stateCode} &bull; {branch.state}
+                    {branch.stateCode} &bull; {branch.isHeadquarter ? "Headquarters" : "Branch"}
                   </span>
-                  {branch.isHeadquarter && (
-                    <span className="text-[10px] font-bold text-brand-yellow uppercase tracking-widest">
-                      HQ
-                    </span>
-                  )}
+                  <a
+                    href={`tel:${branch.phoneRaw}`}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center transition ${
+                      branch.isHeadquarter
+                        ? "bg-white/10 hover:bg-primary text-white"
+                        : "bg-white hover:bg-primary text-dark hover:text-white"
+                    }`}
+                    aria-label={`Call ${branch.city}`}
+                  >
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
                 </div>
 
-                {/* City Heading */}
-                <h3
-                  className={`text-xl font-black font-display mb-3 ${
-                    branch.isHeadquarter ? "text-white" : "text-[#06112E]"
-                  }`}
-                >
+                {/* City & State */}
+                <h3 className="text-xl font-heading font-bold mb-1">
                   {branch.city}
                 </h3>
+                <p
+                  className={`text-xs font-medium mb-4 ${
+                    branch.isHeadquarter ? "text-slate-300" : "text-slate-500"
+                  }`}
+                >
+                  {branch.state}
+                </p>
 
                 {/* Contact Person */}
-                <div className="flex items-center gap-2 mb-3 text-xs">
-                  <User
-                    className={`w-4 h-4 shrink-0 ${
-                      branch.isHeadquarter ? "text-brand-yellow" : "text-primary"
-                    }`}
-                  />
-                  <span
-                    className={`font-bold ${
-                      branch.isHeadquarter ? "text-slate-200" : "text-slate-700"
+                <div className="mb-4">
+                  <p
+                    className={`text-[11px] uppercase tracking-wider font-bold ${
+                      branch.isHeadquarter ? "text-primary" : "text-mute"
                     }`}
                   >
+                    Branch Coordinator
+                  </p>
+                  <p className="text-sm font-heading font-bold mt-0.5">
                     {branch.contactPerson}
-                  </span>
+                  </p>
                 </div>
 
                 {/* Address */}
-                <div className="flex items-start gap-2 text-xs mb-5">
+                <div className="flex items-start gap-2 text-xs mb-4">
                   <MapPin
                     className={`w-4 h-4 shrink-0 mt-0.5 ${
-                      branch.isHeadquarter ? "text-slate-400" : "text-slate-400"
+                      branch.isHeadquarter ? "text-primary" : "text-primary"
                     }`}
                   />
-                  <p
-                    className={`leading-relaxed line-clamp-3 ${
+                  <span
+                    className={`leading-relaxed ${
                       branch.isHeadquarter ? "text-slate-300" : "text-slate-600"
                     }`}
                   >
-                    {branch.address}, Pin: {branch.pincode}
-                  </p>
+                    {branch.address}, {branch.pincode}
+                  </span>
                 </div>
               </div>
 
-              {/* Bottom: Click to Call Link */}
-              <div className="pt-4 border-t border-slate-200/20">
+              {/* Call button */}
+              <div className="pt-4 border-t border-slate-200/40">
                 <a
                   href={`tel:${branch.phoneRaw}`}
-                  className={`w-full py-2.5 px-4 rounded-full text-xs font-bold flex items-center justify-between transition ${
+                  className={`inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-full text-xs font-heading font-bold transition ${
                     branch.isHeadquarter
-                      ? "bg-white/10 hover:bg-primary text-white"
-                      : "bg-white hover:bg-primary text-slate-800 hover:text-white shadow-sm border border-slate-200"
+                      ? "bg-primary hover:bg-[#eb3802] text-white"
+                      : "bg-white hover:bg-primary text-dark hover:text-white shadow-sm"
                   }`}
                 >
-                  <span className="flex items-center gap-2">
-                    <Phone className="w-3.5 h-3.5" />
-                    <span>{branch.phone}</span>
-                  </span>
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-70" />
+                  <Phone className="w-3.5 h-3.5" />
+                  <span>{branch.phone}</span>
                 </a>
               </div>
             </div>

@@ -8,6 +8,7 @@ import {
   ShoppingCart,
   Search,
   ArrowRight,
+  Menu,
 } from "lucide-react";
 import YLSLogo from "./YLSLogo";
 import SearchModal from "./SearchModal";
@@ -28,7 +29,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      setIsScrolled(window.scrollY > 40);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -40,113 +41,164 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
         className={`w-full z-40 transition-all duration-300 ${
           variant === "floating"
             ? isScrolled
-              ? "fixed top-3 inset-x-0 px-3 sm:px-6"
-              : "absolute top-4 sm:top-6 inset-x-0 px-3 sm:px-6"
-            : "sticky top-0 bg-[#020e28] border-b border-white/10 shadow-lg px-3 sm:px-6"
+              ? "fixed top-0 inset-x-0 py-3 bg-white/95 backdrop-blur-md shadow-[0_4px_25px_rgba(0,0,0,0.08)]"
+              : "absolute top-5 sm:top-7 inset-x-0 px-3 sm:px-6"
+            : "sticky top-0 bg-white shadow-md py-3 px-3 sm:px-6"
         }`}
       >
-        <div className="max-w-[1365px] mx-auto">
-          {/* Pure Code-Crafted White Pill Navbar (100% Responsive, Zero Broken Background Images) */}
-          <div
-            className={`relative flex items-center justify-between rounded-full bg-white px-4 sm:px-6 xl:px-7 py-2.5 sm:py-3 transition-all duration-300 shadow-[0_10px_35px_rgba(0,0,0,0.08)] border border-slate-100 ${
-              isScrolled ? "bg-white/95 backdrop-blur-md shadow-2xl" : ""
+        <div className="max-w-[1365px] mx-auto px-2 sm:px-4">
+          <nav
+            className={`flex items-center justify-between rounded-full bg-white transition-all duration-300 ${
+              isScrolled
+                ? "py-1 px-4 sm:px-6"
+                : "py-2.5 sm:py-3 px-5 sm:px-8 shadow-[0_10px_35px_rgba(0,0,0,0.08)] border border-slate-100"
             }`}
           >
-            {/* Left: Authentic YLS Logo from Uploaded Emblem */}
+            {/* 1. Left: Authentic YLS Logo */}
             <div className="flex items-center shrink-0">
-              <YLSLogo variant="light" size="sm" />
+              <YLSLogo variant="light" size="md" />
             </div>
 
-            {/* Angled Code-Based Slash Separator (Desktop) */}
-            <div className="hidden xl:flex items-center pl-4 pr-3 shrink-0">
-              <div className="w-[1.5px] h-8 bg-slate-200/90 transform -rotate-[22deg]" />
-            </div>
-
-            {/* Center: Desktop Navigation Links */}
-            <nav className="hidden xl:flex items-center space-x-1 lg:space-x-1.5 text-[15px] font-semibold text-[#020e28]">
+            {/* 2. Center: Desktop Navigation Links (TransHub Typography & Dropdowns) */}
+            <ul className="hidden xl:flex items-center gap-6 lg:gap-8 font-heading font-medium text-[16px] text-dark">
               {/* Home */}
-              <div
-                className="relative group"
+              <li
+                className="relative group py-2"
                 onMouseEnter={() => setActiveDropdown("home")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 <Link
                   href="/"
-                  className={`flex items-center gap-1 px-3 py-2 rounded-full transition-colors ${
+                  className={`inline-flex items-center gap-1.5 transition-colors ${
                     pathname === "/"
-                      ? "text-[#fd5523] font-bold"
-                      : "text-[#020e28] hover:text-[#fd5523]"
+                      ? "text-primary font-bold"
+                      : "text-dark hover:text-primary"
                   }`}
                 >
                   <span>Home</span>
-                  <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
+                  <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180 text-slate-400 group-hover:text-primary" />
                 </Link>
 
                 <div
-                  className={`absolute top-full left-0 w-48 pt-2 z-50 transition-all duration-200 ${
+                  className={`absolute top-full left-0 w-52 pt-3 z-50 transition-all duration-200 ${
                     activeDropdown === "home"
                       ? "opacity-100 visible translate-y-0"
                       : "opacity-0 invisible -translate-y-2 pointer-events-none"
                   }`}
                 >
-                  <div className="bg-white rounded-2xl p-2 shadow-2xl border border-slate-100 space-y-1">
+                  <div className="bg-white rounded-2xl p-2.5 shadow-2xl border border-slate-100 space-y-1">
                     <Link
                       href="/"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-[#fd5523] font-bold text-sm"
+                      className="block px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-primary font-bold text-sm"
                     >
-                      Home 1 (Default)
+                      Home 1 (TransHub Clone)
                     </Link>
                     <Link
                       href="/#services-section"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium"
+                      className="block px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium"
                     >
-                      Home 2 (Fleet View)
+                      Fleet &amp; Heavy Haulage
                     </Link>
                     <Link
                       href="/#process-section"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium"
+                      className="block px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium"
                     >
-                      Home 3 (Logistics Hub)
+                      Working Workflow
                     </Link>
                   </div>
                 </div>
-              </div>
+              </li>
 
-              {/* Services with Dropdown */}
-              <div
-                className="relative group"
+              {/* Pages */}
+              <li
+                className="relative group py-2"
+                onMouseEnter={() => setActiveDropdown("pages")}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-1.5 text-dark hover:text-primary transition-colors cursor-pointer"
+                >
+                  <span>Pages</span>
+                  <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180 text-slate-400 group-hover:text-primary" />
+                </button>
+
+                <div
+                  className={`absolute top-full left-0 w-64 pt-3 z-50 transition-all duration-200 ${
+                    activeDropdown === "pages"
+                      ? "opacity-100 visible translate-y-0"
+                      : "opacity-0 invisible -translate-y-2 pointer-events-none"
+                  }`}
+                >
+                  <div className="bg-white rounded-2xl p-2.5 shadow-2xl border border-slate-100 space-y-1">
+                    <Link
+                      href="/about-us"
+                      className="block px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium"
+                    >
+                      About Our Company
+                    </Link>
+                    <Link
+                      href="/services"
+                      className="block px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium"
+                    >
+                      All Logistics Services
+                    </Link>
+                    <Link
+                      href="/#tracking-section"
+                      className="block px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium"
+                    >
+                      Track Consignment
+                    </Link>
+                    <Link
+                      href="/quote"
+                      className="block px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium"
+                    >
+                      Request Freight Quote
+                    </Link>
+                    <Link
+                      href="/contact-us"
+                      className="block px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium"
+                    >
+                      Branch Network (5 Hubs)
+                    </Link>
+                  </div>
+                </div>
+              </li>
+
+              {/* Services */}
+              <li
+                className="relative group py-2"
                 onMouseEnter={() => setActiveDropdown("services")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 <Link
                   href="/services"
-                  className={`flex items-center gap-1 px-3 py-2 rounded-full transition-colors ${
+                  className={`inline-flex items-center gap-1.5 transition-colors ${
                     pathname.startsWith("/services")
-                      ? "text-[#fd5523] font-bold"
-                      : "text-[#020e28] hover:text-[#fd5523]"
+                      ? "text-primary font-bold"
+                      : "text-dark hover:text-primary"
                   }`}
                 >
                   <span>Services</span>
-                  <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
+                  <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180 text-slate-400 group-hover:text-primary" />
                 </Link>
 
-                {/* Dropdown Menu */}
                 <div
-                  className={`absolute top-full left-0 w-72 pt-2 z-50 transition-all duration-200 ${
+                  className={`absolute top-full left-0 w-72 pt-3 z-50 transition-all duration-200 ${
                     activeDropdown === "services"
                       ? "opacity-100 visible translate-y-0"
                       : "opacity-0 invisible -translate-y-2 pointer-events-none"
                   }`}
                 >
-                  <div className="bg-white rounded-2xl p-3 shadow-2xl border border-slate-100 space-y-1">
+                  <div className="bg-white rounded-2xl p-2.5 shadow-2xl border border-slate-100 space-y-1">
                     {PRIMARY_SERVICES.map((srv) => (
                       <Link
                         key={srv.id}
-                        href="/services"
-                        className="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
+                        href={`/services#${srv.id}`}
+                        className="flex items-center justify-between px-3.5 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium transition"
                       >
-                        <span className="flex items-center gap-2.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#fd5523]" />
+                        <span className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                           {srv.title}
                         </span>
                         <span className="text-[11px] font-bold text-slate-400">
@@ -157,7 +209,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
                     <div className="pt-2 mt-1 border-t border-slate-100">
                       <Link
                         href="/services"
-                        className="flex items-center justify-between px-3 py-2 rounded-xl bg-slate-50 hover:bg-[#fd5523] hover:text-white text-xs font-bold text-slate-700 transition"
+                        className="flex items-center justify-between px-3.5 py-2 rounded-xl bg-slate-50 hover:bg-primary hover:text-white text-xs font-bold text-slate-700 transition"
                       >
                         <span>View All 15+ Services</span>
                         <ArrowRight className="w-3.5 h-3.5" />
@@ -165,207 +217,153 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
                     </div>
                   </div>
                 </div>
-              </div>
+              </li>
 
-              {/* Pages with Dropdown */}
-              <div
-                className="relative group"
-                onMouseEnter={() => setActiveDropdown("pages")}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button
-                  type="button"
-                  className="flex items-center gap-1 px-3 py-2 rounded-full text-[#020e28] hover:text-[#fd5523] transition-colors cursor-pointer"
-                >
-                  <span>Pages</span>
-                  <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
-                </button>
-
-                <div
-                  className={`absolute top-full left-0 w-64 pt-2 z-50 transition-all duration-200 ${
-                    activeDropdown === "pages"
-                      ? "opacity-100 visible translate-y-0"
-                      : "opacity-0 invisible -translate-y-2 pointer-events-none"
-                  }`}
-                >
-                  <div className="bg-white rounded-2xl p-3 shadow-2xl border border-slate-100 space-y-1">
-                    <Link
-                      href="/about-us"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
-                    >
-                      About Our Company
-                    </Link>
-                    <Link
-                      href="/services"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
-                    >
-                      Fleet &amp; ODC Services
-                    </Link>
-                    <Link
-                      href="/#tracking-section"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
-                    >
-                      Shipment Tracking
-                    </Link>
-                    <Link
-                      href="/quote"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
-                    >
-                      Request a Freight Quote
-                    </Link>
-                    <Link
-                      href="/contact-us"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
-                    >
-                      All-India Branches (5 Hubs)
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              {/* Case Study with Dropdown */}
-              <div
-                className="relative group"
+              {/* Case Study */}
+              <li
+                className="relative group py-2"
                 onMouseEnter={() => setActiveDropdown("casestudy")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 <Link
                   href="/case-studies"
-                  className={`flex items-center gap-1 px-3 py-2 rounded-full transition-colors ${
+                  className={`inline-flex items-center gap-1.5 transition-colors ${
                     pathname.startsWith("/case-studies")
-                      ? "text-[#fd5523] font-bold"
-                      : "text-[#020e28] hover:text-[#fd5523]"
+                      ? "text-primary font-bold"
+                      : "text-dark hover:text-primary"
                   }`}
                 >
                   <span>Case Study</span>
-                  <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
+                  <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180 text-slate-400 group-hover:text-primary" />
                 </Link>
 
                 <div
-                  className={`absolute top-full left-0 w-72 pt-2 z-50 transition-all duration-200 ${
+                  className={`absolute top-full left-0 w-72 pt-3 z-50 transition-all duration-200 ${
                     activeDropdown === "casestudy"
                       ? "opacity-100 visible translate-y-0"
                       : "opacity-0 invisible -translate-y-2 pointer-events-none"
                   }`}
                 >
-                  <div className="bg-white rounded-2xl p-3 shadow-2xl border border-slate-100 space-y-1">
+                  <div className="bg-white rounded-2xl p-2.5 shadow-2xl border border-slate-100 space-y-1">
                     <Link
                       href="/case-studies"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
+                      className="block px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium"
                     >
                       ODC Girder Transport (52m)
                     </Link>
                     <Link
                       href="/case-studies"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
+                      className="block px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium"
                     >
                       Pune Warehouse Staging
                     </Link>
                     <Link
                       href="/case-studies"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
+                      className="block px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium"
                     >
-                      Multi-State Fleet Delivery
+                      Multi-State Fleet Network
                     </Link>
                     <Link
                       href="/case-studies"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
+                      className="block px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium"
                     >
                       50-Ton Crane Handover
                     </Link>
                   </div>
                 </div>
-              </div>
+              </li>
 
-              {/* Blog with Dropdown */}
-              <div
-                className="relative group"
+              {/* Blog */}
+              <li
+                className="relative group py-2"
                 onMouseEnter={() => setActiveDropdown("blog")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 <Link
                   href="/blog"
-                  className={`flex items-center gap-1 px-3 py-2 rounded-full transition-colors ${
+                  className={`inline-flex items-center gap-1.5 transition-colors ${
                     pathname.startsWith("/blog")
-                      ? "text-[#fd5523] font-bold"
-                      : "text-[#020e28] hover:text-[#fd5523]"
+                      ? "text-primary font-bold"
+                      : "text-dark hover:text-primary"
                   }`}
                 >
                   <span>Blog</span>
-                  <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
+                  <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180 text-slate-400 group-hover:text-primary" />
                 </Link>
 
                 <div
-                  className={`absolute top-full left-0 w-72 pt-2 z-50 transition-all duration-200 ${
+                  className={`absolute top-full left-0 w-72 pt-3 z-50 transition-all duration-200 ${
                     activeDropdown === "blog"
                       ? "opacity-100 visible translate-y-0"
                       : "opacity-0 invisible -translate-y-2 pointer-events-none"
                   }`}
                 >
-                  <div className="bg-white rounded-2xl p-3 shadow-2xl border border-slate-100 space-y-1">
+                  <div className="bg-white rounded-2xl p-2.5 shadow-2xl border border-slate-100 space-y-1">
                     <Link
                       href="/blog"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
+                      className="block px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium"
                     >
                       Safer ODC Movements in India
                     </Link>
                     <Link
                       href="/blog"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
+                      className="block px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium"
                     >
                       How to Reduce Transport Delays
                     </Link>
                     <Link
                       href="/blog"
-                      className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
+                      className="block px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium"
                     >
                       Why Warehousing Belongs in Logistics
                     </Link>
                   </div>
                 </div>
-              </div>
+              </li>
 
               {/* Contact */}
-              <Link
-                href="/contact-us"
-                className={`px-3 py-2 rounded-full transition-colors ${
-                  pathname === "/contact-us"
-                    ? "text-[#fd5523] font-bold"
-                    : "text-[#020e28] hover:text-[#fd5523]"
-                }`}
-              >
-                Contact
-              </Link>
-            </nav>
+              <li>
+                <Link
+                  href="/contact-us"
+                  className={`py-2 transition-colors ${
+                    pathname === "/contact-us"
+                      ? "text-primary font-bold"
+                      : "text-dark hover:text-primary"
+                  }`}
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
 
-            {/* Right: Action Buttons & Free Quote CTA */}
-            <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
-              {/* Cart Icon Button */}
+            {/* 3. Right: Action Buttons matching TransHub Nav-CTA */}
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+              {/* Cart Icon Circle */}
               <button
                 onClick={() => setCartCount((prev) => (prev > 0 ? 0 : 1))}
-                className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#f4f5f7] hover:bg-slate-200 text-[#020e28] flex items-center justify-center transition"
-                aria-label="View logistics cart"
-                title="Service Inquiry Bag"
+                className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#f7f7f7] hover:bg-slate-200 text-dark flex items-center justify-center transition"
+                aria-label="View Inquiry Cart"
+                title="Consignment Inquiry Cart"
               >
-                <ShoppingCart className="w-4 h-4 text-[#020e28]" />
-                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#fd5523] text-white text-[10px] font-bold flex items-center justify-center shadow-sm">
+                <ShoppingCart className="w-4 h-4 text-dark" />
+                <sup className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-primary text-white text-[10px] font-bold flex items-center justify-center leading-none">
                   {cartCount}
-                </span>
+                </sup>
               </button>
 
-              {/* Search Icon Button */}
+              {/* Search Icon Circle */}
               <button
                 onClick={() => setIsSearchOpen(true)}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#f4f5f7] hover:bg-slate-200 text-[#020e28] flex items-center justify-center transition"
-                aria-label="Search site"
+                className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#f7f7f7] hover:bg-slate-200 text-dark flex items-center justify-center transition"
+                aria-label="Search website"
               >
-                <Search className="w-4 h-4 text-[#020e28]" />
+                <Search className="w-4 h-4 text-dark" />
               </button>
 
-              {/* Burger Menu Button (TransHub SVG Icon) */}
+              {/* Burger Menu Circle */}
               <button
                 onClick={() => setIsDrawerOpen(true)}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#f4f5f7] hover:bg-slate-200 text-[#020e28] flex items-center justify-center transition"
+                className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#f7f7f7] hover:bg-slate-200 text-dark flex items-center justify-center transition"
                 aria-label="Open detailed menu"
               >
                 <svg
@@ -382,16 +380,26 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
                 </svg>
               </button>
 
-              {/* Free Quote Button (Orange-Red Pill) */}
+              {/* Free Quote Button */}
               <Link
                 href="/quote"
-                className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#fd5523] hover:bg-[#e04414] text-white font-bold text-xs sm:text-sm tracking-wide shadow-glow transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                className="btn-primary"
               >
                 <span>Free Quote</span>
-                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <i className="fa fa-arrow-right text-xs" aria-hidden="true"></i>
               </Link>
+
+              {/* Mobile Menu Toggler */}
+              <button
+                onClick={() => setIsDrawerOpen(true)}
+                className="xl:hidden flex items-center gap-1.5 px-3 py-2 rounded-full bg-slate-100 text-dark text-xs font-bold hover:bg-primary hover:text-white transition"
+                aria-label="Toggle Navigation"
+              >
+                <Menu className="w-4 h-4" />
+                <span>Menu</span>
+              </button>
             </div>
-          </div>
+          </nav>
         </div>
       </header>
 

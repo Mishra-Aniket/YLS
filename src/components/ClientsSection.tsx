@@ -2,55 +2,68 @@
 
 import React from "react";
 import Image from "next/image";
-import { Building2, ShieldCheck } from "lucide-react";
 import { CLIENTS } from "@/lib/constants";
+
+const BRAND_LOGOS = [
+  "/images/br1.png",
+  "/images/br2.png",
+  "/images/br3.png",
+  "/images/br4.png",
+  "/images/br5.png",
+  "/images/br6.png",
+];
 
 export default function ClientsSection() {
   return (
-    <section className="py-16 bg-navy-dark text-white relative overflow-hidden">
-      {/* Background overlay */}
-      <div className="absolute inset-0 opacity-10">
-        <Image
-          src="/images/brand-bg.jpg"
-          alt="Brand background"
-          fill
-          className="object-cover"
-        />
-      </div>
+    <section
+      className="brands-sec relative py-20 bg-cover bg-center overflow-hidden"
+      style={{
+        backgroundImage: "url('/images/brand-bg.jpg')",
+        backgroundColor: "#020e28",
+      }}
+    >
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-[#020e28]/85" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-xl mx-auto mb-10 space-y-2">
-          <p className="text-brand-yellow font-bold text-xs uppercase tracking-[0.2em]">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-xl mx-auto mb-12">
+          <p className="text-xs font-heading font-bold text-primary uppercase tracking-[0.2em] mb-2">
             TRUSTED BY INDUSTRY LEADERS
           </p>
-          <h3 className="text-2xl sm:text-3xl font-black text-white font-display">
-            Our Prestigious Corporate Clients
-          </h3>
-          <p className="text-slate-400 text-xs sm:text-sm">
-            Providing heavy transport, trailer, and ODC solutions to prominent engineering, manufacturing, and defense contractors across India.
-          </p>
+          <h2 className="text-2xl sm:text-3xl font-heading font-bold text-white">
+            Trusted by Reputed Indian Enterprises
+          </h2>
         </div>
 
-        {/* Client Badges Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-4">
-          {CLIENTS.map((client) => (
+        {/* Brand Logos Strip matching TransHub .brands-sec */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 items-center justify-items-center">
+          {BRAND_LOGOS.map((logo, idx) => (
             <div
-              key={client.name}
-              className="p-3.5 sm:p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-brand-yellow/30 transition-all duration-200 flex flex-col justify-between text-left group"
+              key={idx}
+              className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 w-full flex items-center justify-center h-24 hover:scale-105"
             >
-              <div>
-                <span className="text-[10px] font-bold text-brand-yellow uppercase tracking-wider block mb-1">
-                  {client.sector}
-                </span>
-                <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-primary transition-colors line-clamp-2 leading-snug">
-                  {client.name}
-                </h4>
-              </div>
-              <p className="text-[11px] text-slate-400 mt-2 font-medium">
-                {client.location}
-              </p>
+              <Image
+                src={logo}
+                alt="Client Brand"
+                width={120}
+                height={50}
+                className="object-contain filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+              />
             </div>
           ))}
+        </div>
+
+        {/* Corporate Client Marquee List from YLS profile */}
+        <div className="mt-12 pt-8 border-t border-white/10 overflow-hidden">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs sm:text-sm text-slate-300 font-medium">
+            {CLIENTS.slice(0, 8).map((client) => (
+              <span key={client.name} className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                <span className="text-white font-semibold">{client.name}</span>
+                <span className="text-slate-400">({client.location})</span>
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

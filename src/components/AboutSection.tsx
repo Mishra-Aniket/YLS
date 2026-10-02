@@ -3,134 +3,172 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { CheckCircle2, Phone, ArrowRight, ShieldCheck, Award } from "lucide-react";
+import TruckIcon from "./TruckIcon";
 import { COMPANY } from "@/lib/constants";
 
 export default function AboutSection() {
-  const checklist = [
-    "Fleet Owner & Transport Contractor",
-    "ODC Consignment Specialist",
-    "Experienced Field Staff",
-    "All India Operations",
-  ];
-
   return (
-    <section className="py-20 lg:py-28 bg-white relative overflow-hidden">
-      {/* Subtle shape decorative background */}
-      <div className="absolute left-0 top-1/4 pointer-events-none opacity-20">
+    <section className="about-section position-relative sec-padding bg-white overflow-hidden">
+      {/* TransHub Decorative Shape: about-sh.png */}
+      <div className="absolute left-0 top-1/4 pointer-events-none opacity-40 anim-jumping">
         <Image
           src="/images/about-sh.png"
-          alt="Abstract shape"
+          alt=""
           width={350}
           height={350}
           className="object-contain"
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left: Overlapping Image Composition */}
-          <div className="lg:col-span-6 relative">
-            <div className="relative mx-auto max-w-lg lg:max-w-none">
-              {/* Primary Image: Fleet ODC Trailer */}
-              <div className="relative rounded-3xl overflow-hidden shadow-card border-4 border-white aspect-[4/3] w-11/12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left Column: Overlapping Images matching TransHub .about-media */}
+          <div className="relative">
+            <div className="relative max-w-lg mx-auto lg:max-w-none">
+              {/* Primary Image: about-1.png with rounded 30px */}
+              <div className="relative rounded-[30px] overflow-hidden shadow-card aspect-[4/3] w-11/12">
                 <Image
                   src="/images/about-1.png"
-                  alt="YES Logistics Service Fleet"
+                  alt="YES Logistics Fleet"
                   fill
                   className="object-cover"
                 />
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/60 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <span className="text-xs font-bold uppercase tracking-wider text-brand-yellow">
-                    Pune Established
+              </div>
+
+              {/* Floating Stat 1: .ab-stat matching TransHub */}
+              <div className="absolute top-8 right-2 sm:right-6 z-20 w-56 sm:w-64 bg-primary text-white p-5 rounded-[24px] shadow-2xl text-center">
+                <div className="flex items-baseline justify-center gap-1">
+                  <span className="text-3xl sm:text-4xl font-heading font-extrabold leading-none">
+                    2021
                   </span>
-                  <p className="font-bold text-sm">Industrial Fleet & Heavy Transport</p>
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-200">
+                    Estd
+                  </span>
+                </div>
+                <p className="text-xs font-medium text-white/90 mt-1">
+                  Established in Pune &bull; Pan-India
+                </p>
+              </div>
+
+              {/* Secondary Image: about-2.png with rounded 30px */}
+              <div className="relative -mt-16 ml-auto w-3/5 aspect-[4/3] rounded-[30px] overflow-hidden shadow-card border-4 border-white z-10 hidden sm:block">
+                <Image
+                  src="/images/about-2.png"
+                  alt="Loading Operations"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              {/* Floating Stat 2: .ab-stat2 matching TransHub */}
+              <div className="absolute bottom-4 left-4 z-20 bg-dark text-white px-5 py-4 rounded-[20px] shadow-2xl flex items-center gap-3 border border-white/10">
+                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                  <i className="fa-solid fa-shield-halved text-primary"></i>
+                </div>
+                <div>
+                  <span className="text-lg font-heading font-bold text-white block leading-none">
+                    100%
+                  </span>
+                  <p className="text-xs text-slate-300 font-medium">Safety Focus</p>
                 </div>
               </div>
 
-              {/* Secondary Overlapping Image: Logistics Yard */}
-              <div className="absolute -bottom-10 right-0 w-3/5 aspect-[4/3] rounded-3xl overflow-hidden shadow-card border-4 border-white z-10 hidden sm:block">
-                <Image
-                  src="/images/about-2.png"
-                  alt="YES Logistics Yard and Loading"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              {/* Authentic YLS Circular Emblem Badge from uploaded graphic */}
-              <div className="absolute -top-8 -right-2 sm:right-6 z-20 w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-white shadow-2xl border-4 border-white flex items-center justify-center transform rotate-3 hover:rotate-0 transition-transform overflow-hidden">
+              {/* Official Circular Emblem Badge from uploaded graphic */}
+              <div className="absolute -bottom-6 right-8 z-30 w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white shadow-2xl border-2 border-slate-100 flex items-center justify-center overflow-hidden hover:scale-105 transition-transform">
                 <Image
                   src="/logo/yls_circular_badge.png"
-                  alt="YES LOGISTICS SERVICE Official Emblem"
-                  width={144}
-                  height={144}
-                  className="object-contain rounded-full drop-shadow-md"
+                  alt="YES LOGISTICS SERVICE Emblem"
+                  width={112}
+                  height={112}
+                  className="object-contain rounded-full"
                 />
               </div>
             </div>
           </div>
 
-          {/* Right: Content */}
-          <div className="lg:col-span-6 space-y-6">
-            {/* Eyebrow */}
-            <div className="flex items-center gap-2">
-              <span className="w-6 h-0.5 bg-primary" />
-              <p className="text-primary font-bold text-xs sm:text-sm tracking-[0.2em] uppercase font-display">
-                WHO WE ARE
-              </p>
-            </div>
+          {/* Right Column: Content matching TransHub .about-content */}
+          <div className="space-y-6">
+            {/* Sub-Title */}
+            <span className="sub-title">
+              <TruckIcon />
+              WHO WE ARE
+            </span>
 
-            {/* Heading */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#06112E] font-display leading-[1.15]">
+            {/* Sec-Title */}
+            <h2 className="sec-title">
               The Advantages of Our Logistics Service
             </h2>
 
-            {/* Copy */}
+            {/* Paragraph */}
             <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
               YES LOGISTICS SERVICE is a Pune-registered fleet owner and transport contractor established in 2021. We provide dependable fleet, trailer, ODC, warehouse and loading support across India.
             </p>
 
-            {/* Checklist items */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-              {checklist.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-100"
-                >
-                  <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
-                  <span className="text-sm font-bold text-[#06112E]">{item}</span>
+            {/* Features Strip (.about-feat) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4 border-y border-slate-200">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center p-2.5 shrink-0">
+                  <Image
+                    src="/images/ab-icon1.png"
+                    alt=""
+                    width={32}
+                    height={32}
+                    className="object-contain"
+                  />
                 </div>
-              ))}
+                <h3 className="text-base font-heading font-bold text-dark leading-tight">
+                  Fleet Owner &amp; Transport Contractor
+                </h3>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center p-2.5 shrink-0">
+                  <Image
+                    src="/images/ab-icon2.png"
+                    alt=""
+                    width={32}
+                    height={32}
+                    className="object-contain"
+                  />
+                </div>
+                <h3 className="text-base font-heading font-bold text-dark leading-tight">
+                  ODC Consignment Specialist
+                </h3>
+              </div>
             </div>
 
+            {/* Checklist matching TransHub ul.check */}
+            <ul className="check space-y-3">
+              <li>Fleet Owner &amp; Transport Contractor with verified pan-India network</li>
+              <li>ODC Consignment Specialist with heavy hydraulic axle trailers</li>
+              <li>Experienced field staff and route escort coordinators</li>
+              <li>All India operations across Maharashtra, Karnataka, Gujarat, Odisha, and UP</li>
+            </ul>
+
             {/* Footer with Button and Quick Call Box */}
-            <div className="flex flex-wrap items-center gap-6 pt-4 border-t border-slate-100">
-              {/* Button: About Our Company */}
+            <div className="flex flex-wrap items-center gap-6 pt-4">
               <Link
                 href="/about-us"
-                className="inline-flex items-center gap-3 px-7 py-4 rounded-full bg-primary hover:bg-primary-hover text-white font-bold text-sm sm:text-base shadow-glow transition-all duration-200 hover:scale-105 active:scale-95 group"
+                className="btn-primary"
               >
                 <span>About Our Company</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                <i className="fa fa-arrow-right text-xs" aria-hidden="true"></i>
               </Link>
 
-              {/* Call Box */}
+              {/* TransHub Quick Call */}
               <div className="flex items-center gap-3.5">
                 <a
                   href={`tel:${COMPANY.primaryPhone.replace(/\s+/g, "")}`}
-                  className="w-12 h-12 rounded-full bg-navy-dark hover:bg-primary text-brand-yellow hover:text-white flex items-center justify-center transition shadow-sm"
+                  className="w-12 h-12 rounded-full bg-dark hover:bg-primary text-white flex items-center justify-center transition shadow-sm"
                   aria-label="Call YLS HQ"
                 >
-                  <Phone className="w-5 h-5" />
+                  <i className="fa-solid fa-phone-volume text-sm"></i>
                 </a>
                 <div>
-                  <p className="text-xs font-semibold text-slate-500">Call Us Any Time:</p>
+                  <p className="text-xs text-mute font-medium">Call Us Any Time:</p>
                   <a
                     href={`tel:${COMPANY.primaryPhone.replace(/\s+/g, "")}`}
-                    className="text-base sm:text-lg font-black text-primary hover:underline font-display"
+                    className="text-base sm:text-lg font-heading font-bold text-primary hover:underline"
                   >
                     {COMPANY.primaryPhone}
                   </a>
