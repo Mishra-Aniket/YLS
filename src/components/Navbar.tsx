@@ -7,7 +7,6 @@ import {
   ChevronDown,
   ShoppingCart,
   Search,
-  Menu,
   ArrowRight,
 } from "lucide-react";
 import YLSLogo from "./YLSLogo";
@@ -41,27 +40,30 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
         className={`w-full z-40 transition-all duration-300 ${
           variant === "floating"
             ? isScrolled
-              ? "fixed top-3 inset-x-0 px-4"
-              : "absolute top-5 sm:top-7 inset-x-0"
-            : "sticky top-0 bg-[#020e28] border-b border-white/10 shadow-lg"
+              ? "fixed top-3 inset-x-0 px-3 sm:px-6"
+              : "absolute top-4 sm:top-6 inset-x-0 px-3 sm:px-6"
+            : "sticky top-0 bg-[#020e28] border-b border-white/10 shadow-lg px-3 sm:px-6"
         }`}
       >
-        <div className="max-w-[1365px] mx-auto px-4 sm:px-6 lg:px-8">
-          {/* White Pill-Shaped Container with TransHub header-bg.png on Desktop */}
+        <div className="max-w-[1365px] mx-auto">
+          {/* Pure Code-Crafted White Pill Navbar (100% Responsive, Zero Broken Background Images) */}
           <div
-            className={`relative flex items-center justify-between transition-all duration-300 ${
-              isScrolled
-                ? "bg-white/95 backdrop-blur-md rounded-full px-5 py-2.5 shadow-2xl border border-slate-100"
-                : "bg-white rounded-full px-4 sm:px-6 py-2.5 xl:bg-[url('/images/header-bg.png')] xl:bg-no-repeat xl:bg-center xl:bg-contain xl:bg-transparent xl:border-none xl:shadow-none xl:py-4 xl:px-6 xl:min-h-[96px]"
+            className={`relative flex items-center justify-between rounded-full bg-white px-4 sm:px-6 xl:px-7 py-2.5 sm:py-3 transition-all duration-300 shadow-[0_10px_35px_rgba(0,0,0,0.08)] border border-slate-100 ${
+              isScrolled ? "bg-white/95 backdrop-blur-md shadow-2xl" : ""
             }`}
           >
-            {/* Left: Logo Area (fits seamlessly into angled cut of header-bg.png on Desktop) */}
-            <div className="flex items-center shrink-0 xl:w-[270px] xl:pl-2">
+            {/* Left: Authentic YLS Logo from Uploaded Emblem */}
+            <div className="flex items-center shrink-0">
               <YLSLogo variant="light" size="sm" />
             </div>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden xl:flex items-center space-x-1 lg:space-x-2 text-[15px] font-semibold text-[#020e28]">
+            {/* Angled Code-Based Slash Separator (Desktop) */}
+            <div className="hidden xl:flex items-center pl-4 pr-3 shrink-0">
+              <div className="w-[1.5px] h-8 bg-slate-200/90 transform -rotate-[22deg]" />
+            </div>
+
+            {/* Center: Desktop Navigation Links */}
+            <nav className="hidden xl:flex items-center space-x-1 lg:space-x-1.5 text-[15px] font-semibold text-[#020e28]">
               {/* Home */}
               <div
                 className="relative group"
@@ -70,7 +72,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
               >
                 <Link
                   href="/"
-                  className={`flex items-center gap-1 px-3.5 py-2 rounded-full transition-colors ${
+                  className={`flex items-center gap-1 px-3 py-2 rounded-full transition-colors ${
                     pathname === "/"
                       ? "text-[#fd5523] font-bold"
                       : "text-[#020e28] hover:text-[#fd5523]"
@@ -118,7 +120,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
               >
                 <Link
                   href="/services"
-                  className={`flex items-center gap-1 px-3.5 py-2 rounded-full transition-colors ${
+                  className={`flex items-center gap-1 px-3 py-2 rounded-full transition-colors ${
                     pathname.startsWith("/services")
                       ? "text-[#fd5523] font-bold"
                       : "text-[#020e28] hover:text-[#fd5523]"
@@ -173,7 +175,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
               >
                 <button
                   type="button"
-                  className="flex items-center gap-1 px-3.5 py-2 rounded-full text-[#020e28] hover:text-[#fd5523] transition-colors cursor-pointer"
+                  className="flex items-center gap-1 px-3 py-2 rounded-full text-[#020e28] hover:text-[#fd5523] transition-colors cursor-pointer"
                 >
                   <span>Pages</span>
                   <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
@@ -197,7 +199,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
                       href="/services"
                       className="block px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-[#fd5523] text-sm font-medium transition"
                     >
-                      Fleet & ODC Services
+                      Fleet &amp; ODC Services
                     </Link>
                     <Link
                       href="/#tracking-section"
@@ -229,7 +231,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
               >
                 <Link
                   href="/case-studies"
-                  className={`flex items-center gap-1 px-3.5 py-2 rounded-full transition-colors ${
+                  className={`flex items-center gap-1 px-3 py-2 rounded-full transition-colors ${
                     pathname.startsWith("/case-studies")
                       ? "text-[#fd5523] font-bold"
                       : "text-[#020e28] hover:text-[#fd5523]"
@@ -283,7 +285,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
               >
                 <Link
                   href="/blog"
-                  className={`flex items-center gap-1 px-3.5 py-2 rounded-full transition-colors ${
+                  className={`flex items-center gap-1 px-3 py-2 rounded-full transition-colors ${
                     pathname.startsWith("/blog")
                       ? "text-[#fd5523] font-bold"
                       : "text-[#020e28] hover:text-[#fd5523]"
@@ -326,7 +328,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
               {/* Contact */}
               <Link
                 href="/contact-us"
-                className={`px-3.5 py-2 rounded-full transition-colors ${
+                className={`px-3 py-2 rounded-full transition-colors ${
                   pathname === "/contact-us"
                     ? "text-[#fd5523] font-bold"
                     : "text-[#020e28] hover:text-[#fd5523]"
@@ -336,12 +338,12 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
               </Link>
             </nav>
 
-            {/* Right Side Icons & Free Quote Button (TransHub Style) */}
-            <div className="flex items-center gap-2 sm:gap-2.5">
+            {/* Right: Action Buttons & Free Quote CTA */}
+            <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
               {/* Cart Icon Button */}
               <button
                 onClick={() => setCartCount((prev) => (prev > 0 ? 0 : 1))}
-                className="relative w-10 h-10 rounded-full bg-[#f7f7f7] hover:bg-slate-200 text-[#020e28] flex items-center justify-center transition"
+                className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#f4f5f7] hover:bg-slate-200 text-[#020e28] flex items-center justify-center transition"
                 aria-label="View logistics cart"
                 title="Service Inquiry Bag"
               >
@@ -354,7 +356,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
               {/* Search Icon Button */}
               <button
                 onClick={() => setIsSearchOpen(true)}
-                className="w-10 h-10 rounded-full bg-[#f7f7f7] hover:bg-slate-200 text-[#020e28] flex items-center justify-center transition"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#f4f5f7] hover:bg-slate-200 text-[#020e28] flex items-center justify-center transition"
                 aria-label="Search site"
               >
                 <Search className="w-4 h-4 text-[#020e28]" />
@@ -363,7 +365,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
               {/* Burger Menu Button (TransHub SVG Icon) */}
               <button
                 onClick={() => setIsDrawerOpen(true)}
-                className="w-10 h-10 rounded-full bg-[#f7f7f7] hover:bg-slate-200 text-[#020e28] flex items-center justify-center transition"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#f4f5f7] hover:bg-slate-200 text-[#020e28] flex items-center justify-center transition"
                 aria-label="Open detailed menu"
               >
                 <svg
@@ -383,10 +385,10 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
               {/* Free Quote Button (Orange-Red Pill) */}
               <Link
                 href="/quote"
-                className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 rounded-full bg-[#fd5523] hover:bg-[#e04414] text-white font-bold text-xs sm:text-sm tracking-wide shadow-glow transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#fd5523] hover:bg-[#e04414] text-white font-bold text-xs sm:text-sm tracking-wide shadow-glow transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span>Free Quote</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </Link>
             </div>
           </div>
