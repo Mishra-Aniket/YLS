@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #F15A38;
+  --navy-dark: #06112E;
+  --navy: #07152F;
+  --brand-yellow: #F8C62E;
+  --logo-blue: #175A9D;
+  --light-bg: #F5F7FA;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  background-color: #FFFFFF;
+  color: #06112E;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #F15A38;
+  color: #FFFFFF;
+}
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #06112E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #175A9D;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F15A38;
+}
+
+/* TransHub card hover subtle shadow transitions */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
