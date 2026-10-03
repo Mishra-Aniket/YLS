@@ -12,6 +12,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { lookupShipment } from "@/lib/trackingData";
+import { getAssetPath } from "@/lib/imageLoader";
 
 interface TimelineStep {
   step: string;
@@ -92,7 +93,7 @@ export default function TrackingSection() {
       id="tracking-section"
       className="relative pt-24 lg:pt-32 pb-64 lg:pb-72 bg-cover bg-center bg-no-repeat overflow-hidden text-white scroll-mt-24"
       style={{
-        backgroundImage: "url('/images/tracking-bg.jpg')",
+        backgroundImage: `url('${getAssetPath("/images/tracking-bg.jpg")}')`,
         backgroundColor: "#020e28",
       }}
     >

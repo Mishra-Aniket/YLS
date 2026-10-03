@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight, Home } from "lucide-react";
+import { getAssetPath } from "@/lib/imageLoader";
 
 interface PageHeaderProps {
   title: string;
@@ -20,7 +21,7 @@ export default function PageHeader({
     <section
       className="relative bg-dark text-white pt-36 sm:pt-40 pb-16 sm:pb-20 overflow-hidden border-b border-white/10 select-none bg-cover bg-center"
       style={{
-        backgroundImage: "url('/images/yls/yls-odc-trailer.jpg')",
+        backgroundImage: `url('${getAssetPath("/images/yls/yls-odc-trailer.jpg")}')`,
       }}
     >
       {/* Dark overlay so the real fleet photo reads as a subtle background */}

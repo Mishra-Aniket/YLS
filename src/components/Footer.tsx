@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import YLSLogo from "./YLSLogo";
 import { COMPANY, BRANCHES, PRIMARY_SERVICES } from "@/lib/constants";
+import { getAssetPath } from "@/lib/imageLoader";
 
 // Two-tone heading underline accent matching TransHub widget titles
 function HeadingAccent() {
@@ -29,7 +30,7 @@ export default function Footer() {
     <div
       className="relative bg-[#020e28] bg-cover bg-center text-white"
       style={{
-        backgroundImage: "url('/images/footer-bg.jpg')",
+        backgroundImage: `url('${getAssetPath("/images/footer-bg.jpg")}')`,
         backgroundColor: "#020e28",
       }}
     >
@@ -78,7 +79,7 @@ export default function Footer() {
       {/* Rounded footer card matching TransHub footer wrapper */}
       <footer className="relative -mt-16 mx-3 sm:mx-5 rounded-[2.5rem] overflow-hidden text-white bg-cover bg-center"
         style={{
-          backgroundImage: "url('/images/footer-bg.jpg')",
+          backgroundImage: `url('${getAssetPath("/images/footer-bg.jpg")}')`,
           backgroundColor: "#020e28",
         }}
       >
