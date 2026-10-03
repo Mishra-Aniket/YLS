@@ -223,7 +223,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   { src: "/images/work/work-13.jpeg", title: "Pipeline Cargo on Trailer", category: "ODC Movement" },
   { src: "/images/yls/yls-odc-trailer.jpg", title: "ODC Trailer at Client Site", category: "ODC Movement" },
   { src: "/images/yls/yls-heavy-loading.jpg", title: "Crane Loading Operations", category: "ODC Movement" },
-  { src: "/images/yls/yls-warehouse-racks.jpg", title: "Warehouse Racking System", category: "Warehousing" },
+  { src: "/images/yls/yls-warehouse-racks.jpg", title: "Modern Covered Warehouse & Storage Facility", category: "Warehousing" },
 ];
 
 export const PRIMARY_SERVICES: ServiceItem[] = [

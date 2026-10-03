@@ -41,11 +41,11 @@ export default function AboutSection() {
                 </p>
               </div>
 
-              {/* Secondary Image: real warehouse racks photo, rounded 30px */}
+              {/* Secondary Image: real warehouse facility photo, rounded 30px */}
               <div className="relative -mt-16 ml-auto w-3/5 aspect-[4/3] rounded-[30px] overflow-hidden shadow-card border-4 border-white z-10 hidden sm:block">
                 <Image
                   src="/images/yls/yls-warehouse-racks.jpg"
-                  alt="YES Logistics covered warehouse storage racks"
+                  alt="YES Logistics modern covered warehouse and distribution facility"
                   fill
                   className="object-cover"
                 />
