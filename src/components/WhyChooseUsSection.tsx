@@ -13,10 +13,7 @@ import {
   PhoneCall,
   Award,
   CheckCircle,
-  ArrowRight,
-  FileText,
 } from "lucide-react";
-import { COMPANY } from "@/lib/constants";
 
 export const TRUST_PILLARS = [
   {
@@ -69,7 +66,7 @@ export const TRUST_PILLARS = [
     icon: Award,
     tag: "20+ INDUSTRIAL CLIENTS",
     title: "Trusted by Tier-1 Enterprises",
-    desc: "Proud long-term logistics contractor for industry titans including CEVA Logistics, Belden India, Wilo Pumps, KSH International, DVB Design Engineering, and Eagle Construction.",
+    desc: "Proud long-term logistics contractor for industry leaders including CEVA Logistics, Belden India, Wilo Pumps, KSH International, DVB Design Engineering, and Eagle Construction.",
     metric: "20+ Enterprise Clients",
     highlight: "High Retention Track Record",
   },
@@ -79,131 +76,207 @@ export default function WhyChooseUsSection() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
-    <section className="choose-sec bg-white sec-padding relative overflow-hidden">
-      {/* Decorative subtle background accents */}
-      <div
-        className="pointer-events-none absolute top-0 right-0 w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-[120px]"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/[0.03] rounded-full blur-[130px]"
-        aria-hidden="true"
-      />
+    <section className="choose-sec bg-shade sec-padding relative overflow-hidden">
+      {/* Decorative shape matching TransHub choose-sh.png */}
+      <div className="absolute left-0 bottom-0 pointer-events-none opacity-40 anim-jumping">
+        <Image
+          src="/images/choose-sh.png"
+          alt=""
+          width={180}
+          height={180}
+          className="object-contain"
+        />
+      </div>
 
-      <div className="max-w-[1640px] w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative z-10">
-        
-        {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary font-heading font-bold text-xs uppercase tracking-wider mb-3">
-              <TruckIcon />
-              WHY INDUSTRY LEADERS CHOOSE YES LOGISTICS
-            </span>
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-dark tracking-tight leading-[1.12]">
-              Engineered for Zero-Risk Heavy &amp; Express Cargo Movement
-            </h2>
-            <p className="text-slate-600 text-base sm:text-lg mt-4 leading-relaxed">
-              Established in Pune in 2021, <strong className="text-dark font-semibold">YES LOGISTICS SERVICE</strong> bridges industrial consignments with verified fleet ownership, legal compliance under the Motor Vehicles Act, multi-state branch hubs, and dedicated route escorts.
-            </p>
-          </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Top Row: TransHub Split Layout (Media Left, Content Right) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16 lg:mb-24">
+          
+          {/* Left Column: Overlapping Media matching TransHub .choose-media */}
+          <div className="lg:col-span-6 relative">
+            <div className="choose-media relative max-w-lg mx-auto lg:max-w-none">
+              {/* Primary Image */}
+              <div className="relative rounded-[30px] overflow-hidden shadow-card aspect-[4/3] w-11/12">
+                <Image
+                  src="/images/choose-img.png"
+                  alt="YES Logistics Transportation and Fleet Operations"
+                  fill
+                  className="object-cover"
+                />
+              </div>
 
-          {/* Quick Stat Pill */}
-          <div className="shrink-0 flex items-center gap-4 bg-[#020e28] text-white px-6 py-4 rounded-2xl shadow-xl border border-white/10">
-            <div className="w-12 h-12 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center text-primary text-xl font-bold">
-              ✓
-            </div>
-            <div>
-              <span className="text-xl sm:text-2xl font-heading font-black text-white block leading-none">
-                100% Insured
-              </span>
-              <p className="text-xs text-slate-300 font-medium mt-1">
-                Motor Vehicles Act &bull; Pan-India Coverage
-              </p>
-            </div>
-          </div>
-        </div>
+              {/* Secondary Overlapping Image */}
+              <div className="relative -mt-20 ml-auto w-3/5 aspect-[4/3] rounded-[30px] overflow-hidden shadow-2xl border-4 border-white z-10">
+                <Image
+                  src="/images/choose-img2.png"
+                  alt="YES Logistics Warehouse and Transport Handling"
+                  fill
+                  className="object-cover"
+                />
+              </div>
 
-        {/* 6 High-Trust Pillars Grid (Like omsaibpl's trust layout, elevated to world-class enterprise standards) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {TRUST_PILLARS.map((pillar, idx) => {
-            const IconComponent = pillar.icon;
-            return (
-              <div
-                key={pillar.id}
-                className="group relative bg-[#f8fafc] hover:bg-white rounded-[26px] p-7 sm:p-8 border border-slate-200/80 hover:border-primary/40 shadow-sm hover:shadow-[0_20px_50px_rgba(2,14,40,0.12)] transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
-              >
-                <div>
-                  {/* Top Row: Icon + Number Tag */}
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-14 h-14 rounded-2xl bg-white group-hover:bg-primary text-primary group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-md border border-slate-100">
-                      <IconComponent className="w-7 h-7" />
-                    </div>
-                    <span className="text-2xl sm:text-3xl font-heading font-black text-slate-200 group-hover:text-primary/20 transition-colors">
-                      0{idx + 1}
-                    </span>
-                  </div>
-
-                  {/* Tag Pill */}
-                  <span className="inline-block text-[11px] font-heading font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-0.5 rounded-full mb-2">
-                    {pillar.tag}
-                  </span>
-
-                  {/* Title */}
-                  <h3 className="text-xl font-heading font-bold text-dark group-hover:text-primary transition-colors leading-snug mb-3">
-                    {pillar.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
-                    {pillar.desc}
-                  </p>
+              {/* Floating Stat Pill on Media */}
+              <div className="absolute bottom-6 left-2 sm:left-6 z-20 bg-dark text-white px-5 py-4 rounded-[20px] shadow-2xl flex items-center gap-3.5 border border-white/10">
+                <div className="w-11 h-11 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xl font-bold shrink-0">
+                  <Truck className="w-5 h-5 text-primary" />
                 </div>
-
-                {/* Card Foot Metric */}
-                <div className="pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs">
-                  <span className="font-heading font-bold text-dark">
-                    {pillar.metric}
+                <div>
+                  <span className="text-xl font-heading font-extrabold text-white block leading-none">
+                    100% Pan-India
                   </span>
-                  <span className="text-emerald-600 font-semibold flex items-center gap-1">
-                    <CheckCircle className="w-3.5 h-3.5" />
-                    {pillar.highlight}
-                  </span>
+                  <p className="text-xs text-slate-300 font-medium mt-1">Verified Fleet Readiness</p>
                 </div>
               </div>
-            );
-          })}
-        </div>
-
-        {/* Bottom Operational Reassurance Banner with Direct Call Action */}
-        <div className="mt-12 sm:mt-16 rounded-[28px] bg-gradient-to-r from-[#020e28] via-[#041945] to-[#020e28] text-white p-6 sm:p-10 shadow-2xl border border-white/10 flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div className="max-w-2xl text-center lg:text-left">
-            <span className="text-xs uppercase font-heading font-bold text-primary tracking-wider">
-              READY FOR RAPID DEPLOYMENT
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-heading font-bold text-white mt-1">
-              Have a Consignment or Factory Route Inquiry?
-            </h3>
-            <p className="text-slate-300 text-xs sm:text-sm mt-2">
-              Speak directly with our central dispatch controllers in Pune or connect on WhatsApp for immediate vehicle availability and all-India freight estimates.
-            </p>
+            </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 shrink-0">
-            <button
-              type="button"
-              onClick={() => setIsContactOpen(true)}
-              className="btn-primary py-3.5 px-6 sm:px-8 text-sm flex items-center gap-2 cursor-pointer shadow-glow"
-            >
-              <i className="fa-brands fa-whatsapp text-lg"></i>
-              <span>Call / WhatsApp Dispatch</span>
-            </button>
+          {/* Right Column: TransHub Content with Skill Bars & Circular Rates */}
+          <div className="lg:col-span-6 choose-content space-y-6">
+            <span className="sub-title">
+              <TruckIcon />
+              WHY CHOOSE US
+            </span>
 
-            <Link
-              href="/quote"
-              className="px-6 py-3.5 rounded-xl border border-white/20 hover:border-white/50 hover:bg-white/10 text-white font-heading font-bold text-sm transition"
-            >
-              Get Detailed Quote &rarr;
-            </Link>
+            <h2 className="sec-title">
+              Why We Are Considered The Best in Transportation
+            </h2>
+
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+              Established in Pune in 2021, <strong className="text-dark font-semibold">YES LOGISTICS SERVICE</strong> bridges industrial consignments with verified fleet ownership, legal compliance under the Motor Vehicles Act, multi-state branch hubs, and dedicated route escorts.
+            </p>
+
+            {/* TransHub Progress Bars */}
+            <div className="space-y-4 pt-2">
+              <div>
+                <div className="flex justify-between items-center text-sm font-heading font-bold text-dark mb-1.5">
+                  <span>Warehousing &amp; Fleet Management</span>
+                  <span className="text-primary font-extrabold">95%</span>
+                </div>
+                <div className="w-full h-3 bg-slate-200 rounded-full overflow-hidden p-0.5">
+                  <div
+                    className="h-full bg-primary rounded-full transition-all duration-1000"
+                    style={{ width: "95%" }}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div className="flex justify-between items-center text-sm font-heading font-bold text-dark mb-1.5">
+                  <span>Safe &amp; Compliant Heavy Haulage</span>
+                  <span className="text-primary font-extrabold">99%</span>
+                </div>
+                <div className="w-full h-3 bg-slate-200 rounded-full overflow-hidden p-0.5">
+                  <div
+                    className="h-full bg-primary rounded-full transition-all duration-1000"
+                    style={{ width: "99%" }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* TransHub Circular Rate Highlights */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-3">
+              <div className="flex items-center gap-3.5 p-3.5 bg-white rounded-2xl shadow-sm border border-slate-200/80">
+                <div className="w-14 h-14 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center shrink-0">
+                  <span className="text-base font-heading font-extrabold text-primary">99.4%</span>
+                </div>
+                <div>
+                  <h4 className="text-sm font-heading font-bold text-dark leading-tight">
+                    On-Time Delivery Rate
+                  </h4>
+                  <p className="text-[11px] text-slate-500 mt-0.5">Pan-India Express Tracking</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3.5 p-3.5 bg-white rounded-2xl shadow-sm border border-slate-200/80">
+                <div className="w-14 h-14 rounded-full bg-emerald-50 border-2 border-emerald-500 flex items-center justify-center shrink-0">
+                  <span className="text-base font-heading font-extrabold text-emerald-600">99.8%</span>
+                </div>
+                <div>
+                  <h4 className="text-sm font-heading font-bold text-dark leading-tight">
+                    Zero-Damage Record
+                  </h4>
+                  <p className="text-[11px] text-slate-500 mt-0.5">Open Marine Insurance Cover</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Call Box matching TransHub */}
+            <div className="pt-2">
+              <h3 className="text-base sm:text-lg font-heading font-bold text-dark">
+                Do you have any project or consignment on your mind?{" "}
+                <button
+                  type="button"
+                  onClick={() => setIsContactOpen(true)}
+                  className="text-primary hover:text-emerald-600 underline font-bold cursor-pointer transition-colors"
+                >
+                  Call Us: +91 70200 57149 / 70212 77197
+                </button>
+              </h3>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Section: 6 High-Trust Pillars Grid */}
+        <div className="border-t border-slate-200/80 pt-16">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="sub-title">
+              <TruckIcon />
+              BUILT ON PROVEN INTEGRITY
+            </span>
+            <h3 className="sec-title text-2xl sm:text-3xl lg:text-4xl">
+              Engineered for Zero-Risk Heavy &amp; Express Cargo Movement
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {TRUST_PILLARS.map((pillar, idx) => {
+              const IconComponent = pillar.icon;
+              return (
+                <div
+                  key={pillar.id}
+                  className="group relative bg-white hover:bg-white rounded-[26px] p-7 sm:p-8 border border-slate-200/80 hover:border-primary/40 shadow-sm hover:shadow-[0_20px_50px_rgba(2,14,40,0.12)] transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
+                >
+                  <div>
+                    {/* Top Row: Icon + Number Tag */}
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="w-14 h-14 rounded-2xl bg-slate-50 group-hover:bg-primary text-primary group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm border border-slate-100">
+                        <IconComponent className="w-7 h-7" />
+                      </div>
+                      <span className="text-2xl sm:text-3xl font-heading font-black text-slate-200 group-hover:text-primary/20 transition-colors">
+                        0{idx + 1}
+                      </span>
+                    </div>
+
+                    {/* Tag Pill */}
+                    <span className="inline-block text-[11px] font-heading font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-0.5 rounded-full mb-2">
+                      {pillar.tag}
+                    </span>
+
+                    {/* Title */}
+                    <h4 className="text-xl font-heading font-bold text-dark group-hover:text-primary transition-colors leading-snug mb-3">
+                      {pillar.title}
+                    </h4>
+
+                    {/* Description */}
+                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
+                      {pillar.desc}
+                    </p>
+                  </div>
+
+                  {/* Card Foot Metric */}
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                    <span className="font-heading font-bold text-dark">
+                      {pillar.metric}
+                    </span>
+                    <span className="text-emerald-600 font-semibold flex items-center gap-1">
+                      <CheckCircle className="w-3.5 h-3.5" />
+                      {pillar.highlight}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -212,3 +285,4 @@ export default function WhyChooseUsSection() {
     </section>
   );
 }
+

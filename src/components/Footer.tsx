@@ -183,33 +183,55 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Col 4: Opening Hours (TransHub column) */}
+            {/* Col 4: Opening Hours & Contact Hotlines (TransHub column) */}
             <div className="lg:col-span-3 space-y-4">
               <h4 className="text-lg font-heading font-bold text-white">
-                Our Opening Hours
+                Contact &amp; Hours
                 <HeadingAccent />
               </h4>
-              <ul className="space-y-2.5 text-sm text-slate-300 font-medium pt-1">
-                <li className="flex items-center justify-between gap-4">
-                  <span>Week Days</span>
-                  <span>09.00 &ndash; 19.00</span>
+              <ul className="space-y-2 text-sm text-slate-300 font-medium pt-1">
+                <li className="flex items-center justify-between gap-4 text-xs">
+                  <span>Mon &ndash; Sat</span>
+                  <span className="text-white font-semibold">09:00 &ndash; 19:30</span>
                 </li>
-                <li className="flex items-center justify-between gap-4">
-                  <span>Saturday</span>
-                  <span>09.00 &ndash; 14.00</span>
-                </li>
-                <li className="flex items-center justify-between gap-4">
+                <li className="flex items-center justify-between gap-4 text-xs">
                   <span>Sunday</span>
-                  <span>On Call</span>
+                  <span className="text-emerald-400 font-semibold">24/7 On-Call Dispatch</span>
                 </li>
               </ul>
 
-              <a
-                href="/contact-us"
-                className="inline-flex items-center px-8 py-3.5 mt-4 rounded-full bg-white text-dark font-heading font-semibold text-sm hover:bg-primary hover:text-white transition-colors"
-              >
-                Contact Us
-              </a>
+              {/* Direct Hotlines matching user requirement */}
+              <div className="pt-2 border-t border-white/10 space-y-2 text-xs">
+                <p className="text-slate-400 font-medium">Dispatch Hotlines (Call &amp; WhatsApp):</p>
+                <div className="flex flex-col gap-1.5 font-heading font-bold text-sm">
+                  <a
+                    href="tel:+917020057149"
+                    className="text-primary hover:text-white flex items-center gap-2 transition-colors"
+                  >
+                    <i className="fa-solid fa-phone text-xs"></i>
+                    <span>+91 70200 57149</span>
+                  </a>
+                  <a
+                    href="tel:+917021277197"
+                    className="text-primary hover:text-white flex items-center gap-2 transition-colors"
+                  >
+                    <i className="fa-solid fa-phone text-xs"></i>
+                    <span>+91 70212 77197</span>
+                  </a>
+                </div>
+                <p className="text-slate-400 text-[11px] leading-tight pt-1">
+                  HQ: Shop No. 1, Valmiki Heights, Ganga Nagar, Akurdi, Pune &ndash; 411035
+                </p>
+              </div>
+
+              <div className="pt-2">
+                <a
+                  href="/contact-us"
+                  className="inline-flex items-center px-6 py-3 rounded-full bg-white text-dark font-heading font-semibold text-xs hover:bg-primary hover:text-white transition-colors"
+                >
+                  Visit Contact Page &rarr;
+                </a>
+              </div>
             </div>
           </div>
         </div>

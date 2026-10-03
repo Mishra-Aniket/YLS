@@ -3,13 +3,12 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import QuickEnquiryStrip from "@/components/QuickEnquiryStrip";
 import ClientMarquee from "@/components/ClientMarquee";
-import WhyChooseUsSection from "@/components/WhyChooseUsSection";
-import ServicesSection from "@/components/ServicesSection";
 import AboutSection from "@/components/AboutSection";
-import CoreOperationsShowcase from "@/components/CoreOperationsShowcase";
+import ServicesSection from "@/components/ServicesSection";
 import WorkingProcessSection from "@/components/WorkingProcessSection";
+import WhyChooseUsSection from "@/components/WhyChooseUsSection";
+import CoreOperationsShowcase from "@/components/CoreOperationsShowcase";
 import StatisticsStrip from "@/components/StatisticsStrip";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import TrackingSection from "@/components/TrackingSection";
@@ -23,59 +22,57 @@ import Footer from "@/components/Footer";
 export default function HomePage() {
   return (
     <main className="min-h-screen flex flex-col bg-white">
-      {/* 1. White Pill Navigation Header with Call/WhatsApp quick dialog */}
+      {/* 1. Header: TransHub Floating White Pill Navbar */}
       <Navbar variant="floating" />
 
-      {/* 2. Dark Navy Split Hero Section with live LR Tracking Bar */}
+      {/* 2. Hero: TransHub Split Slider Section with Rotating Badge & Purecounter Stat Card */}
       <HeroSection />
 
-      {/* 3. Instant Freight Enquiry & Booking Strip (like omsaibpl front enquiry) */}
-      <QuickEnquiryStrip />
-
-      {/* 4. Moveable Client Partner Strip (20+ Industry Titans) */}
+      {/* 3. Partner Strip: Smooth Moving Brand Carousel */}
       <ClientMarquee />
 
-      {/* 5. Why India Trusts YES Logistics — 6 High-Trust Pillars right in front! */}
-      <WhyChooseUsSection />
-
-      {/* 6. All-Capacity Fleet Carousel (Auto-scrolling: Pickups, Containers, Taurus, ODC Trailers) */}
-      <ServicesSection />
-
-      {/* 7. About Our Company Section (Foundation, Ownership & Experience) */}
+      {/* 4. About Us: TransHub Overlapping Media + 2021 Estd Badge + 100% Safety Focus */}
       <AboutSection />
 
-      {/* 8. Core Operations Alternating Showcase (Z-pattern with real operational photos) */}
-      <CoreOperationsShowcase />
+      {/* 5. Services: TransHub .services-sec.bg-shade with Auto-scrolling Multi-Capacity Fleet */}
+      <ServicesSection />
 
-      {/* 9. Working Process Section */}
+      {/* 6. Working Process: TransHub .process-sec with 01-02-03 Steps & Dashed Connector Line */}
       <WorkingProcessSection />
 
-      {/* 10. Dark Counter Band */}
+      {/* 7. Why Choose Us: TransHub .choose-sec.bg-shade with Overlapping Photos, Progress Bars, & Trust Pillars */}
+      <WhyChooseUsSection />
+
+      {/* 8. Core Operations: Alternating High-Impact Fleet Showcase */}
+      <CoreOperationsShowcase />
+
+      {/* 9. Statistics: TransHub .stat-sec Dark Navy 4-Column Counter Strip */}
       <StatisticsStrip />
 
-      {/* 11. Case Studies Carousel */}
+      {/* 10. Case Studies: TransHub .portfolio-sec with Orange Side Accent & Carousel */}
       <CaseStudiesSection />
 
-      {/* 12. Instant Shipment Tracking Band */}
+      {/* 11. Tracking: TransHub .tracking-cta-sec with Parallax Overlay & Quick Tracking */}
       <TrackingSection />
 
-      {/* 13. Quote Tab Card */}
+      {/* 12. Quote: TransHub Quote Tab Card Overlapping Tracking Section */}
       <QuoteSection />
 
-      {/* 14. All-India Branch Network (Pune, Bangalore, Vadodara, Jeypore, Prayagraj) */}
+      {/* 13. Network: All-India Branch Network (Pune HQ, Bangalore, Vadodara, Jeypore, Prayagraj) */}
       <BranchSection />
 
-      {/* 15. Customer Testimonials */}
+      {/* 14. Reviews: TransHub .review-sec Testimonials */}
       <TestimonialSection />
 
-      {/* 16. Blog & Logistics Insights */}
+      {/* 15. Blog & News: TransHub .blog-sec 3-Column Logistics Insights */}
       <BlogSection />
 
-      {/* 17. Client Brand Strip */}
+      {/* 16. Brand Clients: TransHub .brand-sec */}
       <ClientsSection />
 
-      {/* 18. Newsletter Band + Dark Rounded Footer */}
+      {/* 17. Footer: TransHub Newsletter Subscription Band + 4-Column Dark Footer Card */}
       <Footer />
     </main>
   );
 }
+
