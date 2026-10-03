@@ -12,6 +12,7 @@ import {
 import YLSLogo from "./YLSLogo";
 import SearchModal from "./SearchModal";
 import OffcanvasDrawer from "./OffcanvasDrawer";
+import QuickContactModal, { CONTACT_NUMBERS } from "./QuickContactModal";
 import { PRIMARY_SERVICES } from "@/lib/constants";
 
 interface NavbarProps {
@@ -24,6 +25,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +47,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
 
   /* ---------- Streamlined, Spacious Menu ---------- */
   const menu = (
-    <ul className="hidden lg:flex items-center gap-6 xl:gap-9 font-heading font-semibold text-[15px] xl:text-[16px] text-dark">
+    <ul className="hidden lg:flex items-center gap-6 xl:gap-8 font-heading font-semibold text-[15px] xl:text-[16px] text-dark">
       {/* Home */}
       <li>
         <Link
@@ -166,25 +168,46 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
 
   /* ---------- Right Actions ---------- */
   const actions = (
-    <div className="flex items-center gap-3 sm:gap-4 shrink-0">
-      {/* 24/7 Dispatch Control Call Pill */}
-      <a
-        href="tel:+919370691090"
-        className="hidden 2xl:flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-dark text-xs font-semibold font-heading transition"
-        title="24/7 Dispatch Hotline"
+    <div className="flex items-center gap-2.5 sm:gap-3.5 shrink-0">
+      {/* Interactive 24/7 Helpline Pill (Opens WhatsApp / Call modal for 7020057149 & 7021277197) */}
+      <button
+        type="button"
+        onClick={() => setIsContactOpen(true)}
+        className="hidden md:flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-slate-100 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 text-dark text-xs font-semibold font-heading transition-all shadow-sm hover:shadow group cursor-pointer"
+        title="Click to Call or WhatsApp Dispatcher"
       >
         <span className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
         </span>
-        <PhoneCall className="w-3.5 h-3.5 text-primary" />
-        <span>+91 93706 91090</span>
-      </a>
+        <div className="flex items-center gap-1.5 text-slate-700 group-hover:text-emerald-700">
+          <i className="fa-brands fa-whatsapp text-emerald-600 text-sm"></i>
+          <PhoneCall className="w-3.5 h-3.5 text-primary" />
+          <span className="font-bold">
+            <span className="hidden xl:inline">Call / WhatsApp: </span>
+            <span className="text-dark group-hover:text-emerald-700 font-extrabold tracking-tight">
+              7020057149 &bull; 7021277197
+            </span>
+          </span>
+        </div>
+        <ChevronDown className="w-3 h-3 text-slate-400 group-hover:text-emerald-600 transition-transform" />
+      </button>
+
+      {/* Mobile Direct WhatsApp/Call Button */}
+      <button
+        type="button"
+        onClick={() => setIsContactOpen(true)}
+        className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition shadow-sm cursor-pointer"
+        aria-label="Call or WhatsApp"
+        title="Call or WhatsApp"
+      >
+        <i className="fa-brands fa-whatsapp text-lg text-emerald-600"></i>
+      </button>
 
       {/* Search Icon Circle */}
       <button
         onClick={() => setIsSearchOpen(true)}
-        className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-slate-100 hover:bg-slate-200 text-dark flex items-center justify-center transition"
+        className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-slate-100 hover:bg-slate-200 text-dark flex items-center justify-center transition cursor-pointer"
         aria-label="Search website"
       >
         <Search className="w-4 h-4 text-dark" />
@@ -193,7 +216,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
       {/* Burger Menu Circle (for detailed offcanvas drawer) */}
       <button
         onClick={() => setIsDrawerOpen(true)}
-        className="hidden sm:flex w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-slate-100 hover:bg-slate-200 text-dark items-center justify-center transition"
+        className="hidden sm:flex w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-slate-100 hover:bg-slate-200 text-dark items-center justify-center transition cursor-pointer"
         aria-label="Open detailed menu"
       >
         <svg
@@ -211,7 +234,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
       </button>
 
       {/* Free Quote Button */}
-      <Link href="/quote" className="btn-primary py-2.5 sm:py-3 px-5 sm:px-6 text-sm hidden sm:inline-flex items-center gap-2">
+      <Link href="/quote" className="btn-primary py-2.5 sm:py-3 px-4 sm:px-6 text-xs sm:text-sm hidden sm:inline-flex items-center gap-1.5 sm:gap-2">
         <span>Free Quote</span>
         <i className="fa fa-turn-up text-xs" aria-hidden="true"></i>
       </Link>
@@ -219,7 +242,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
       {/* Mobile Menu Toggler */}
       <button
         onClick={() => setIsDrawerOpen(true)}
-        className="lg:hidden flex items-center gap-1.5 px-3 py-2 rounded-full bg-slate-100 text-dark text-xs font-bold hover:bg-primary hover:text-white transition"
+        className="lg:hidden flex items-center gap-1.5 px-3 py-2 rounded-full bg-slate-100 text-dark text-xs font-bold hover:bg-primary hover:text-white transition cursor-pointer"
         aria-label="Toggle Navigation"
       >
         <Menu className="w-4 h-4" />
@@ -253,7 +276,28 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
         </div>
       </header>
 
+      {/* Persistent Floating WhatsApp & Call Widget at bottom-right */}
+      <div className="fixed bottom-6 right-5 sm:right-6 z-40 flex items-center">
+        <button
+          type="button"
+          onClick={() => setIsContactOpen(true)}
+          className="flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-3 rounded-full shadow-[0_10px_30px_rgba(37,211,102,0.45)] hover:shadow-[0_15px_35px_rgba(37,211,102,0.6)] transform hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer border border-white/20 group"
+          aria-label="Quick Connect via WhatsApp or Call"
+          title="WhatsApp or Call Dispatch Desk"
+        >
+          <span className="relative flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+          </span>
+          <i className="fa-brands fa-whatsapp text-xl"></i>
+          <span className="font-heading font-bold text-xs sm:text-sm tracking-wide">
+            Call / WhatsApp
+          </span>
+        </button>
+      </div>
+
       {/* Modals & Drawers */}
+      <QuickContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
       <OffcanvasDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
     </>

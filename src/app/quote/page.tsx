@@ -112,7 +112,7 @@ export default function QuotePage() {
                 </h2>
               </div>
               <div className="text-xs text-slate-500 font-medium">
-                Direct Pune Dispatch: <strong className="text-primary">+91 7021277197</strong>
+                Direct Pune Dispatch: <strong className="text-primary">+91 70200 57149 / +91 70212 77197</strong>
               </div>
             </div>
 

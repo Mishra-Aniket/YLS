@@ -1,12 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import TruckIcon from "./TruckIcon";
+import QuickContactModal from "./QuickContactModal";
 import { COMPANY } from "@/lib/constants";
 
 export default function AboutSection() {
+  const [isContactOpen, setIsContactOpen] = useState(false);
   return (
     <section className="about-section relative sec-padding bg-white overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -144,29 +146,37 @@ export default function AboutSection() {
                 <i className="fa fa-turn-up text-xs" aria-hidden="true"></i>
               </Link>
 
-              {/* TransHub Quick Call */}
+              {/* Quick Call / WhatsApp */}
               <div className="flex items-center gap-3.5">
-                <a
-                  href={`tel:${COMPANY.primaryPhone.replace(/\s+/g, "")}`}
-                  className="w-12 h-12 rounded-full bg-dark hover:bg-primary text-white flex items-center justify-center transition shadow-sm"
-                  aria-label="Call YLS HQ"
+                <button
+                  type="button"
+                  onClick={() => setIsContactOpen(true)}
+                  className="w-12 h-12 rounded-full bg-dark hover:bg-emerald-600 text-white flex items-center justify-center transition shadow-sm cursor-pointer group"
+                  aria-label="Call or WhatsApp YLS Dispatch"
+                  title="Click to Call or WhatsApp"
                 >
-                  <i className="fa-solid fa-phone-volume text-sm"></i>
-                </a>
+                  <i className="fa-brands fa-whatsapp text-lg group-hover:scale-110 transition-transform"></i>
+                </button>
                 <div>
-                  <p className="text-xs text-mute font-medium">Call Us Any Time:</p>
-                  <a
-                    href={`tel:${COMPANY.primaryPhone.replace(/\s+/g, "")}`}
-                    className="text-base sm:text-lg font-heading font-bold text-primary hover:underline"
+                  <p className="text-xs text-mute font-medium flex items-center gap-1.5">
+                    <span>Call or WhatsApp:</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setIsContactOpen(true)}
+                    className="text-sm sm:text-base font-heading font-bold text-primary hover:text-emerald-600 transition text-left cursor-pointer"
                   >
-                    {COMPANY.primaryPhone}
-                  </a>
+                    +91 70200 57149 / 70212 77197
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <QuickContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </section>
   );
 }

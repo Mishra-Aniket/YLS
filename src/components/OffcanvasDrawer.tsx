@@ -141,16 +141,58 @@ export default function OffcanvasDrawer({
             </ul>
           </div>
 
-          {/* Contact Details */}
+          {/* Contact Details with both numbers and WhatsApp / Call buttons */}
           <div className="py-6 space-y-4 text-xs text-slate-600">
-            <div className="flex items-center gap-3">
-              <Phone className="w-4 h-4 text-primary shrink-0" />
-              <a href={`tel:${COMPANY.primaryPhone.replace(/\s+/g, "")}`} className="hover:text-primary font-bold text-dark">
-                {COMPANY.primaryPhone}
-              </a>
+            <div className="space-y-2">
+              <span className="text-[11px] font-heading font-bold text-slate-400 uppercase tracking-wider block">
+                24/7 Dispatch Desk (Call / WhatsApp)
+              </span>
+              <div className="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-100">
+                <span className="font-heading font-bold text-dark text-xs sm:text-sm">+91 70200 57149</span>
+                <div className="flex items-center gap-1.5">
+                  <a
+                    href="https://wa.me/917020057149"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white transition"
+                    title="Chat on WhatsApp"
+                  >
+                    <i className="fa-brands fa-whatsapp text-xs"></i>
+                  </a>
+                  <a
+                    href="tel:+917020057149"
+                    className="p-1.5 rounded-lg bg-dark hover:bg-primary text-white transition"
+                    title="Call Now"
+                  >
+                    <Phone className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-100">
+                <span className="font-heading font-bold text-dark text-xs sm:text-sm">+91 70212 77197</span>
+                <div className="flex items-center gap-1.5">
+                  <a
+                    href="https://wa.me/917021277197"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white transition"
+                    title="Chat on WhatsApp"
+                  >
+                    <i className="fa-brands fa-whatsapp text-xs"></i>
+                  </a>
+                  <a
+                    href="tel:+917021277197"
+                    className="p-1.5 rounded-lg bg-dark hover:bg-primary text-white transition"
+                    title="Call Now"
+                  >
+                    <Phone className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 pt-2">
               <Mail className="w-4 h-4 text-primary shrink-0" />
               <a href={`mailto:${COMPANY.email}`} className="hover:text-primary font-medium text-dark">
                 {COMPANY.email}

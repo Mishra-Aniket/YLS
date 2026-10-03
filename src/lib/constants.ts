@@ -64,8 +64,8 @@ export const COMPANY = {
   speciality: "ODC Consignment Specialist across India",
   established: "1 July 2021",
   establishedYear: 2021,
-  primaryPhone: "+91 7021277197",
-  additionalPhone: "+91 7020057149",
+  primaryPhone: "+91 70200 57149",
+  additionalPhone: "+91 70212 77197",
   email: "ylspune@gmail.com",
   registeredOffice: {
     address: "CTS 1937 S1 Nilratna Apt BLD 2F",
