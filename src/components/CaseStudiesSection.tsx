@@ -61,12 +61,12 @@ export default function CaseStudiesSection() {
       <div className="relative z-10 pb-20 lg:pb-24">
         <div
           ref={trackRef}
-          className="flex gap-6 overflow-x-auto overflow-y-hidden snap-x snap-mandatory pb-2 pl-4 pr-4 sm:pl-6 lg:pl-[max(2rem,calc((100vw-1288px)/2))] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex gap-6 overflow-x-auto overflow-y-hidden snap-x snap-mandatory pb-2 pl-4 pr-4 sm:pl-6 lg:pl-[max(2rem,calc((100vw-1440px)/2))] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {CASE_STUDIES.map((study) => (
             <article
               key={study.id}
-              className="group relative shrink-0 snap-start w-[78%] sm:w-[46%] lg:w-[31%] xl:w-[calc((100vw-1288px)/3.55)] max-w-[360px] min-w-[280px]"
+              className="group relative shrink-0 snap-start w-[78%] sm:w-[46%] lg:w-[31%] xl:w-[calc((100vw-1440px)/3.55)] max-w-[360px] min-w-[280px]"
             >
               <div className="relative rounded-[20px] overflow-hidden h-[420px] shadow-lg">
                 <Image
