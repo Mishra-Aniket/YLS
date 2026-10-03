@@ -18,6 +18,7 @@ import {
   Package,
 } from "lucide-react";
 import { COMPANY, BRANCHES } from "@/lib/constants";
+import { saveQuoteRequest, getWhatsAppQuoteUrl } from "@/lib/quotes";
 
 export default function QuotePage() {
   const [formData, setFormData] = useState({
@@ -56,11 +57,9 @@ export default function QuotePage() {
     }
 
     setLoading(true);
-    try {
-      const res = await fetch("/api/quote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+    setTimeout(() => {
+      try {
+        const result = saveQuoteRequest({
           fullName: formData.fullName,
           email: formData.email,
           phone: formData.phone,
@@ -71,25 +70,19 @@ export default function QuotePage() {
           dimensions: `${formData.dimensions ? `Dimensions: ${formData.dimensions}; ` : ""}${formData.approxWeight ? `Weight: ${formData.approxWeight}; ` : ""}${formData.requiresCrane ? "Requires Crane Loading; " : ""}${formData.requiresEscort ? "Requires Pilot Escort; " : ""}`,
           shipmentDate: formData.shipmentDate,
           notes: `${formData.companyName ? `Company: ${formData.companyName}; ` : ""}${formData.notes || ""}`,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setErrorMessage(data.error || "Failed to submit quote request. Please try again.");
-      } else {
-        setSuccessData({
-          quoteId: data.quoteId,
-          message: data.message,
         });
+
+        setSuccessData({
+          quoteId: result.quoteId,
+          message: result.message,
+        });
+      } catch (err) {
+        console.error("Quote submission error:", err);
+        setErrorMessage("Unable to save quote request. Please call our Pune dispatch desk at +91 7021277197.");
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      console.error("Quote submission error:", err);
-      setErrorMessage("Network error. Please call our Pune dispatch desk at +91 7021277197.");
-    } finally {
-      setLoading(false);
-    }
+    }, 300);
   };
 
   return (

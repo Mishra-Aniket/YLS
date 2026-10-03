@@ -11,6 +11,7 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
+import { lookupShipment } from "@/lib/trackingData";
 
 interface TimelineStep {
   step: string;
@@ -56,26 +57,28 @@ export default function TrackingSection() {
     }
 
     setLoading(true);
-    try {
-      const res = await fetch(`/api/track?trackingId=${encodeURIComponent(query)}`);
-      const data = await res.json();
+    // Simulate brief live search for optimal UX
+    setTimeout(() => {
+      try {
+        const data = lookupShipment(query);
 
-      if (!res.ok || !data.found) {
+        if (!data.found || !data.shipment) {
+          setNotFoundData({
+            message: data.message || `No active shipment found matching reference "${query}".`,
+            hint: data.hint || "Please verify your LR (Lorry Receipt) docket number with our Pune dispatch depot.",
+          });
+        } else {
+          setShipment(data.shipment);
+        }
+      } catch (err) {
+        console.error("Tracking request failed:", err);
         setNotFoundData({
-          message: data.message || `No active shipment found matching reference "${query}".`,
-          hint: data.hint || "Please verify your LR (Lorry Receipt) docket number with our Pune dispatch depot.",
+          message: "Unable to process tracking query. Please contact our Pune headquarters.",
         });
-      } else {
-        setShipment(data.shipment);
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      console.error("Tracking request failed:", err);
-      setNotFoundData({
-        message: "Network request failed. Please check your connection or contact our Pune headquarters.",
-      });
-    } finally {
-      setLoading(false);
-    }
+    }, 250);
   };
 
   const setSampleTracking = (sampleId: string) => {

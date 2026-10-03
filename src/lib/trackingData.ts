@@ -1,6 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
-
-interface ShipmentRecord {
+export interface ShipmentRecord {
   trackingId: string;
   consignmentNote: string;
   origin: string;
@@ -17,8 +15,18 @@ interface ShipmentRecord {
   timeline: { step: string; location: string; time: string; completed: boolean }[];
 }
 
+export interface TrackResult {
+  found: boolean;
+  trackingId?: string;
+  shipment?: ShipmentRecord;
+  error?: string;
+  message?: string;
+  hint?: string;
+  suggestedDemoIds?: string[];
+}
+
 // Official company docket records for live operational tracking
-const REGISTERED_SHIPMENTS: Record<string, ShipmentRecord> = {
+export const REGISTERED_SHIPMENTS: Record<string, ShipmentRecord> = {
   "YLS-ODC-8819": {
     trackingId: "YLS-ODC-8819",
     consignmentNote: "LR-MH-2026-0941",
@@ -84,51 +92,38 @@ const REGISTERED_SHIPMENTS: Record<string, ShipmentRecord> = {
   },
 };
 
-export async function GET(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-  const rawId = searchParams.get("trackingId") || searchParams.get("tracking_number");
-
+export function lookupShipment(rawId: string): TrackResult {
   if (!rawId || rawId.trim().length === 0) {
-    return NextResponse.json(
-      {
-        found: false,
-        error: "Validation error: Please enter a tracking number or LR docket number.",
-      },
-      { status: 400 }
-    );
+    return {
+      found: false,
+      error: "Validation error: Please enter a tracking number or LR docket number.",
+    };
   }
 
   const cleanId = rawId.trim().toUpperCase();
 
-  // Basic length / format validation
   if (cleanId.length < 4 || cleanId.length > 30) {
-    return NextResponse.json(
-      {
-        found: false,
-        error: "Validation error: Tracking ID must be between 4 and 30 characters.",
-      },
-      { status: 400 }
-    );
+    return {
+      found: false,
+      error: "Validation error: Tracking ID must be between 4 and 30 characters.",
+    };
   }
 
   const record = REGISTERED_SHIPMENTS[cleanId];
 
   if (!record) {
-    return NextResponse.json(
-      {
-        found: false,
-        trackingId: cleanId,
-        message: `No active shipment found matching tracking reference "${cleanId}".`,
-        hint: "Please verify your LR (Lorry Receipt) or Docket number on your consignment paperwork, or call our Pune Central Dispatch at +91 7021277197.",
-        suggestedDemoIds: ["YLS-ODC-8819", "YLS-PN-7021", "YLS-OD-9337"],
-      },
-      { status: 404 }
-    );
+    return {
+      found: false,
+      trackingId: cleanId,
+      message: `No active shipment found matching tracking reference "${cleanId}".`,
+      hint: "Please verify your LR (Lorry Receipt) or Docket number on your consignment paperwork, or call our Pune Central Dispatch at +91 7021277197.",
+      suggestedDemoIds: ["YLS-ODC-8819", "YLS-PN-7021", "YLS-OD-9337"],
+    };
   }
 
-  return NextResponse.json({
+  return {
     found: true,
     trackingId: cleanId,
     shipment: record,
-  });
+  };
 }

@@ -6,6 +6,7 @@ import {
   AlertCircle,
   Loader2,
 } from "lucide-react";
+import { saveQuoteRequest } from "@/lib/quotes";
 
 const FREIGHT_TYPES = [
   "ODC Trailer",
@@ -53,30 +54,32 @@ export default function QuoteSection() {
     }
 
     setLoading(true);
-    try {
-      const res = await fetch("/api/quote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+    setTimeout(() => {
+      try {
+        const result = saveQuoteRequest({
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          freightType: formData.freightType,
+          pickupCity: formData.pickupCity,
+          deliveryCity: formData.deliveryCity,
+          goodsType: formData.goodsType,
+          dimensions: formData.dimensions,
+          notes: formData.notes,
+        });
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        setErrorMessage(data.error || "Failed to submit quote. Please try again.");
-      } else {
         setSuccessData({
-          quoteId: data.quoteId,
-          message: data.message,
+          quoteId: result.quoteId,
+          message: result.message,
         });
         setFormData(EMPTY_FORM);
+      } catch (err) {
+        console.error("Quote submission error:", err);
+        setErrorMessage("An unexpected error occurred. Please contact our Pune office directly at +91 7021277197.");
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      console.error("Quote submission error:", err);
-      setErrorMessage("An unexpected error occurred. Please contact our Pune office directly.");
-    } finally {
-      setLoading(false);
-    }
+    }, 300);
   };
 
   const scrollToTracking = () => {

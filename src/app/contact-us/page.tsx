@@ -19,6 +19,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { COMPANY, BRANCHES } from "@/lib/constants";
+import { saveQuoteRequest } from "@/lib/quotes";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -35,27 +36,24 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Submit as quote / general enquiry to /api/quote
-    try {
-      await fetch("/api/quote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+    setTimeout(() => {
+      try {
+        saveQuoteRequest({
           fullName: formData.name,
           email: formData.email,
           phone: formData.phone,
           freightType: formData.subject,
           goodsType: "General Commercial Inquiry",
           notes: formData.message,
-        }),
-      });
-      setSentSuccess(true);
-      setFormData({ name: "", email: "", phone: "", subject: "Business Transportation Enquiry", message: "" });
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setLoading(false);
-    }
+        });
+        setSentSuccess(true);
+        setFormData({ name: "", email: "", phone: "", subject: "Business Transportation Enquiry", message: "" });
+      } catch (e) {
+        console.error("Contact submission error:", e);
+      } finally {
+        setLoading(false);
+      }
+    }, 300);
   };
 
   return (

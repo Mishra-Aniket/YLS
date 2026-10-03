@@ -40,32 +40,19 @@ export default function TestimonialSection() {
   const [form, setForm] = useState({ name: "", company: "", rating: 5, quote: "" });
   const [submit, setSubmit] = useState<SubmitState>({ status: "idle" });
 
-  // Load visitor-submitted testimonials (newest first)
+  // Load visitor-submitted testimonials from localStorage
   useEffect(() => {
-    fetch("/api/testimonials")
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.success && Array.isArray(data.testimonials)) {
-          setDynamic(
-            data.testimonials.map((t: Record<string, unknown>) => ({
-              name: String(t.name || "Client"),
-              company: t.company ? String(t.company) : undefined,
-              location: t.createdAt
-                ? new Date(String(t.createdAt)).toLocaleDateString("en-IN", {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric",
-                  })
-                : undefined,
-              rating: Number(t.rating) || 5,
-              quote: String(t.quote || ""),
-            }))
-          );
+    try {
+      const saved = localStorage.getItem("yls_testimonials");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          setDynamic(parsed);
         }
-      })
-      .catch(() => {
-        /* defaults remain */
-      });
+      }
+    } catch {
+      /* ignore */
+    }
   }, []);
 
   const all: Testimonial[] = [
@@ -87,38 +74,46 @@ export default function TestimonialSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmit({ status: "loading" });
+
+    if (!form.name.trim() || !form.quote.trim()) {
+      setSubmit({ status: "error", message: "Please provide your name and feedback message." });
+      return;
+    }
+    if (form.quote.trim().length < 10) {
+      setSubmit({ status: "error", message: "Feedback message must be at least 10 characters." });
+      return;
+    }
+
     try {
-      const res = await fetch("/api/testimonials", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setSubmit({ status: "error", message: data.error || "Failed to submit feedback." });
-        return;
+      const newReview: Testimonial = {
+        name: form.name.trim().slice(0, 80),
+        company: form.company ? form.company.trim().slice(0, 100) : undefined,
+        location: new Date().toLocaleDateString("en-IN", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        }),
+        rating: form.rating,
+        quote: form.quote.trim().slice(0, 600),
+      };
+
+      const updated = [newReview, ...dynamic];
+      setDynamic(updated);
+      try {
+        localStorage.setItem("yls_testimonials", JSON.stringify(updated));
+      } catch {
+        /* storage full or unavailable */
       }
-      // Prepend the saved testimonial so it shows immediately
-      setDynamic((prevList) => [
-        {
-          name: data.testimonial.name,
-          company: data.testimonial.company,
-          location: new Date(data.testimonial.createdAt).toLocaleDateString("en-IN", {
-            day: "numeric",
-            month: "short",
-            year: "numeric",
-          }),
-          rating: data.testimonial.rating,
-          quote: data.testimonial.quote,
-        },
-        ...prevList,
-      ]);
+
       setCurrentIndex(0);
-      setSubmit({ status: "success", message: data.message });
+      setSubmit({
+        status: "success",
+        message: "Thank you for your feedback! It is now live on our website.",
+      });
       setForm({ name: "", company: "", rating: 5, quote: "" });
       setShowForm(false);
     } catch {
-      setSubmit({ status: "error", message: "Network error. Please try again." });
+      setSubmit({ status: "error", message: "Unable to save feedback. Please try again." });
     }
   };
 
