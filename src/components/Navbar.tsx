@@ -408,7 +408,7 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
               : "shadow-[0_12px_30px_rgba(2,14,40,0)]"
           }`}
         >
-          <div className="max-w-[1365px] mx-auto px-4 sm:px-6">
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
             <nav className="flex items-center justify-between h-[84px]">
               {logoBlock}
               {menu}

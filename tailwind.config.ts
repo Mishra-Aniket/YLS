@@ -29,14 +29,16 @@ const config: Config = {
         padding: {
           DEFAULT: "1rem",
           sm: "1.5rem",
-          lg: "2rem",
+          md: "2rem",
+          lg: "2.5rem",
+          xl: "3rem",
         },
         screens: {
-          sm: "540px",
-          md: "720px",
-          lg: "960px",
-          xl: "1140px",
-          "2xl": "1320px",
+          sm: "640px",
+          md: "768px",
+          lg: "1024px",
+          xl: "1280px",
+          "2xl": "1440px",
         },
       },
       boxShadow: {
