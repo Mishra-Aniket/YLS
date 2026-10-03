@@ -6,10 +6,10 @@ import Image from "next/image";
 export default function YLSHeroBadge({ className = "" }: { className?: string }) {
   return (
     <div
-      className={`relative inline-flex items-center justify-center w-[180px] h-[180px] select-none pointer-events-auto ${className}`}
+      className={`relative inline-flex items-center justify-center w-32 h-32 sm:w-36 sm:h-36 lg:w-40 lg:h-40 select-none pointer-events-auto ${className}`}
       aria-label="YES LOGISTICS SERVICE - PUNE - ODC SPECIALIST"
     >
-      {/* 1. Outer Rotating Circular Text Ring (TransHub text-rotate.png or exact SVG) */}
+      {/* 1. Outer Rotating Circular Text Ring */}
       <div className="absolute inset-0 w-full h-full animate-[spin_12s_linear_infinite]">
         <svg
           className="w-full h-full"
@@ -37,17 +37,17 @@ export default function YLSHeroBadge({ className = "" }: { className?: string })
         </svg>
       </div>
 
-      {/* 2. Frosted Outer Ring (130px) */}
-      <div className="absolute inset-0 m-auto w-[130px] h-[130px] rounded-full bg-white/20 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-2xl pointer-events-none" />
+      {/* 2. Frosted Outer Ring (proportional) */}
+      <div className="absolute inset-0 m-auto w-[72%] h-[72%] rounded-full bg-white/20 backdrop-blur-sm border border-white/25 flex items-center justify-center shadow-2xl pointer-events-none" />
 
-      {/* 3. Primary Center Circle (100px) with Boomark Ribbon Icon */}
-      <div className="absolute inset-0 m-auto w-[100px] h-[100px] rounded-full bg-primary flex items-center justify-center shadow-glow transition-transform duration-300 hover:scale-105">
+      {/* 3. Primary Center Circle (proportional) */}
+      <div className="absolute inset-0 m-auto w-[54%] h-[54%] rounded-full bg-primary flex items-center justify-center shadow-glow transition-transform duration-300 hover:scale-105">
         <Image
           src="/images/boomark.png"
           alt="Award Medal Ribbon"
-          width={44}
-          height={44}
-          className="object-contain brightness-0 invert drop-shadow-md"
+          width={36}
+          height={36}
+          className="object-contain brightness-0 invert drop-shadow-md w-1/2 h-1/2"
         />
       </div>
     </div>

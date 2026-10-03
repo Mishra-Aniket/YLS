@@ -15,10 +15,10 @@ export default function ClientMarquee() {
 
   return (
     <div
-      className="relative z-30 mt-[84px] overflow-hidden border-y border-white/10 bg-[#020e28]"
+      className="relative z-30 overflow-hidden border-y border-white/10 bg-[#020b1f] py-3 sm:py-4 shadow-inner"
       aria-label="Companies we work with"
     >
-      <div className="flex w-max animate-marquee items-center gap-3.5 py-2.5 pl-3.5">
+      <div className="flex w-max animate-marquee items-center gap-3.5 pl-3.5">
         {track.map((client, idx) => {
           const profileUrl = `https://www.google.com/search?q=${encodeURIComponent(
             client.name + " India"

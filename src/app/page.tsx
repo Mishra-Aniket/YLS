@@ -24,11 +24,11 @@ export default function HomePage() {
       {/* 1. White Pill Navigation Header */}
       <Navbar variant="floating" />
 
-      {/* 1b. Moveable Client Strip (logo + name pills) */}
-      <ClientMarquee />
-
       {/* 2. Dark Navy Split Hero Section */}
       <HeroSection />
+
+      {/* 2b. Moveable Client Strip (logo + name pills) */}
+      <ClientMarquee />
 
       {/* 3. About Our Company Section */}
       <AboutSection />
