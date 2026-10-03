@@ -46,15 +46,26 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     : [];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 sm:px-6">
+    <div
+      className={`fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 sm:px-6 ${
+        isOpen ? "" : "pointer-events-none"
+      }`}
+      aria-hidden={!isOpen}
+    >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-[#06112E]/80 backdrop-blur-sm transition-opacity"
+        className={`fixed inset-0 bg-[#06112E]/80 backdrop-blur-sm transition-opacity duration-300 ${
+          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
         onClick={onClose}
       />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-card overflow-hidden z-10 border border-slate-100 animate-in fade-in zoom-in-95 duration-200">
+      <div
+        className={`relative w-full max-w-2xl bg-white rounded-3xl shadow-card overflow-hidden z-10 border border-slate-100 transition-all duration-200 ${
+          isOpen ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-3 scale-95"
+        }`}
+      >
         {/* Header / Input */}
         <div className="flex items-center px-6 py-5 border-b border-slate-100">
           <Search className="w-5 h-5 text-primary mr-3 shrink-0" />

@@ -1,78 +1,43 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 
+// TransHub-style dark counter band: orange line icons + big numbers, divider separated
 const STAT_ITEMS = [
-  {
-    icon: "/images/stat1.png",
-    value: "05",
-    suffix: "",
-    title: "Branch Locations",
-    subtitle: "Pune, BLR, Vadodara, Jeypore, Prayagraj",
-  },
-  {
-    icon: "/images/sta2.png",
-    value: "24/7",
-    suffix: "",
-    title: "Response Support",
-    subtitle: "Dedicated Transport Coordinators",
-  },
-  {
-    icon: "/images/stat3.png",
-    value: "100%",
-    suffix: "",
-    title: "Safety Focus",
-    subtitle: "Under Motor Vehicles Act",
-  },
-  {
-    icon: "/images/stat4.png",
-    value: "2021",
-    suffix: "",
-    title: "Established in Pune",
-    subtitle: "All India Fleet Operations",
-  },
+  { icon: "fa-solid fa-plane-departure", value: "05", label: "Branch Locations" },
+  { icon: "fa-solid fa-users", value: "24/7", label: "Response Support" },
+  { icon: "fa-solid fa-warehouse", value: "25,000+", label: "Sq Ft Warehousing" },
+  { icon: "fa-solid fa-truck-fast", value: "15+", label: "Logistics Services" },
 ];
 
 export default function StatisticsStrip() {
   return (
     <section
-      className="relative z-20 py-16 lg:py-20 bg-cover bg-center bg-no-repeat text-white overflow-hidden"
+      className="relative z-20 py-16 lg:py-20 bg-[#020e28] text-white overflow-hidden"
       style={{
-        backgroundImage: "url('/images/stat-bg.jpg')",
-        backgroundColor: "#020e28",
+        backgroundImage:
+          "radial-gradient(ellipse 60% 90% at 15% 50%, rgba(253,85,35,0.06), transparent), radial-gradient(ellipse 50% 80% at 85% 50%, rgba(23,90,157,0.12), transparent)",
       }}
     >
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-[#020e28]/90" />
-
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {STAT_ITEMS.map((item, idx) => (
             <div
-              key={item.title}
-              className="flex items-center gap-4 sm:gap-5 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/40 transition-all duration-300"
+              key={item.label}
+              className={`flex items-center justify-center gap-5 px-6 py-7 ${
+                idx > 0 ? "lg:border-l lg:border-white/10" : ""
+              }`}
             >
-              <div className="w-16 h-16 shrink-0 rounded-2xl bg-primary/20 flex items-center justify-center p-3">
-                <Image
-                  src={item.icon}
-                  alt={item.title}
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                />
-              </div>
-
+              <i
+                className={`${item.icon} text-primary text-4xl lg:text-5xl`}
+                aria-hidden="true"
+              />
               <div>
-                <h3 className="text-3xl sm:text-4xl font-heading font-bold text-white tracking-tight leading-none mb-1">
+                <h3 className="text-3xl sm:text-4xl font-heading font-bold text-white leading-none">
                   {item.value}
-                  {item.suffix && <span className="text-primary">{item.suffix}</span>}
                 </h3>
-                <p className="text-sm font-heading font-semibold text-slate-200">
-                  {item.title}
-                </p>
-                <p className="text-xs text-slate-400 mt-0.5 line-clamp-1">
-                  {item.subtitle}
+                <p className="text-sm text-slate-400 font-medium mt-2">
+                  {item.label}
                 </p>
               </div>
             </div>

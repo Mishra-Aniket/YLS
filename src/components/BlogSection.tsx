@@ -7,9 +7,9 @@ import TruckIcon from "./TruckIcon";
 import { BLOG_POSTS } from "@/lib/constants";
 
 const BLOG_IMAGES = [
-  "/images/bl1-388x275.jpg",
-  "/images/bl2-388x275.jpg",
-  "/images/bl3-388x275.jpg",
+  "/images/work/work-06.jpeg",
+  "/images/work/work-09.jpeg",
+  "/images/work/work-12.jpeg",
 ];
 
 export default function BlogSection() {
@@ -28,16 +28,16 @@ export default function BlogSection() {
         {/* 3 Blog Cards Grid matching TransHub .blog-entry */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {BLOG_POSTS.map((post, idx) => {
-            const imgPath = BLOG_IMAGES[idx] || "/images/bl1-388x275.jpg";
+            const imgPath = BLOG_IMAGES[idx] || "/images/work/work-06.jpeg";
 
             return (
               <article
                 key={post.id}
-                className="group bg-white rounded-[30px] overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
+                className="group bg-white rounded-[30px] p-4 sm:p-5 pb-7 shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
               >
                 <div>
-                  {/* Thumbnail */}
-                  <div className="relative w-full h-60 overflow-hidden bg-slate-100">
+                  {/* Inset rounded thumbnail matching TransHub */}
+                  <div className="relative w-full h-56 rounded-[24px] overflow-hidden bg-slate-100">
                     <Image
                       src={imgPath}
                       alt={post.title}
@@ -52,11 +52,18 @@ export default function BlogSection() {
                   </div>
 
                   {/* Body */}
-                  <div className="p-7">
-                    <div className="flex items-center gap-3 text-xs font-semibold text-mute mb-3">
-                      <span>{post.date}</span>
+                  <div className="px-2 sm:px-3 pt-6">
+                    <div className="flex items-center gap-2.5 text-xs font-semibold text-mute mb-3">
+                      <span className="w-8 h-8 rounded-full bg-dark text-white flex items-center justify-center text-[10px] font-heading font-bold shrink-0">
+                        {post.author
+                          .split(" ")
+                          .slice(0, 2)
+                          .map((w) => w[0])
+                          .join("")}
+                      </span>
+                      <span className="text-dark">By {post.author}</span>
                       <span>&bull;</span>
-                      <span>{post.readTime}</span>
+                      <span>{post.date}</span>
                     </div>
 
                     <h3 className="text-xl font-heading font-bold text-dark group-hover:text-primary transition-colors leading-snug mb-3">
@@ -71,14 +78,16 @@ export default function BlogSection() {
                   </div>
                 </div>
 
-                {/* Footer link */}
-                <div className="px-7 pb-7 pt-0 border-t border-slate-100 mt-2">
+                {/* Footer link matching TransHub: text + dark circular arrow */}
+                <div className="px-2 sm:px-3 pt-5 mt-4 border-t border-slate-100">
                   <Link
                     href={`/blog#${post.slug}`}
-                    className="link-btn pt-4 text-sm font-heading font-semibold text-dark group-hover:text-primary inline-flex items-center gap-2 transition-colors"
+                    className="inline-flex items-center gap-3 text-base font-heading font-semibold text-dark group-hover:text-primary transition-colors"
                   >
-                    <span>Read Article</span>
-                    <i className="fa fa-arrow-right text-xs"></i>
+                    <span>Read More</span>
+                    <span className="w-8 h-8 rounded-full bg-dark text-white flex items-center justify-center transition-colors">
+                      <i className="fa fa-arrow-right text-xs"></i>
+                    </span>
                   </Link>
                 </div>
               </article>

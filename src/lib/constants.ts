@@ -177,6 +177,55 @@ export const CLIENTS: ClientItem[] = [
   { name: "Wilo Mather and Platt Pumps Pvt. Ltd.", location: "Chinchwad, Pune", sector: "Industrial Pumps" },
 ];
 
+export const CLIENT_LOGOS: { name: string; logo: string }[] = [
+  { name: "4 Squares Corporation", logo: "/images/clients/4-squares-corporation.jpeg" },
+  { name: "ACE Coating India Pvt Ltd", logo: "/images/clients/ace-coating-india.jpg" },
+  { name: "AIVA Engineering Pvt Ltd", logo: "/images/clients/aiva-engineering.jpeg" },
+  { name: "Aqualinks", logo: "/images/clients/aqualinks.png" },
+  { name: "Aryavarta Enterprises", logo: "/images/clients/aryavarta-enterprises.jpeg" },
+  { name: "CEVA Logistics India", logo: "/images/clients/ceva-logistics-india.jpeg" },
+  { name: "Cygnii Automation Pvt Ltd", logo: "/images/clients/cygnii-automation.avif" },
+  { name: "DAIVA Engineering Pvt Ltd", logo: "/images/clients/daiva-engineering.jpeg" },
+  { name: "DVB Design Engineering", logo: "/images/clients/dvb-design-engineering.jpeg" },
+  { name: "Eagle Construction", logo: "/images/clients/eagle-construction.avif" },
+  { name: "Hari Om Tech", logo: "/images/clients/hari-om-tech.png" },
+  { name: "Indian Cables & Electricals", logo: "/images/clients/indian-cables-electricals.jpeg" },
+  { name: "KSH International", logo: "/images/clients/ksh-international.jpg" },
+  { name: "Leadec India Pvt Ltd", logo: "/images/clients/leadec-india.png" },
+  { name: "Mahindra", logo: "/images/clients/mahindra.jpg" },
+  { name: "Muteseal Acoustics Pvt Ltd", logo: "/images/clients/muteseal-acoustics.png" },
+  { name: "NEEC Electrotech Pvt Ltd", logo: "/images/clients/neec-electrotech.png" },
+  { name: "Pietro Fiorentini DB India", logo: "/images/clients/pietro-fiorentini-india.jpeg" },
+  { name: "Push Engineering Pvt Ltd", logo: "/images/clients/push-engineering.jpeg" },
+  { name: "Wilo Mather and Platt Pumps", logo: "/images/clients/wilo-mather-platt.jpg" },
+];
+
+export interface GalleryImage {
+  src: string;
+  title: string;
+  category: string;
+}
+
+// Real fleet & operations photos (YLS own fleet)
+export const GALLERY_IMAGES: GalleryImage[] = [
+  { src: "/images/work/work-01.jpeg", title: "ODC Loading at Warehouse Dock", category: "ODC Movement" },
+  { src: "/images/work/work-02.jpeg", title: "Fleet Ready for Dispatch", category: "Fleet" },
+  { src: "/images/work/work-03.jpeg", title: "Container Freight Movement", category: "Container Freight" },
+  { src: "/images/work/work-04.jpeg", title: "Night ODC Dispatch", category: "ODC Movement" },
+  { src: "/images/work/work-05.jpeg", title: "Covered Cargo on Highway", category: "Fleet" },
+  { src: "/images/work/work-06.jpeg", title: "Cable Reels on Multi-Axle Trailer", category: "ODC Movement" },
+  { src: "/images/work/work-07.jpeg", title: "Palletised Cargo Dispatch", category: "Fleet" },
+  { src: "/images/work/work-08.jpeg", title: "Flatbed Trailer with Containers", category: "Container Freight" },
+  { src: "/images/work/work-09.jpeg", title: "Trailer at Industrial Yard", category: "Fleet" },
+  { src: "/images/work/work-10.jpeg", title: "Low-Bed Trailer with Machinery", category: "ODC Movement" },
+  { src: "/images/work/work-11.jpeg", title: "Escort Vehicle Ready for Convoy", category: "Escort Service" },
+  { src: "/images/work/work-12.jpeg", title: "Truck at Warehouse Dock", category: "Warehousing" },
+  { src: "/images/work/work-13.jpeg", title: "Pipeline Cargo on Trailer", category: "ODC Movement" },
+  { src: "/images/yls/yls-odc-trailer.jpg", title: "ODC Trailer at Client Site", category: "ODC Movement" },
+  { src: "/images/yls/yls-heavy-loading.jpg", title: "Crane Loading Operations", category: "ODC Movement" },
+  { src: "/images/yls/yls-warehouse-racks.jpg", title: "Warehouse Racking System", category: "Warehousing" },
+];
+
 export const PRIMARY_SERVICES: ServiceItem[] = [
   {
     id: "fleet-truck",
@@ -186,7 +235,7 @@ export const PRIMARY_SERVICES: ServiceItem[] = [
     shortDesc: "Comprehensive fleet of normal, open body, Taurus, and mini trucks provided at short notice for any destination across India.",
     fullDesc: "We provide all types of transport vehicles like mini trucks, standard trucks, open body trucks, Taurus, and high-capacity freight carriers covered under the Motor Vehicle Act. We arrange rapid material movement from any destination outside Pune with the help of our all-India network.",
     iconName: "Truck",
-    image: "/images/yls/yls-city-transit.jpg",
+    image: "/images/work/work-02.jpeg",
     features: [
       "Open Body & Closed Body Trucks",
       "Multi-axle Taurus (16T to 25T)",
@@ -203,7 +252,7 @@ export const PRIMARY_SERVICES: ServiceItem[] = [
     shortDesc: "All-India specialist in Over Dimensional Cargo (ODC) movement using hydraulic axles, low-bed and multi-axle mechanical trailers.",
     fullDesc: "YES LOGISTICS SERVICE is recognized as an ODC consignment specialist across India. We manage complex heavy-lift cargo, structural steel, industrial boilers, turbines, transformers, and girder transport with route surveys and precision planning.",
     iconName: "ShieldAlert",
-    image: "/images/yls/yls-odc-trailer.jpg",
+    image: "/images/work/work-06.jpeg",
     features: [
       "Hydraulic Multi-Axle Trailers",
       "Low Bed & Semi-Low Bed Trailers",
@@ -237,7 +286,7 @@ export const PRIMARY_SERVICES: ServiceItem[] = [
     shortDesc: "Dedicated pilot vehicles, escort personnel, and crane arrangements for loading and unloading at destination sites.",
     fullDesc: "We provide dedicated escort vehicles and field staff for sensitive and over-dimensional consignments across state highways. Furthermore, we arrange heavy mobile cranes at pickup and destination sites at competitive rates.",
     iconName: "ShieldCheck",
-    image: "/images/yls/yls-heavy-loading.jpg",
+    image: "/images/work/work-11.jpeg",
     features: [
       "Pilot and escort vehicle deployment",
       "Hydraulic & mobile crane arrangements",
@@ -258,7 +307,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     shortDesc: "Mechanical trailers of various capacities registered under the Motor Vehicles Act for pan-India logistics.",
     fullDesc: "High capacity 40ft and 50ft mechanical flatbed and semi-bed trailers engineered for long-distance industrial logistics across all states in India.",
     iconName: "Container",
-    image: "/images/yls/yls-coils-transport.png",
+    image: "/images/work/work-10.jpeg",
     features: ["40ft & 50ft Flatbed Trailers", "Semi-low bed mechanical trailers", "Pan-India national permits"],
   },
   {
@@ -269,7 +318,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     shortDesc: "Standard and non-standard cargo movement to all major ports in India under expert supervision.",
     fullDesc: "Specialized port carting and transport services to JNPT / Nhava Sheva, Mumbai Port, Kandla, Mundra, Kolkata, and Chennai ports with documentation support.",
     iconName: "Ship",
-    image: "/images/choose-img.png",
+    image: "/images/work/work-08.jpeg",
     features: ["JNPT / Nhava Sheva Port Carting", "Standard & ODC Port Cargo", "Customs checkpoint coordination"],
   },
 ];
@@ -384,7 +433,7 @@ export const BLOG_POSTS: BlogPostItem[] = [
       "A resilient logistics pipeline requires strategic staging hubs. Warehouses serve as consolidation centers where consignments are batched and checked prior to long journeys.",
       "Our Pune facility offers both covered high-rack storage and open yard space suitable for structural machinery, finished fabrications, and transit insurance protection.",
     ],
-    image: "/images/yls/yls-warehouse-fleet.jpg",
+    image: "/images/yls/yls-warehouse-racks.jpg",
   },
 ];
 
@@ -399,7 +448,7 @@ export const CASE_STUDIES: CaseStudyItem[] = [
     challenge: "Navigating sharp turns, urban flyovers, and uneven industrial access roads with a 52m rigid structure.",
     solution: "Deployed specialized multi-axle steerable trailer with front and rear pilot escort vehicles and prior route audit.",
     result: "Delivered 12 hours ahead of schedule with zero transit disruption and flawless client site offloading.",
-    image: "/images/yls/yls-odc-trailer.jpg",
+    image: "/images/work/work-04.jpeg",
     stats: { label: "Consignment Length", value: "52 Meters" },
   },
   {
@@ -425,7 +474,7 @@ export const CASE_STUDIES: CaseStudyItem[] = [
     challenge: "Simultaneous dispatches to 5 states requiring synchronized delivery windows.",
     solution: "Mobilized company-owned fleet and Taurus vehicles backed by local branch coordinators in each state.",
     result: "Full consignment delivered with transparent milestone tracking and signed delivery dockets.",
-    image: "/images/yls/yls-city-transit.jpg",
+    image: "/images/work/work-08.jpeg",
     stats: { label: "On-Time Ratio", value: "99.4%" },
   },
   {
@@ -438,7 +487,7 @@ export const CASE_STUDIES: CaseStudyItem[] = [
     challenge: "Lack of overhead crane infrastructure at recipient rural unloading site.",
     solution: "YES Logistics Service pre-arranged a 50-ton hydraulic mobile crane at the site prior to trailer arrival.",
     result: "Smooth tandem offloading completed in 3 hours with certified riggers and safety engineers.",
-    image: "/images/yls/yls-heavy-loading.jpg",
+    image: "/images/work/work-10.jpeg",
     stats: { label: "Crane Capacity", value: "50-Ton Hydra" },
   },
 ];

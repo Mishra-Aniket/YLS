@@ -32,89 +32,119 @@ body {
   color: #fff;
 }
 
-/* TransHub sec-padding */
-.sec-padding {
-  padding: 120px 0;
-}
-
-@media (max-width: 991px) {
+/* TransHub component classes — wrapped in @layer so Tailwind utilities can override them */
+@layer components {
+  /* TransHub sec-padding */
   .sec-padding {
-    padding: 80px 0;
+    padding: 120px 0;
   }
-}
 
-@media (max-width: 767px) {
-  .sec-padding {
-    padding: 60px 0;
+  @media (max-width: 991px) {
+    .sec-padding {
+      padding: 80px 0;
+    }
   }
-}
 
-/* TransHub sub-title */
-.sub-title {
-  text-transform: uppercase;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  color: var(--primary);
-  font-weight: 600;
-  margin-bottom: 10px;
-  font-family: var(--font-family-headings);
-  font-size: 16px;
-}
+  @media (max-width: 767px) {
+    .sec-padding {
+      padding: 60px 0;
+    }
+  }
 
-/* TransHub sec-title */
-.sec-title {
-  font-family: var(--font-family-headings);
-  font-weight: 700;
-  font-size: 48px;
-  line-height: 1.2;
-  color: var(--headings-color);
-}
+  /* TransHub sub-title */
+  .sub-title {
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-family: var(--font-family-headings);
+    font-size: 16px;
+  }
 
-@media (max-width: 991px) {
+  /* TransHub sec-title */
   .sec-title {
-    font-size: 36px;
+    font-family: var(--font-family-headings);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.2;
+    color: var(--headings-color);
   }
-}
 
-@media (max-width: 767px) {
-  .sec-title {
-    font-size: 28px;
+  @media (max-width: 991px) {
+    .sec-title {
+      font-size: 36px;
+    }
   }
-}
 
-/* TransHub sec-intro */
-.sec-intro {
-  max-width: 600px;
-  margin-bottom: 60px;
-}
+  @media (max-width: 767px) {
+    .sec-title {
+      font-size: 28px;
+    }
+  }
 
-.sec-intro.text-center {
-  margin-left: auto;
-  margin-right: auto;
-}
+  /* TransHub sec-intro */
+  .sec-intro {
+    max-width: 600px;
+    margin-bottom: 60px;
+  }
 
-/* TransHub btn-primary */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background-color: var(--primary);
-  color: #fff;
-  font-family: var(--font-family-headings);
-  font-weight: 600;
-  font-size: 16px;
-  padding: 14px 30px;
-  border-radius: 100px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
-}
+  .sec-intro.text-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-.btn-primary:hover {
-  background-color: #eb3802;
-  color: #fff;
+  /* TransHub btn-primary */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--primary);
+    color: #fff;
+    font-family: var(--font-family-headings);
+    font-weight: 600;
+    font-size: 16px;
+    padding: 14px 30px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #eb3802;
+    color: #fff;
+  }
+
+  /* TransHub link-btn */
+  .link-btn {
+    font-family: var(--font-family-headings);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--headings-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+    text-decoration: none;
+  }
+
+  .link-btn:hover {
+    color: var(--primary);
+  }
+
+  /* TransHub icon-lg */
+  .icon-lg {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
 }
 
 /* TransHub check list */
@@ -140,11 +170,9 @@ ul.check li::before {
   left: 0;
   top: 4px;
   width: 18px;
-  height: 18px;
-  background-color: var(--primary);
-  border-radius: 50%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-  background-size: 11px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 16' fill='none' stroke='%23fd5523' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 1l6 7-6 7'/%3E%3Cpath d='M10 1l6 7-6 7'/%3E%3C/svg%3E");
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -184,22 +212,18 @@ ul.check li::before {
   font-size: 18px;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
+/* Scrollbars hidden sitewide (scrolling still works via wheel/touch) */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-x: hidden;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--dark);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #175A9D;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 /* TransHub rotate animation */
@@ -244,6 +268,30 @@ ul.check li::before {
 
 .anim-moveXS {
   animation: moveXS 5s ease-in-out 2s infinite alternate;
+}
+
+/* Client marquee — seamless infinite loop (track holds two copies of the list) */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 45s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
 }
 
 /* Truck icon SVG for sub-titles */

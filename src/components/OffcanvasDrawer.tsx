@@ -26,18 +26,29 @@ export default function OffcanvasDrawer({
     };
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  // Always mounted so the open/close animation plays smoothly
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end">
+    <div
+      className={`fixed inset-0 z-50 flex justify-end ${
+        isOpen ? "" : "pointer-events-none"
+      }`}
+      aria-hidden={!isOpen}
+    >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-dark/60 backdrop-blur-sm transition-opacity"
+        className={`fixed inset-0 bg-dark/60 backdrop-blur-sm transition-opacity duration-300 ${
+          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
         onClick={onClose}
       />
 
-      {/* Drawer matching TransHub .canvas-menu */}
-      <div className="relative w-full max-w-md bg-white h-full shadow-2xl z-10 flex flex-col justify-between p-6 sm:p-8 overflow-y-auto animate-in slide-in-from-right duration-300">
+      {/* Drawer matching TransHub .canvas-menu — slides in/out smoothly */}
+      <div
+        className={`relative w-full max-w-md bg-white h-full shadow-2xl z-10 flex flex-col justify-between p-6 sm:p-8 overflow-y-auto transition-transform duration-300 ease-out ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
         <div>
           {/* Header */}
           <div className="flex items-center justify-between pb-6 border-b border-slate-100">
@@ -107,6 +118,15 @@ export default function OffcanvasDrawer({
                   className="block hover:text-primary transition-colors"
                 >
                   Blog &amp; News
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/gallery"
+                  onClick={onClose}
+                  className="block hover:text-primary transition-colors"
+                >
+                  Gallery
                 </Link>
               </li>
               <li>

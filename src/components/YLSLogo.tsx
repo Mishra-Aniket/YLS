@@ -6,9 +6,20 @@ import Link from "next/link";
 
 interface YLSLogoProps {
   variant?: "light" | "dark" | "horizontal";
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   className?: string;
 }
+
+// Emblem display heights and matching wordmark typography per size
+const SIZES: Record<string, { emblem: number; name: number; sub: number; gap: string }> = {
+  sm: { emblem: 38, name: 15, sub: 10, gap: "gap-2" },
+  md: { emblem: 48, name: 18, sub: 11, gap: "gap-2.5" },
+  lg: { emblem: 58, name: 21, sub: 12, gap: "gap-3" },
+  xl: { emblem: 72, name: 26, sub: 14, gap: "gap-3.5" },
+};
+
+// Aspect ratio of the cleaned transparent emblem asset (w/h)
+const EMBLEM_AR = 1036 / 692;
 
 export default function YLSLogo({
   variant = "light",
@@ -16,33 +27,41 @@ export default function YLSLogo({
   className = "",
 }: YLSLogoProps) {
   const isDark = variant === "dark";
-
-  // Height configurations
-  const heightMap = {
-    sm: 42,
-    md: 50,
-    lg: 60,
-  };
-  const h = heightMap[size] || 50;
-  // Aspect ratio of the authentic uploaded logo is 644/305 ~= 2.11
-  const w = Math.round(h * 2.11);
+  const s = SIZES[size] || SIZES.md;
 
   return (
     <Link
       href="/"
-      className={`inline-flex items-center select-none no-underline transition-transform hover:opacity-95 duration-200 ${className}`}
+      className={`inline-flex items-center select-none no-underline ${s.gap} ${className}`}
       aria-label="YES LOGISTICS SERVICE - Home"
     >
-      <div className="relative flex items-center justify-center">
-        <Image
-          src={isDark ? "/logo/yls_logo_dark.png" : "/logo/yls_logo_navbar.png"}
-          alt="YES LOGISTICS SERVICE"
-          width={w}
-          height={h}
-          priority
-          className="object-contain drop-shadow-sm h-auto max-h-[56px] w-auto"
-        />
-      </div>
+      <Image
+        src="/logo/yls_emblem.png"
+        alt=""
+        width={Math.round(s.emblem * EMBLEM_AR)}
+        height={s.emblem}
+        priority
+        className="object-contain shrink-0"
+        style={{ height: s.emblem, width: "auto" }}
+      />
+
+      {/* Wordmark: bold name on top, letterspaced tagline below (TransHub-style lockup) */}
+      <span className="flex flex-col justify-center leading-none">
+        <span
+          className={`font-heading font-extrabold whitespace-nowrap ${
+            isDark ? "text-white" : "text-dark"
+          }`}
+          style={{ fontSize: s.name, letterSpacing: "0.01em" }}
+        >
+          YES LOGISTICS
+        </span>
+        <span
+          className="font-heading font-bold text-primary leading-none mt-[3px]"
+          style={{ fontSize: s.sub, letterSpacing: "0.42em" }}
+        >
+          SERVICE
+        </span>
+      </span>
     </Link>
   );
 }

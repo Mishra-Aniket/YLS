@@ -17,28 +17,14 @@ export default function PageHeader({
   breadcrumbs,
 }: PageHeaderProps) {
   return (
-    <section className="relative bg-dark text-white pt-36 sm:pt-40 pb-16 sm:pb-20 overflow-hidden border-b border-white/10 select-none">
-      {/* Decorative truck vector pattern */}
-      <div className="absolute right-0 bottom-0 pointer-events-none opacity-20 hidden md:block">
-        <Image
-          src="/images/tranck-v.png"
-          alt=""
-          width={380}
-          height={220}
-          className="object-contain"
-        />
-      </div>
-
-      {/* Decorative geometric shape */}
-      <div className="absolute top-0 right-0 pointer-events-none opacity-25">
-        <Image
-          src="/images/slide-sh1.png"
-          alt=""
-          width={350}
-          height={250}
-          className="object-contain"
-        />
-      </div>
+    <section
+      className="relative bg-dark text-white pt-36 sm:pt-40 pb-16 sm:pb-20 overflow-hidden border-b border-white/10 select-none bg-cover bg-center"
+      style={{
+        backgroundImage: "url('/images/yls/yls-odc-trailer.jpg')",
+      }}
+    >
+      {/* Dark overlay so the real fleet photo reads as a subtle background */}
+      <div className="absolute inset-0 bg-[#020e28]/85" aria-hidden="true" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         {/* Breadcrumb */}

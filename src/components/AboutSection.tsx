@@ -8,53 +8,42 @@ import { COMPANY } from "@/lib/constants";
 
 export default function AboutSection() {
   return (
-    <section className="about-section position-relative sec-padding bg-white overflow-hidden">
-      {/* TransHub Decorative Shape: about-sh.png */}
-      <div className="absolute left-0 top-1/4 pointer-events-none opacity-40 anim-jumping">
-        <Image
-          src="/images/about-sh.png"
-          alt=""
-          width={350}
-          height={350}
-          className="object-contain"
-        />
-      </div>
-
+    <section className="about-section relative sec-padding bg-white overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column: Overlapping Images matching TransHub .about-media */}
           <div className="relative">
             <div className="relative max-w-lg mx-auto lg:max-w-none">
-              {/* Primary Image: about-1.png with rounded 30px */}
+              {/* Primary Image: real loading operations, rounded 30px */}
               <div className="relative rounded-[30px] overflow-hidden shadow-card aspect-[4/3] w-11/12">
                 <Image
-                  src="/images/about-1.png"
-                  alt="YES Logistics Fleet"
+                  src="/images/yls/yls-heavy-loading.jpg"
+                  alt="YES Logistics crew loading a consignment onto a truck"
                   fill
                   className="object-cover"
                 />
               </div>
 
-              {/* Floating Stat 1: .ab-stat matching TransHub */}
-              <div className="absolute top-8 right-2 sm:right-6 z-20 w-56 sm:w-64 bg-primary text-white p-5 rounded-[24px] shadow-2xl text-center">
+              {/* Floating Stat 1: .ab-stat matching TransHub — compact on mobile */}
+              <div className="absolute top-4 right-1 sm:top-8 sm:right-6 z-20 w-36 sm:w-64 bg-primary text-white p-3 sm:p-5 rounded-[18px] sm:rounded-[24px] shadow-2xl text-center">
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-3xl sm:text-4xl font-heading font-extrabold leading-none">
+                  <span className="text-xl sm:text-4xl font-heading font-extrabold leading-none">
                     2021
                   </span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-amber-200">
+                  <span className="text-[9px] sm:text-xs font-bold uppercase tracking-wider text-amber-200">
                     Estd
                   </span>
                 </div>
-                <p className="text-xs font-medium text-white/90 mt-1">
+                <p className="text-[9px] sm:text-xs font-medium text-white/90 mt-1">
                   Established in Pune &bull; Pan-India
                 </p>
               </div>
 
-              {/* Secondary Image: about-2.png with rounded 30px */}
+              {/* Secondary Image: real warehouse racks photo, rounded 30px */}
               <div className="relative -mt-16 ml-auto w-3/5 aspect-[4/3] rounded-[30px] overflow-hidden shadow-card border-4 border-white z-10 hidden sm:block">
                 <Image
-                  src="/images/about-2.png"
-                  alt="Loading Operations"
+                  src="/images/yls/yls-warehouse-racks.jpg"
+                  alt="YES Logistics covered warehouse storage racks"
                   fill
                   className="object-cover"
                 />
@@ -73,14 +62,14 @@ export default function AboutSection() {
                 </div>
               </div>
 
-              {/* Official Circular Emblem Badge from uploaded graphic */}
+              {/* Official YLS Emblem Badge (clean transparent mark) */}
               <div className="absolute -bottom-6 right-8 z-30 w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white shadow-2xl border-2 border-slate-100 flex items-center justify-center overflow-hidden hover:scale-105 transition-transform">
                 <Image
-                  src="/logo/yls_circular_badge.png"
+                  src="/logo/yls_emblem.png"
                   alt="YES LOGISTICS SERVICE Emblem"
-                  width={112}
-                  height={112}
-                  className="object-contain rounded-full"
+                  width={96}
+                  height={64}
+                  className="object-contain w-[82%] h-auto"
                 />
               </div>
             </div>
@@ -152,7 +141,7 @@ export default function AboutSection() {
                 className="btn-primary"
               >
                 <span>About Our Company</span>
-                <i className="fa fa-arrow-right text-xs" aria-hidden="true"></i>
+                <i className="fa fa-turn-up text-xs" aria-hidden="true"></i>
               </Link>
 
               {/* TransHub Quick Call */}

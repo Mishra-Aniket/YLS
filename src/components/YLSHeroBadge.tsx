@@ -25,8 +25,13 @@ export default function YLSHeroBadge({ className = "" }: { className?: string })
           </defs>
 
           <text className="fill-white text-[11px] font-extrabold tracking-[0.24em] uppercase font-heading">
-            <textPath href="#ylsCirclePath" startOffset="0%">
-              ★ YES LOGISTICS SERVICE ★ PUNE ★ ODC SPECIALIST
+            <textPath
+              href="#ylsCirclePath"
+              startOffset="0%"
+              textLength="436"
+              lengthAdjust="spacing"
+            >
+              ★ YES LOGISTICS SERVICE ★ PUNE ★ ODC SPECIALIST ★
             </textPath>
           </text>
         </svg>
