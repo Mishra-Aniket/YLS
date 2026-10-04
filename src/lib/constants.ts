@@ -73,11 +73,11 @@ export const COMPANY = {
   email: "ylspune@gmail.com",
   registeredOffice: {
     address: "CTS 1937 S1 Nilratna Apt BLD 2F",
-    area: "Chinchwad Gaon",
+    area: "Pune",
     city: "Pune",
     state: "Maharashtra",
     pincode: "411033",
-    full: "CTS 1937 S1 Nilratna Apt BLD 2F, Chinchwad, Pune 411033, Maharashtra",
+    full: "CTS 1937 S1 Nilratna Apt BLD 2F, Pune 411033, Maharashtra",
   },
   registration: {
     firmType: "Fleet Owner & Transport Contractor",
@@ -108,7 +108,7 @@ export const BRANCHES: Branch[] = [
       { name: "Sandeep Ojha", phone: "+91 70200 57149", phoneRaw: "+917020057149" },
       { name: "R. K. Mishra", phone: "+91 70212 77197", phoneRaw: "+917021277197" },
     ],
-    address: "CTS 1937 1S Nilratan Apt, Chinchwad Gaon",
+    address: "CTS 1937 1S Nilratan Apt, Pune",
     pincode: "411033",
     email: "ylspune@gmail.com",
     isHeadquarter: true,
@@ -179,7 +179,7 @@ export const CLIENTS: ClientItem[] = [
   { name: "Royal Earth Movers", location: "Aurangabad", sector: "Heavy Vehicles" },
   { name: "4 Squares Corporation", location: "Bangalore", sector: "Logistics & Supply" },
   { name: "Shalimar Construction", location: "Aurangabad", sector: "General Contracting" },
-  { name: "Wilo Mather and Platt Pumps Pvt. Ltd.", location: "Chinchwad, Pune", sector: "Industrial Pumps" },
+  { name: "Wilo Mather and Platt Pumps Pvt. Ltd.", location: "Pune", sector: "Industrial Pumps" },
 ];
 
 export const CLIENT_LOGOS: { name: string; logo: string }[] = [
@@ -461,7 +461,7 @@ export const CASE_STUDIES: CaseStudyItem[] = [
     slug: "warehouse-inventory",
     category: "Warehousing & Staging",
     title: "Covered Warehouse Inventory Staging",
-    location: "Chinchwad & Pune Yard",
+    location: "Pune Yard",
     cargo: "High-value Precision Pump Assemblies",
     challenge: "Client required 45-day phased dispatch with weather-tight storage and daily inventory tracking.",
     solution: "Consolidated stock in YLS covered warehouse with open storage crane access for immediate truck carting.",
@@ -477,7 +477,7 @@ export const CASE_STUDIES: CaseStudyItem[] = [
     location: "Pune to Bangalore, Vadodara, Jeypore, Prayagraj",
     cargo: "Industrial Castings & Machinery",
     challenge: "Simultaneous dispatches to 5 states requiring synchronized delivery windows.",
-    solution: "Mobilized company-owned fleet and Taurus vehicles backed by local branch coordinators in each state.",
+    solution: "Mobilized company-owned fleet and Taurus vehicles backed by branch coordinators in each state.",
     result: "Full consignment delivered with transparent milestone tracking and signed delivery dockets.",
     image: "/images/work/work-08.jpeg",
     stats: { label: "On-Time Ratio", value: "99.4%" },

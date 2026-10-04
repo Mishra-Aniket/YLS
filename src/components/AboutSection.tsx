@@ -88,12 +88,12 @@ export default function AboutSection() {
 
             {/* Sec-Title */}
             <h2 className="sec-title">
-              Pan-India Fleet Owner &amp; Transport Contractor in Chinchwad, Pune
+              Pan-India Fleet Owner &amp; Transport Contractor in Pune
             </h2>
 
             {/* Paragraph */}
             <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-              YES LOGISTICS SERVICE is a Pune-registered fleet owner and transport contractor established in 2021. We provide dependable transport for every requirement — from local Pickups and Taurus trucks to heavy multi-axle trailers, covered warehousing, and loading support across India.
+              YES LOGISTICS SERVICE is a Pune-registered fleet owner and transport contractor established in 2021. We provide dependable transport for every requirement — from Express Pickups and Taurus trucks to heavy multi-axle trailers, covered warehousing, and loading support across India.
             </p>
 
             {/* Features Strip (.about-feat) */}

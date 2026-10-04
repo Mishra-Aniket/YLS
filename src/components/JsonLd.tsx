@@ -14,7 +14,7 @@ export function OrganizationJsonLd() {
     foundingDate: '2021-07-01',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'CTS 1937 S1 Nilratna Apt BLD 2F, Chinchwad',
+      streetAddress: 'CTS 1937 S1 Nilratna Apt BLD 2F',
       addressLocality: 'Pune',
       addressRegion: 'Maharashtra',
       postalCode: '411033',

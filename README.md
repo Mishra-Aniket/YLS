@@ -9,9 +9,9 @@ A modern, high-performance logistics transportation website built with Next.js (
 - **Company Name:** YES LOGISTICS SERVICE
 - **Tagline:** AN ENTIRE LOGISTICS SOLUTION
 - **Business Type:** Fleet Owner & Transport Contractor
-- **Speciality:** ODC Consignment Specialist across India
+- **Speciality:** All-Capacity Vehicle Fleet & Pan-India Transport Contractor
 - **Established Date:** 1 July 2021
-- **Registered Office:** CTS 1937 S1 Nilratna Apt BLD 2F, Chinchwad, Pune 411033, Maharashtra
+- **Registered Office:** CTS 1937 S1 Nilratna Apt BLD 2F, Pune 411033, Maharashtra
 - **Hotline Numbers:** +91 70200 57149 / +91 70212 77197
 - **Official Email:** ylspune@gmail.com
 
@@ -20,7 +20,7 @@ A modern, high-performance logistics transportation website built with Next.js (
 ## 📍 All-India Branch Network
 
 1. **Pune (MH) — Headquarters**  
-   *Address:* CTS 1937 S1 Nilratna Apt BLD 2F, Chinchwad, Pune – 411033
+   *Address:* CTS 1937 S1 Nilratna Apt BLD 2F, Pune – 411033
 2. **Bangalore (KA)**  
    *Address:* 205 Block 2nd Floor Himalaya Plaza, Bangalore – 560053
 3. **Vadodara (GJ)**  

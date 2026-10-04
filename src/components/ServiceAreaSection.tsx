@@ -8,7 +8,7 @@ export const CITIES = [
     name: 'Pune',
     state: 'Maharashtra',
     role: 'Registered HQ & Primary Staging Hub',
-    desc: 'Chinchwad registered office, Chakan MIDC heavy equipment staging, covered warehousing, and central dispatch control desk.',
+    desc: 'Pune registered office, Chakan MIDC heavy equipment staging, covered warehousing, and central dispatch control desk.',
   },
   {
     name: 'Mumbai',

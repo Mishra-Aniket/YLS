@@ -98,7 +98,7 @@ export const FLEET_SERVICES: FleetServiceCard[] = [
     capacityTag: "15,000+ Sq. Ft. Facility",
     capacityColor: "bg-teal-600 text-white",
     title: "Covered Warehousing & Storage",
-    shortDesc: "Modern covered warehouse and open industrial yard in Chinchwad, Pune for safe consignment storage, material staging, and distribution management.",
+    shortDesc: "Modern covered warehouse and open industrial yard in Pune for safe consignment storage, material staging, and distribution management.",
     image: "/images/yls/yls-warehouse-racks.jpg",
     badges: ["Pune Industrial Hub", "Open & Covered Yard", "Transit Insurance"],
     link: "/services#warehousing",

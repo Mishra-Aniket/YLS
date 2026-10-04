@@ -20,7 +20,7 @@ export const FAQS = [
   {
     question: 'Does YES Logistics Service provide pan-India transport coverage?',
     answer:
-      'Yes. Headquartered in Chinchwad, Pune (Maharashtra), we operate a nationwide network with dedicated branch offices and coordinators in Bangalore (Karnataka), Vadodara (Gujarat), Jeypore (Odisha), and Prayagraj (Uttar Pradesh).',
+      'Yes. Headquartered in Pune (Maharashtra), we operate a nationwide network with dedicated branch offices and coordinators in Bangalore (Karnataka), Vadodara (Gujarat), Jeypore (Odisha), and Prayagraj (Uttar Pradesh).',
   },
   {
     question: 'How quickly can I get a freight quotation for my consignment?',
@@ -35,7 +35,7 @@ export const FAQS = [
   {
     question: 'What warehousing and staging facilities are available in Pune?',
     answer:
-      'We operate modern covered warehousing and expansive open storage yards in the Pune industrial corridor (Chinchwad / Chakan). Facilities feature heavy crane loading/unloading support, inventory staging, and transit insurance options.',
+      'We operate modern covered warehousing and expansive open storage yards in the Pune industrial corridor (Pune / Chakan). Facilities feature heavy crane loading/unloading support, inventory staging, and transit insurance options.',
   },
 ];
 

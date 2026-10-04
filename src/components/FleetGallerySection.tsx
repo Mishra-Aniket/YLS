@@ -12,7 +12,7 @@ const REAL_OPERATIONS = [
     image: '/images/work/work-01.jpeg',
     title: 'Warehouse Dockside ODC Loading',
     category: 'ODC & Warehousing',
-    location: 'Chinchwad Staging Yard, Pune',
+    location: 'Pune Staging Yard',
     badge: 'DOCK OPERATIONS',
   },
   {

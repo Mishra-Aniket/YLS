@@ -22,18 +22,18 @@ const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || 'https://yeslogisticsservice.com';
 
 export const metadata: Metadata = {
-  title: 'YLS — YES LOGISTICS SERVICE | ODC Transport Pune & Pan-India',
+  title: 'YLS — YES LOGISTICS SERVICE | Pan-India Fleet Owner & Transport Contractor',
   description:
-    'YES Logistics Service (YLS Pune) — Fleet owner & ODC consignment specialist in Chinchwad. Pan-India hydraulic trailers & warehousing. Call +91 70200 57149.',
+    'YES Logistics Service (YLS Pune) — Pan-India fleet owner & transport contractor. Pickups to 150T hydraulic ODC trailers & warehousing. Call +91 70200 57149.',
   keywords: [
     'YLS',
     'YES Logistics Service',
     'YLS Pune',
-    'ODC transport in Pune',
+    'transport contractor Pune',
     'hydraulic trailer Pune',
     'heavy haulage Pune',
-    'fleet owner Chinchwad',
-    'logistics services near me',
+    'fleet owner Pune',
+    'logistics services Pune',
     'trailer transport Pune',
   ],
   authors: [{ name: 'YES LOGISTICS SERVICE' }],

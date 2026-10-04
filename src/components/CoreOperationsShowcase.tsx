@@ -48,9 +48,9 @@ export const CORE_DIVISIONS = [
     id: "covered-warehousing",
     badge: "STORAGE & TRANSIT STAGING &bull; PUNE HUB",
     title: "Covered Warehousing & Industrial Yard Storage",
-    subtitle: "Modern covered storage and open yard facilities in Chinchwad, Pune for inventory staging and cross-docking.",
+    subtitle: "Modern covered storage and open yard facilities in Pune for inventory staging and cross-docking.",
     description:
-      "Strategically situated in the Chinchwad industrial corridor of Pune, our facility provides secure, weather-protected storage for finished machinery, raw materials, and transit staging. Equipped with material handling systems, overhead cranes, and 24/7 security.",
+      "Strategically situated in the Pune industrial corridor, our facility provides secure, weather-protected storage for finished machinery, raw materials, and transit staging. Equipped with material handling systems, overhead cranes, and 24/7 security.",
     points: [
       "Heavy-duty industrial racking and weather-protected covered warehouse bays",
       "Expansive open yard for container holding, trailer parking, and large-footprint machinery",
@@ -66,14 +66,14 @@ export const CORE_DIVISIONS = [
     id: "express-pickups",
     badge: "SMALL & MEDIUM VEHICLES &bull; EXPRESS DELIVERY",
     title: "Mini Trucks & Mahindra Bolero Pickup Fleet",
-    subtitle: "Point-to-point urban shuttles, factory-to-dock deliveries, and express regional cargo movements.",
+    subtitle: "Point-to-point shuttles, factory-to-dock deliveries, and express regional cargo movements.",
     description:
       "Understanding that modern supply chains require agile, rapid transportation alongside heavy haulage, YES Logistics operates a versatile fleet of Mahindra Bolero Maxi Trucks, Tata 407s, and LCVs. Ideal for rapid parcel movements, emergency machine breakdown spares, and direct factory-to-airport/railhead logistics.",
     points: [
       "1.0-Ton to 3.5-Ton Mahindra Bolero pickups and LCVs for rapid same-day dispatches",
-      "Quick loading and dock access in congested industrial zones without truck entry restrictions",
+      "Quick loading and dock access in industrial zones without truck entry restrictions",
       "Dedicated transport for factory machine parts, precision electricals, and urgent components",
-      "Seamless integration with our Pune central warehouse for local distribution and staging",
+      "Seamless integration with our Pune central warehouse for regional distribution and staging",
     ],
     image: "/images/work/work-12.jpeg", // The exact Bolero Pickup (GJ15AX0860) at warehouse dock
     imageAlt: "Mahindra Bolero Maxi Truck at YES Logistics warehouse loading dock",

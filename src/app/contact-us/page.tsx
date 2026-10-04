@@ -93,7 +93,7 @@ export default function ContactPage() {
                 </p>
               </div>
               <div className="pt-6 mt-6 border-t border-slate-200 text-xs text-slate-500 font-mono">
-                Pin: 411033 &bull; Chinchwad
+                Pin: 411033 &bull; Pune
               </div>
             </div>
 

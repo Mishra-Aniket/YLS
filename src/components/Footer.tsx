@@ -177,7 +177,7 @@ export default function Footer() {
                   </a>
                 </div>
                 <p className="text-slate-400 text-[11px] leading-tight pt-1">
-                  HQ: CTS 1937 S1 Nilratna Apt BLD 2F, Chinchwad, Pune 411033
+                  HQ: CTS 1937 S1 Nilratna Apt BLD 2F, Pune 411033
                 </p>
               </div>
 
@@ -200,7 +200,7 @@ export default function Footer() {
             </div>
 
             <p className="text-[11px] text-slate-400 font-medium">
-              Registered Office: CTS 1937 S1 Nilratna Apt BLD 2F, Chinchwad, Pune 411033
+              Registered Office: CTS 1937 S1 Nilratna Apt BLD 2F, Pune 411033
             </p>
           </div>
         </div>

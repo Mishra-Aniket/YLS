@@ -108,7 +108,7 @@ export default function AboutPage() {
                     Registered Office
                   </span>
                   <p className="text-xs font-bold text-slate-700 mt-0.5">
-                    Chinchwad, Pune 411033
+                    Pune 411033
                   </p>
                 </div>
 

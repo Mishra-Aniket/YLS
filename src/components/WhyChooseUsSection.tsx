@@ -30,7 +30,7 @@ export const TRUST_PILLARS = [
     icon: Building2,
     tag: "5 STATE HUBS",
     title: "Pan-India Branch Network",
-    desc: "Physical operational offices and field handlers in Pune (HQ), Bangalore (Karnataka), Vadodara (Gujarat), Jeypore (Odisha), and Prayagraj (UP) ensuring local coordination at every loading dock.",
+    desc: "Physical operational offices and field handlers in Pune (HQ), Bangalore (Karnataka), Vadodara (Gujarat), Jeypore (Odisha), and Prayagraj (UP) ensuring ground coordination at every loading dock.",
     metric: "5 Multi-State Hubs",
     highlight: "Nationwide Route Access",
   },

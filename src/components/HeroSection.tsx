@@ -41,7 +41,7 @@ const HERO_SLIDES = [
     alt: 'YES Logistics covered warehouse and storage facility in Pune',
     tag: 'Covered Warehousing & Storage Yard',
     title: '15,000+ Sq Ft Covered Storage & Staging',
-    location: 'Chinchwad & Chakan Industrial Hub',
+    location: 'Pune & Chakan Industrial Hub',
   },
 ];
 
@@ -93,7 +93,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-slate-300 font-sans text-base sm:text-lg leading-relaxed max-w-xl mb-6 sm:mb-8">
-              Your single pan-India transport partner for every requirement. Whether you need a quick Pickup for local dispatch, a Taurus for bulk freight, or a Multi-Axle Trailer for heavy haulage, YES Logistics ensures safe and timely delivery across the nation.
+              Your single pan-India transport partner for every requirement. Whether you need a quick Pickup for express dispatch, a Taurus for bulk freight, or a Multi-Axle Trailer for heavy haulage, YES Logistics ensures safe and timely delivery across the nation.
             </p>
 
             <div className="mb-6 sm:mb-8 max-w-xl">
