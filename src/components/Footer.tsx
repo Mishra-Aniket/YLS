@@ -190,6 +190,65 @@ export default function Footer() {
               </div>
             </div>
           </div>
+
+          {/* Statutory Registrations & Legal Verification Strip */}
+          <div className="mt-12 pt-8 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+            <div className="bg-white/5 rounded-2xl p-4 border border-white/10 flex items-start gap-3 hover:border-primary/50 transition">
+              <div className="w-8 h-8 rounded-xl bg-primary/20 text-primary flex items-center justify-center shrink-0 mt-0.5">
+                <i className="fa-solid fa-file-invoice text-sm" />
+              </div>
+              <div>
+                <span className="font-heading font-bold text-white text-xs uppercase tracking-wider block">
+                  GST Registered Firm
+                </span>
+                <p className="text-slate-400 text-[11px] mt-0.5">
+                  Tax Compliant Invoicing &amp; E-Way Bill Ready
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white/5 rounded-2xl p-4 border border-white/10 flex items-start gap-3 hover:border-emerald-500/50 transition">
+              <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i className="fa-solid fa-building-flag text-sm" />
+              </div>
+              <div>
+                <span className="font-heading font-bold text-white text-xs uppercase tracking-wider block">
+                  MSME Udyam Certified
+                </span>
+                <p className="text-slate-400 text-[11px] mt-0.5">
+                  Govt. of India Enterprise (UDYAM-MH-26-0145431)
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white/5 rounded-2xl p-4 border border-white/10 flex items-start gap-3 hover:border-blue-500/50 transition">
+              <div className="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i className="fa-solid fa-certificate text-sm" />
+              </div>
+              <div>
+                <span className="font-heading font-bold text-white text-xs uppercase tracking-wider block">
+                  Shop &amp; Establishment
+                </span>
+                <p className="text-slate-400 text-[11px] mt-0.5">
+                  Municipal License Reg. 2131000315404073
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white/5 rounded-2xl p-4 border border-white/10 flex items-start gap-3 hover:border-amber-500/50 transition">
+              <div className="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i className="fa-solid fa-truck-shield text-sm" />
+              </div>
+              <div>
+                <span className="font-heading font-bold text-white text-xs uppercase tracking-wider block">
+                  Motor Vehicles Act
+                </span>
+                <p className="text-slate-400 text-[11px] mt-0.5">
+                  All-India National Permit Operator
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </footer>
 

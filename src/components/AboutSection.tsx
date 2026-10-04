@@ -128,6 +128,33 @@ export default function AboutSection() {
               </div>
             </div>
 
+            {/* Statutory Registrations & Legal Verification Block */}
+            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 my-4 space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-heading font-extrabold uppercase tracking-wider text-[#06112E] flex items-center gap-1.5">
+                  <i className="fa-solid fa-shield-check text-emerald-600" />
+                  <span>Statutory Compliance &amp; Registrations</span>
+                </span>
+                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full uppercase">
+                  Verified Enterprise
+                </span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-1 text-[11px] font-medium text-slate-700">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                  <span><strong>GST Registered Firm</strong></span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                  <span><strong>MSME Udyam Certified</strong></span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                  <span><strong>M.V. Act Compliant</strong></span>
+                </div>
+              </div>
+            </div>
+
             {/* Checklist matching TransHub ul.check */}
             <ul className="check space-y-3">
               <li>Fleet Owner &amp; Transport Contractor with verified pan-India network</li>
