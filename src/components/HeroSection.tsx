@@ -5,18 +5,43 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import YLSHeroBadge from './YLSHeroBadge';
-import { Search } from 'lucide-react';
+import { Search, ShieldCheck } from 'lucide-react';
 
 const HERO_SLIDES = [
   {
     image: '/images/yls/yls-odc-trailer.jpg',
     alt: 'YES Logistics Service ODC trailer fleet at an industrial site in Pune',
     tag: 'ODC Heavy Haulage Fleet',
+    title: 'Hydraulic Axle & ODC Consignment Specialist',
+    location: 'Chakan MIDC & All India Highways',
+  },
+  {
+    image: '/images/work/work-04.jpeg',
+    alt: 'YES Logistics 52-meter long girder ODC transport at night',
+    tag: '52m Long Girder Convoy',
+    title: '52-Meter Structure Transit & Escort Convoy',
+    location: 'Interstate Highway Route Audit',
   },
   {
     image: '/images/yls/yls-heavy-loading.jpg',
-    alt: 'YES Logistics Service crew loading consignment onto a truck',
-    tag: 'Safe Consignment Operations',
+    alt: 'YES Logistics Service heavy machinery loading with mobile crane',
+    tag: 'Heavy Machinery & Crane Operations',
+    title: 'Precision Heavy Lift & Mobile Crane Operations',
+    location: 'Industrial Dock & Staging Yard',
+  },
+  {
+    image: '/images/work/work-06.jpeg',
+    alt: 'YES Logistics cable reels on multi-axle mechanical trailer',
+    tag: 'Multi-Axle Trailer Fleet',
+    title: 'Industrial Cable Reels & Raw Material Transport',
+    location: 'Pan-India Freight Corridor',
+  },
+  {
+    image: '/images/yls/yls-warehouse-racks.jpg',
+    alt: 'YES Logistics covered warehouse and storage facility in Pune',
+    tag: 'Covered Warehousing & Storage Yard',
+    title: '15,000+ Sq Ft Covered Storage & Staging',
+    location: 'Chinchwad & Chakan Industrial Hub',
   },
 ];
 
@@ -49,6 +74,8 @@ export default function HeroSection() {
       trackingEl.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const activeSlideData = HERO_SLIDES[currentSlide];
 
   return (
     <section className="relative w-full bg-[#06112E] overflow-hidden select-none">
@@ -150,22 +177,23 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column */}
+          {/* Right Column: High-Res Real Fleet Showcase Slider */}
           <div
             className="order-2 lg:col-span-5 xl:col-span-6 relative w-full flex items-center justify-center lg:justify-end"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            <div className="relative w-full max-w-[560px] xl:max-w-[600px]">
+            <div className="relative w-full max-w-[580px] xl:max-w-[620px]">
               <div className="hidden sm:block absolute -top-6 -left-6 z-30 pointer-events-none drop-shadow-2xl">
                 <YLSHeroBadge className="scale-75 origin-center" />
               </div>
 
-              <div className="relative rounded-[28px] overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.7)] ring-1 ring-white/15 aspect-[16/10] bg-slate-900 group">
+              {/* Slider Image Container */}
+              <div className="relative rounded-[32px] overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.75)] ring-1 ring-white/20 aspect-[16/10] bg-slate-950 group">
                 {HERO_SLIDES.map((slide, idx) => (
                   <div
                     key={slide.image}
-                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
                       idx === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
                     }`}
                   >
@@ -174,25 +202,39 @@ export default function HeroSection() {
                       alt={slide.alt}
                       fill
                       priority={idx === 0}
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 600px"
-                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 620px"
+                      className="object-cover object-center transition-transform duration-1000 group-hover:scale-105"
                     />
                   </div>
                 ))}
 
-                <div className="absolute top-4 right-4 z-20">
-                  <span className="px-3.5 py-1.5 rounded-full bg-[#06112E]/80 backdrop-blur-md border border-white/20 text-white font-heading font-semibold text-[11px] sm:text-xs uppercase tracking-wider">
-                    ODC Specialist &bull; All-India
+                {/* Top Badge: Verified Tag & Slide Counter */}
+                <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
+                  <span className="px-3.5 py-1.5 rounded-full bg-[#06112E]/85 backdrop-blur-md border border-white/20 text-white font-heading font-semibold text-[11px] sm:text-xs uppercase tracking-wider flex items-center gap-1.5">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>{activeSlideData.tag}</span>
+                  </span>
+                  <span className="px-3 py-1.5 rounded-full bg-primary/90 text-white font-heading font-bold text-xs">
+                    0{currentSlide + 1} / 0{HERO_SLIDES.length}
                   </span>
                 </div>
 
-                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#06112E]/90 via-[#06112E]/40 to-transparent pointer-events-none" />
+                {/* Bottom Overlay Info Banner */}
+                <div className="absolute inset-x-0 bottom-0 pt-16 pb-4 px-5 bg-gradient-to-t from-[#06112E] via-[#06112E]/80 to-transparent pointer-events-none z-10">
+                  <h4 className="text-white font-heading font-extrabold text-sm sm:text-base tracking-wide uppercase line-clamp-1 drop-shadow-md">
+                    {activeSlideData.title}
+                  </h4>
+                  <p className="text-slate-300 text-[11px] sm:text-xs font-sans line-clamp-1 mt-0.5">
+                    📍 {activeSlideData.location}
+                  </p>
+                </div>
 
+                {/* Navigation Arrows */}
                 <button
                   type="button"
                   onClick={prevSlide}
                   aria-label="Previous slide"
-                  className="absolute left-3.5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#06112E]/70 hover:bg-primary text-white backdrop-blur-md flex items-center justify-center transition-all duration-300 opacity-80 group-hover:opacity-100 border border-white/20 cursor-pointer shadow-lg"
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#06112E]/80 hover:bg-primary text-white backdrop-blur-md flex items-center justify-center transition-all duration-300 opacity-80 group-hover:opacity-100 border border-white/20 cursor-pointer shadow-lg"
                 >
                   <i className="fa fa-arrow-left text-xs sm:text-sm" aria-hidden="true" />
                 </button>
@@ -200,25 +242,27 @@ export default function HeroSection() {
                   type="button"
                   onClick={nextSlide}
                   aria-label="Next slide"
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#06112E]/70 hover:bg-primary text-white backdrop-blur-md flex items-center justify-center transition-all duration-300 opacity-80 group-hover:opacity-100 border border-white/20 cursor-pointer shadow-lg"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#06112E]/80 hover:bg-primary text-white backdrop-blur-md flex items-center justify-center transition-all duration-300 opacity-80 group-hover:opacity-100 border border-white/20 cursor-pointer shadow-lg"
                 >
                   <i className="fa fa-arrow-right text-xs sm:text-sm" aria-hidden="true" />
                 </button>
 
-                <div className="absolute bottom-5 left-6 z-20 flex items-center gap-2">
+                {/* Dots Indicator */}
+                <div className="absolute bottom-3 right-5 z-20 flex items-center gap-1.5">
                   {HERO_SLIDES.map((_, idx) => (
                     <button
                       key={idx}
                       onClick={() => setCurrentSlide(idx)}
                       aria-label={`Go to slide ${idx + 1}`}
                       className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                        idx === currentSlide ? 'w-8 bg-primary' : 'w-2.5 bg-white/70 hover:bg-white'
+                        idx === currentSlide ? 'w-7 bg-primary' : 'w-2 bg-white/60 hover:bg-white'
                       }`}
                     />
                   ))}
                 </div>
               </div>
 
+              {/* Verified Fleet Floating Card */}
               <div className="absolute -bottom-5 right-2 sm:-bottom-6 sm:right-4 z-20 flex items-center gap-3 sm:gap-4 bg-white px-3.5 py-2.5 sm:px-6 sm:py-3.5 rounded-2xl sm:rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.35)] border border-slate-100">
                 <div className="shrink-0 flex items-center">
                   <Image

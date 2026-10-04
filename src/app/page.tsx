@@ -9,6 +9,7 @@ import ServicesSection from '@/components/ServicesSection';
 import WorkingProcessSection from '@/components/WorkingProcessSection';
 import WhyChooseUsSection from '@/components/WhyChooseUsSection';
 import CoreOperationsShowcase from '@/components/CoreOperationsShowcase';
+import FleetGallerySection from '@/components/FleetGallerySection';
 import StatisticsStrip from '@/components/StatisticsStrip';
 import CaseStudiesSection from '@/components/CaseStudiesSection';
 import TrackingSection from '@/components/TrackingSection';
@@ -32,6 +33,7 @@ export default function HomePage() {
       <WorkingProcessSection />
       <WhyChooseUsSection />
       <CoreOperationsShowcase />
+      <FleetGallerySection />
       <StatisticsStrip />
       <CaseStudiesSection />
       <TrackingSection />
