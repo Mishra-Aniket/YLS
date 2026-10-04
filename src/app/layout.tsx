@@ -87,11 +87,40 @@ export default function RootLayout({
       className={`scroll-smooth ${dmSans.variable} ${rethinkSans.variable}`}
     >
       <head>
-        {/* Favicon & Logo for Browser Tabs */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        {/* Dynamic Favicon Script for GitHub Pages & Custom Domain */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var basePath = window.location.pathname.startsWith('/YLS') ? '/YLS' : '';
+                var iconUrl = basePath + '/logo/yls_monogram_crop_exact.png';
+                
+                var iconLink = document.createElement('link');
+                iconLink.rel = 'icon';
+                iconLink.type = 'image/png';
+                iconLink.href = iconUrl;
+                document.head.appendChild(iconLink);
+
+                var shortcutLink = document.createElement('link');
+                shortcutLink.rel = 'shortcut icon';
+                shortcutLink.href = iconUrl;
+                document.head.appendChild(shortcutLink);
+
+                var appleLink = document.createElement('link');
+                appleLink.rel = 'apple-touch-icon';
+                appleLink.href = iconUrl;
+                document.head.appendChild(appleLink);
+              })();
+            `,
+          }}
+        />
+        <link rel="icon" type="image/png" href="/YLS/logo/yls_monogram_crop_exact.png" />
+        <link rel="shortcut icon" href="/YLS/logo/yls_monogram_crop_exact.png" />
+        <link rel="apple-touch-icon" href="/YLS/logo/yls_monogram_crop_exact.png" />
+
         <link rel="icon" type="image/png" href="/logo/yls_monogram_crop_exact.png" />
-        <link rel="apple-touch-icon" href="/logo/yls_monogram_crop_exact.png" />
         <link rel="shortcut icon" href="/logo/yls_monogram_crop_exact.png" />
+        <link rel="apple-touch-icon" href="/logo/yls_monogram_crop_exact.png" />
 
         {/* Font Awesome for icons */}
         <link

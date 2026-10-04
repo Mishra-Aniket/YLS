@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 130" fill="none">
+  <!-- GST Emblem Seal -->
+  <g>
+    <circle cx="55" cy="65" r="48" fill="#0A2540" stroke="#F15A38" stroke-width="3"/>
+    <circle cx="55" cy="65" r="40" stroke="#F8C62E" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text x="55" y="74" font-family="system-ui, sans-serif" font-size="26" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="-1">GST</text>
+    <path d="M25 65H85" stroke="#F15A38" stroke-width="2.5" opacity="0.6"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="120" y="52" font-family="system-ui, sans-serif" font-size="32" font-weight="900" fill="#FFFFFF" letter-spacing="2">GST INDIA</text>
+  <text x="120" y="76" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#F15A38" letter-spacing="1">GOODS AND SERVICES TAX</text>
+  <text x="120" y="96" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#9CA3AF" letter-spacing="0.5">Government of India Registered Firm</text>
+</svg>

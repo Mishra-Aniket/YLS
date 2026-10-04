@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import YLSLogo from './YLSLogo';
-import { GstBadge, MsmeBadge, TransportPermitBadge } from './TrustBadges';
+import { GstLogoMark, MsmeLogoMark } from './TrustBadges';
 import { COMPANY, PRIMARY_SERVICES } from '@/lib/constants';
 import { getAssetPath } from '@/lib/imageLoader';
 
@@ -192,12 +192,11 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Statutory Registrations & Legal Verification Badges */}
-          <div className="mt-10 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs">
-            <div className="flex flex-wrap items-center gap-3">
-              <GstBadge dark />
-              <MsmeBadge dark />
-              <TransportPermitBadge dark />
+          {/* Statutory Registrations & Legal Verification Logo Marks */}
+          <div className="mt-10 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-6 text-xs">
+            <div className="flex flex-wrap items-center gap-6 sm:gap-8">
+              <GstLogoMark className="h-9 sm:h-11 w-auto" />
+              <MsmeLogoMark className="h-9 sm:h-11 w-auto" />
             </div>
 
             <p className="text-[11px] text-slate-400 font-medium">
