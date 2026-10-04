@@ -11,19 +11,20 @@ import { submitQuoteRequest } from '@/lib/quotes';
 import { trackEvent } from './GoogleAnalytics';
 
 const FREIGHT_TYPES = [
-  'ODC Trailer',
-  'Full Truckload (FTL)',
-  'Mechanical Flatbed',
-  'Covered Warehouse',
-  'Crane & Loading',
+  'Mini Truck / Pickup (1T - 3.5T)',
+  'Full Truckload (FTL / Taurus)',
+  'Closed Container (20ft - 32ft)',
+  'Mechanical Flatbed Trailer',
+  'Heavy ODC Hydraulic Axle',
+  'Covered Warehouse Storage',
 ];
 
 const EMPTY_FORM = {
   fullName: '',
   email: '',
   phone: '',
-  freightType: 'ODC Trailer',
-  goodsType: 'Heavy Machinery',
+  freightType: 'Mini Truck / Pickup (1T - 3.5T)',
+  goodsType: 'Commercial Goods',
   pickupCity: 'Pune',
   deliveryCity: '',
   dimensions: '',

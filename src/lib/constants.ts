@@ -242,9 +242,9 @@ export const PRIMARY_SERVICES: ServiceItem[] = [
     iconName: "Truck",
     image: "/images/work/work-02.jpeg",
     features: [
-      "Open Body & Closed Body Trucks",
+      "Mini Trucks & Pickups (1.0T to 3.5T)",
+      "Open Body & Closed Containers (20ft - 32ft)",
       "Multi-axle Taurus (16T to 25T)",
-      "Mini Trucks for quick urban transit",
       "Full truckload (FTL) & part load options",
       "Experienced field staff and drivers",
     ],

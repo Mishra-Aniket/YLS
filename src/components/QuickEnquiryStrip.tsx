@@ -87,10 +87,10 @@ export default function QuickEnquiryStrip() {
                 className="w-full bg-transparent text-xs sm:text-sm text-white outline-none font-body cursor-pointer [&>option]:bg-dark [&>option]:text-white"
               >
                 <option value="Mini Truck / Pickup (1T - 3.5T)">Mini Truck / Pickup (1T - 3.5T)</option>
-                <option value="ODC Hydraulic Modular Trailer">ODC Hydraulic Modular Trailer</option>
-                <option value="Multi-Axle Taurus (16T - 25T)">Multi-Axle Taurus (16T - 25T)</option>
                 <option value="Closed Container (20ft - 32ft)">Closed Container (20ft - 32ft)</option>
+                <option value="Multi-Axle Taurus (16T - 25T)">Multi-Axle Taurus (16T - 25T)</option>
                 <option value="40ft / 50ft Flatbed Trailer">40ft / 50ft Flatbed Trailer</option>
+                <option value="ODC Hydraulic Modular Trailer (40T - 150T)">ODC Hydraulic Modular Trailer (40T - 150T)</option>
                 <option value="Covered Warehousing & Storage">Covered Warehousing & Storage</option>
                 <option value="Convoy Pilot Escort & Cranes">Convoy Pilot Escort & Cranes</option>
               </select>

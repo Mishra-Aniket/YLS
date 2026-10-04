@@ -11,8 +11,8 @@ const HERO_SLIDES = [
   {
     image: '/images/yls/yls-odc-trailer.jpg',
     alt: 'YES Logistics Service transport fleet at an industrial site in Pune',
-    tag: 'All-Capacity Transport Fleet',
-    title: 'Full-Spectrum Transport & Freight Contractor',
+    tag: 'From 1T Pickups to 150T ODC Trailers',
+    title: 'Small Pickups to Heavy ODC Cargo Transport',
     location: 'Chakan MIDC & All India Highways',
   },
   {
@@ -150,7 +150,7 @@ export default function HeroSection() {
                 <div className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center text-primary text-[10px] font-bold">
                   ✓
                 </div>
-                <span>Pickups to Multi-Axle Trailers</span>
+                <span>Small Pickups to Heavy ODC Cargo (1T - 150T)</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center text-primary text-[10px] font-bold">
