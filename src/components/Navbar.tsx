@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ChevronDown, Search, Menu, PhoneCall } from 'lucide-react';
+import { ChevronDown, Search, Menu } from 'lucide-react';
 import YLSLogo from './YLSLogo';
 import SearchModal from './SearchModal';
 import OffcanvasDrawer from './OffcanvasDrawer';
@@ -66,16 +66,21 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
           }`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <nav className="flex items-center justify-between h-[76px] sm:h-[82px] gap-4">
-              <Link href="/" className="flex items-center shrink-0 mr-2 sm:mr-4">
-                <YLSLogo variant="light" size="md" />
-              </Link>
+            <nav className="flex items-center justify-between h-[76px] sm:h-[82px]">
+              
+              {/* Left Logo */}
+              <div className="flex items-center shrink-0">
+                <Link href="/" className="inline-block">
+                  <YLSLogo variant="light" size="md" />
+                </Link>
+              </div>
 
-              <ul className="hidden lg:flex items-center gap-1.5 xl:gap-3 2xl:gap-5 font-heading font-bold text-sm xl:text-[15px] 2xl:text-base text-dark uppercase tracking-wide">
+              {/* Centered Navigation Menu */}
+              <ul className="hidden lg:flex items-center gap-1 xl:gap-2 2xl:gap-4 font-heading font-bold text-xs xl:text-sm 2xl:text-base text-dark uppercase tracking-wider">
                 <li>
                   <Link
                     href="/"
-                    className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                    className={`px-3 py-2 rounded-lg whitespace-nowrap transition-colors ${
                       pathname === '/'
                         ? 'text-primary font-extrabold bg-primary/5'
                         : 'text-dark/90 hover:text-primary hover:bg-slate-50'
@@ -88,7 +93,7 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
                 <li>
                   <Link
                     href="/about-us"
-                    className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                    className={`px-3 py-2 rounded-lg whitespace-nowrap transition-colors ${
                       pathname === '/about-us'
                         ? 'text-primary font-extrabold bg-primary/5'
                         : 'text-dark/90 hover:text-primary hover:bg-slate-50'
@@ -99,13 +104,13 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
                 </li>
 
                 <li
-                  className="relative group py-1.5"
+                  className="relative group py-2"
                   onMouseEnter={() => setActiveDropdown('services')}
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
                   <Link
                     href="/services"
-                    className={`inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                    className={`inline-flex items-center gap-1 px-3 py-2 rounded-lg whitespace-nowrap transition-colors ${
                       pathname.startsWith('/services')
                         ? 'text-primary font-extrabold bg-primary/5'
                         : 'text-dark/90 hover:text-primary hover:bg-slate-50'
@@ -152,7 +157,7 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
                 <li>
                   <Link
                     href="/case-studies"
-                    className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                    className={`px-3 py-2 rounded-lg whitespace-nowrap transition-colors ${
                       pathname.startsWith('/case-studies')
                         ? 'text-primary font-extrabold bg-primary/5'
                         : 'text-dark/90 hover:text-primary hover:bg-slate-50'
@@ -165,7 +170,7 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
                 <li>
                   <Link
                     href="/gallery"
-                    className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                    className={`px-3 py-2 rounded-lg whitespace-nowrap transition-colors ${
                       pathname.startsWith('/gallery')
                         ? 'text-primary font-extrabold bg-primary/5'
                         : 'text-dark/90 hover:text-primary hover:bg-slate-50'
@@ -178,7 +183,7 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
                 <li>
                   <Link
                     href="/blog"
-                    className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                    className={`px-3 py-2 rounded-lg whitespace-nowrap transition-colors ${
                       pathname.startsWith('/blog')
                         ? 'text-primary font-extrabold bg-primary/5'
                         : 'text-dark/90 hover:text-primary hover:bg-slate-50'
@@ -191,7 +196,7 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
                 <li>
                   <Link
                     href="/contact-us"
-                    className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                    className={`px-3 py-2 rounded-lg whitespace-nowrap transition-colors ${
                       pathname === '/contact-us'
                         ? 'text-primary font-extrabold bg-primary/5'
                         : 'text-dark/90 hover:text-primary hover:bg-slate-50'
@@ -202,29 +207,12 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
                 </li>
               </ul>
 
+              {/* Right Action Icons & Primary CTA */}
               <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                 <button
                   type="button"
                   onClick={() => setIsContactOpen(true)}
-                  className="hidden 2xl:flex items-center gap-2 px-3.5 py-2 rounded-full bg-slate-100 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 text-dark text-xs font-bold font-heading transition-all shadow-sm group cursor-pointer"
-                  title="Click to Call or WhatsApp Dispatcher"
-                >
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                  </span>
-                  <div className="flex items-center gap-1.5 text-slate-700 group-hover:text-emerald-700">
-                    <i className="fa-brands fa-whatsapp text-emerald-600 text-sm" />
-                    <span className="font-extrabold tracking-tight text-dark group-hover:text-emerald-700">
-                      7020057149 &bull; 7021277197
-                    </span>
-                  </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setIsContactOpen(true)}
-                  className="2xl:hidden flex items-center justify-center w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition shadow-sm cursor-pointer"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition shadow-sm cursor-pointer"
                   aria-label="Call or WhatsApp"
                   title="Call or WhatsApp"
                 >
@@ -263,6 +251,7 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
                   <span className="hidden xs:inline">Menu</span>
                 </button>
               </div>
+
             </nav>
           </div>
         </div>

@@ -67,13 +67,6 @@ export default function HeroSection() {
           {/* Left Column */}
           <div className="order-1 lg:col-span-7 xl:col-span-6 z-20 text-white flex flex-col justify-center">
             
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md w-fit mb-5 sm:mb-6 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <p className="text-primary font-bold text-xs sm:text-sm uppercase tracking-wider font-heading">
-                ODC &amp; Heavy Haulage Logistics Pune
-              </p>
-            </div>
-
             <h1 className="font-heading font-black text-white leading-[1.08] tracking-tight text-3xl sm:text-4xl lg:text-5xl xl:text-5xl mb-5 uppercase">
               ODC Transport &amp; Heavy Haulage{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-amber-300">
@@ -157,7 +150,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column: Fleet Showcase Card */}
+          {/* Right Column */}
           <div
             className="order-2 lg:col-span-5 xl:col-span-6 relative w-full flex items-center justify-center lg:justify-end"
             onMouseEnter={() => setIsPaused(true)}
