@@ -178,8 +178,8 @@ export default function ServicesSection() {
               <TruckIcon />
               ALL-CAPACITY FLEET &bull; SMALL TO HEAVY ODC
             </span>
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-dark tracking-tight leading-[1.15]">
-              Reliable Freight &amp; Vehicle Fleet
+            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-dark tracking-tight leading-[1.15] uppercase">
+              Specialized Heavy Haulage, Hydraulic Trailers &amp; Warehousing Services
             </h2>
             <p className="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
               From compact pickup mini-trucks for city shuttles to 150-ton hydraulic multi-axle trailers for mega ODC cargo, we operate vehicles of every scale across India.

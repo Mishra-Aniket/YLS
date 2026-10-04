@@ -87,7 +87,7 @@ export default function AboutSection() {
 
             {/* Sec-Title */}
             <h2 className="sec-title">
-              The Advantages of Our Logistics Service
+              ODC Consignment Specialist &amp; Fleet Owner in Chinchwad, Pune
             </h2>
 
             {/* Paragraph */}

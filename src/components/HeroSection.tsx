@@ -87,10 +87,10 @@ export default function HeroSection() {
             </div>
 
             {/* Main Heading — scales fluidly without awkward rigid line breaks */}
-            <h1 className="font-heading font-black text-white leading-[1.08] tracking-tight text-3xl sm:text-5xl md:text-5xl lg:text-[3.25rem] xl:text-[3.85rem] 2xl:text-[4.25rem] mb-5 sm:mb-6">
-              The Bridge to Your{" "}
+            <h1 className="font-heading font-black text-white leading-[1.08] tracking-tight text-3xl sm:text-5xl md:text-5xl lg:text-[3.25rem] xl:text-[3.85rem] 2xl:text-[4.25rem] mb-5 sm:mb-6 uppercase">
+              ODC Transport &amp; Hydraulic Trailer Services in Pune |{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-slate-300">
-                Logistics Success
+                YES Logistics Service
               </span>
             </h1>
 

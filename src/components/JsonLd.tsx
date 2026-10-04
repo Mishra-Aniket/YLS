@@ -1,12 +1,16 @@
 export function OrganizationJsonLd() {
+  const SITE = process.env.NEXT_PUBLIC_SITE_URL || 'https://yeslogisticsservice.com';
   const data = {
     '@context': 'https://schema.org',
-    '@type': ['Organization', 'LocalBusiness'],
+    '@type': ['LocalBusiness', 'LogisticsService'],
     name: 'YES LOGISTICS SERVICE',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://yeslogisticsservice.com',
-    logo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://yeslogisticsservice.com'}/logo/yls_full_logo_crop.png`,
+    alternateName: 'YLS Pune',
+    url: SITE,
+    logo: `${SITE}/logo/yls_full_logo_crop.png`,
+    image: `${SITE}/images/yls/yls-odc-trailer.jpg`,
     telephone: ['+917020057149', '+917021277197'],
     email: 'ylspune@gmail.com',
+    priceRange: '₹₹₹',
     foundingDate: '2021-07-01',
     address: {
       '@type': 'PostalAddress',
@@ -16,6 +20,11 @@ export function OrganizationJsonLd() {
       postalCode: '411033',
       addressCountry: 'IN',
     },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 18.6298,
+      longitude: 73.7997,
+    },
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
@@ -24,7 +33,49 @@ export function OrganizationJsonLd() {
         closes: '19:30',
       },
     ],
-    areaServed: { '@type': 'Country', name: 'India' },
+    areaServed: [
+      { '@type': 'City', name: 'Pune' },
+      { '@type': 'City', name: 'Mumbai' },
+      { '@type': 'City', name: 'Bangalore' },
+      { '@type': 'City', name: 'Vadodara' },
+      { '@type': 'City', name: 'Prayagraj' },
+      { '@type': 'City', name: 'Jeypore' },
+      { '@type': 'Country', name: 'India' },
+    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Logistics & Transport Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'ODC Consignment & Hydraulic Modular Trailer Transport',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Heavy Haulage & Mechanical Flatbed Trailer Hire',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Covered Warehousing & Industrial Yard Storage Pune',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Mobile Crane Loading & Tandem Rigging',
+          },
+        },
+      ],
+    },
     sameAs: [],
   };
 
