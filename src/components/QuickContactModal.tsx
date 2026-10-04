@@ -10,21 +10,23 @@ interface QuickContactModalProps {
 
 export const CONTACT_NUMBERS = [
   {
-    label: "Dispatch & Freight Quotation",
+    name: "Sandeep Ojha",
+    label: "Central Dispatch Desk",
     rawNumber: "7020057149",
     displayNumber: "+91 70200 57149",
-    handler: "Central Dispatch Desk",
+    handler: "Dispatch & Freight Quotation",
     whatsappUrl:
-      "https://wa.me/917020057149?text=Hello%20YES%20Logistics%2C%20I%20would%20like%20to%20inquire%20about%20freight%20and%20transport%20services.",
+      "https://wa.me/917020057149?text=Hello%20Sandeep%20Ojha%2C%20I%20would%20like%20to%20inquire%20about%20freight%20and%20transport%20services.",
     callUrl: "tel:+917020057149",
   },
   {
-    label: "ODC & Fleet Operations",
+    name: "R. K. Mishra",
+    label: "Heavy Haulage Desk",
     rawNumber: "7021277197",
     displayNumber: "+91 70212 77197",
-    handler: "Heavy Haulage & ODC Desk",
+    handler: "ODC & Fleet Operations",
     whatsappUrl:
-      "https://wa.me/917021277197?text=Hello%20YES%20Logistics%2C%20I%20would%20like%20to%20inquire%20about%20ODC%20and%20trailer%20movement.",
+      "https://wa.me/917021277197?text=Hello%20R.%20K.%20Mishra%2C%20I%20would%20like%20to%20inquire%20about%20ODC%20and%20trailer%20movement.",
     callUrl: "tel:+917021277197",
   },
 ];
@@ -96,7 +98,7 @@ export default function QuickContactModal({ isOpen, onClose }: QuickContactModal
               <div className="flex items-center justify-between mb-3">
                 <div>
                   <span className="inline-block text-[11px] font-heading font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-0.5 rounded-full mb-1">
-                    Contact {idx + 1} &bull; {contact.handler}
+                    {contact.name} &bull; {contact.handler}
                   </span>
                   <div className="text-lg sm:text-xl font-heading font-black text-dark tracking-tight">
                     {contact.displayNumber}

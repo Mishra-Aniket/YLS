@@ -1,10 +1,14 @@
+export interface Coordinator {
+  name: string;
+  phone: string;
+  phoneRaw: string;
+}
+
 export interface Branch {
   city: string;
   state: string;
   stateCode: string;
-  contactPerson: string;
-  phone: string;
-  phoneRaw: string;
+  coordinators: Coordinator[];
   address: string;
   pincode: string;
   email?: string;
@@ -100,9 +104,10 @@ export const BRANCHES: Branch[] = [
     city: "Pune",
     state: "Maharashtra",
     stateCode: "MH",
-    contactPerson: "Mr. Sandeep Kumar",
-    phone: "+91 7888190624",
-    phoneRaw: "+917888190624",
+    coordinators: [
+      { name: "Sandeep Ojha", phone: "+91 70200 57149", phoneRaw: "+917020057149" },
+      { name: "R. K. Mishra", phone: "+91 70212 77197", phoneRaw: "+917021277197" },
+    ],
     address: "CTS 1937 1S Nilratan Apt, Chinchwad Gaon",
     pincode: "411033",
     email: "ylspune@gmail.com",
@@ -112,9 +117,9 @@ export const BRANCHES: Branch[] = [
     city: "Bangalore",
     state: "Karnataka",
     stateCode: "KA",
-    contactPerson: "Mr. Dheeraj Shukla",
-    phone: "+91 9415819488",
-    phoneRaw: "+919415819488",
+    coordinators: [
+      { name: "Mr. Dheeraj Shukla", phone: "+91 9415819488", phoneRaw: "+919415819488" },
+    ],
     address: "205 Block 2nd Floor Himalaya Plaza",
     pincode: "560053",
     email: "yls.bangalore@gmail.com",
@@ -123,9 +128,9 @@ export const BRANCHES: Branch[] = [
     city: "Vadodara",
     state: "Gujarat",
     stateCode: "GJ",
-    contactPerson: "Mr. Umesh Chandra",
-    phone: "+91 8469001491",
-    phoneRaw: "+918469001491",
+    coordinators: [
+      { name: "Mr. Umesh Chandra", phone: "+91 8469001491", phoneRaw: "+918469001491" },
+    ],
     address: "B51 Kailash Pati Society, Ranoli",
     pincode: "391350",
     email: "yls.vadodara@gmail.com",
@@ -134,9 +139,9 @@ export const BRANCHES: Branch[] = [
     city: "Jeypore",
     state: "Odisha",
     stateCode: "OD",
-    contactPerson: "Mr. Vineet Mishra",
-    phone: "+91 9337474004",
-    phoneRaw: "+919337474004",
+    coordinators: [
+      { name: "Mr. Vineet Mishra", phone: "+91 9337474004", phoneRaw: "+919337474004" },
+    ],
     address: "Near Prashad Rao Peta, Sombartota Koraput",
     pincode: "764001",
     email: "yls.jeypore@gmail.com",
@@ -145,9 +150,9 @@ export const BRANCHES: Branch[] = [
     city: "Prayagraj",
     state: "Uttar Pradesh",
     stateCode: "UP",
-    contactPerson: "Mr. Aniket Mishra",
-    phone: "+91 8858899855",
-    phoneRaw: "+918858899855",
+    coordinators: [
+      { name: "Mr. Shubham", phone: "+91 8577997786", phoneRaw: "+918577997786" },
+    ],
     address: "C2/70 Awantika Avash, Naini",
     pincode: "211008",
     email: "yls.prayagraj@gmail.com",

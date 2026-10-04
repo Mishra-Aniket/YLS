@@ -160,9 +160,11 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           <MapPin className="w-5 h-5 text-brand-yellow" />
                           <div>
                             <p className="text-sm font-bold text-slate-800">
-                              {br.city}, {br.state} ({br.contactPerson})
+                              {br.city}, {br.state} ({br.coordinators.map((c) => c.name).join(', ')})
                             </p>
-                            <p className="text-xs text-slate-500">{br.phone}</p>
+                            <p className="text-xs text-slate-500">
+                              {br.coordinators.map((c) => c.phone).join(' / ')}
+                            </p>
                           </div>
                         </div>
                         <span className="text-xs font-bold text-primary">Call Now</span>
