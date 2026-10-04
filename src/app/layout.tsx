@@ -1,19 +1,19 @@
 import type { Metadata } from 'next';
-import { Inter, Barlow_Condensed } from 'next/font/google';
+import { DM_Sans, Rethink_Sans } from 'next/font/google';
 import './globals.css';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import MobileBottomBar from '@/components/MobileBottomBar';
 import { OrganizationJsonLd } from '@/components/JsonLd';
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
 });
 
-const barlow = Barlow_Condensed({
+const rethinkSans = Rethink_Sans({
   subsets: ['latin'],
-  weight: ['600', '700', '800', '900'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-head',
   display: 'swap',
 });
@@ -22,24 +22,24 @@ const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || 'https://yeslogisticsservice.com';
 
 export const metadata: Metadata = {
-  title: 'ODC Transport in Pune | Hydraulic Trailer Services | YES Logistics',
+  title: 'ODC Transport Pune | Hydraulic Trailer | YES Logistics Service',
   description:
-    'YES LOGISTICS SERVICE — Pune fleet owner & ODC consignment specialist. Hydraulic trailers, heavy haulage, warehousing & crane services across India. Call +91 70200 57149.',
+    'YES Logistics Service (YLS Pune) — Fleet owner & ODC consignment specialist in Chinchwad. Pan-India hydraulic trailers & warehousing. Call +91 70200 57149.',
   keywords: [
-    'ODC transport Pune',
+    'YES Logistics Service',
+    'YLS Pune',
+    'ODC transport in Pune',
     'hydraulic trailer Pune',
-    'ODC consignment India',
     'heavy haulage Pune',
-    'trailer transport Pune',
     'fleet owner Chinchwad',
-    'crane and escort services',
-    'warehousing Pune',
+    'logistics services near me',
+    'trailer transport Pune',
   ],
   authors: [{ name: 'YES LOGISTICS SERVICE' }],
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'ODC Transport in Pune | Hydraulic Trailer Services | YES Logistics',
+    title: 'ODC Transport Pune | Hydraulic Trailer | YES Logistics Service',
     description:
       'Pune fleet owner & ODC consignment specialist. Hydraulic trailers, heavy haulage, warehousing & crane services across India.',
     url: SITE_URL,
@@ -79,7 +79,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-IN"
-      className={`scroll-smooth ${inter.variable} ${barlow.variable}`}
+      className={`scroll-smooth ${dmSans.variable} ${rethinkSans.variable}`}
     >
       <head>
         {/* Font Awesome for icons */}

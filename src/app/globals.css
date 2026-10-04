@@ -19,6 +19,7 @@ html {
 body {
   background-color: #fff;
   color: var(--dark);
+  font-family: var(--font-body), 'DM Sans', sans-serif;
   overflow-x: hidden;
   font-size: 16px;
   line-height: 1.6;
@@ -58,19 +59,16 @@ input, select, textarea {
     color: var(--primary);
     font-weight: 600;
     margin-bottom: 10px;
-    font-family: var(--font-head), 'Barlow Condensed', sans-serif;
+    font-family: var(--font-head), 'Rethink Sans', sans-serif;
     font-size: 16px;
-    letter-spacing: 0.05em;
   }
 
   .sec-title {
-    font-family: var(--font-head), 'Barlow Condensed', sans-serif;
+    font-family: var(--font-head), 'Rethink Sans', sans-serif;
     font-weight: 700;
     font-size: 48px;
     line-height: 1.2;
     color: var(--headings-color);
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
   }
 
   @media (max-width: 991px) {
@@ -101,7 +99,7 @@ input, select, textarea {
     gap: 10px;
     background-color: var(--primary);
     color: #fff;
-    font-family: var(--font-head), 'Barlow Condensed', sans-serif;
+    font-family: var(--font-head), 'Rethink Sans', sans-serif;
     font-weight: 600;
     font-size: 16px;
     padding: 14px 30px;
@@ -118,7 +116,7 @@ input, select, textarea {
   }
 
   .link-btn {
-    font-family: var(--font-head), 'Barlow Condensed', sans-serif;
+    font-family: var(--font-head), 'Rethink Sans', sans-serif;
     font-weight: 600;
     font-size: 16px;
     color: var(--headings-color);
@@ -153,7 +151,7 @@ ul.check li {
   position: relative;
   padding-left: 28px;
   margin-bottom: 12px;
-  font-family: var(--font-head), 'Barlow Condensed', sans-serif;
+  font-family: var(--font-head), 'Rethink Sans', sans-serif;
   font-weight: 600;
   font-size: 16px;
   color: var(--headings-color);
@@ -242,7 +240,6 @@ body::-webkit-scrollbar {
   fill: var(--primary);
 }
 
-/* Mobile bottom bar spacer */
 @media (max-width: 639px) {
   body {
     padding-bottom: 56px;

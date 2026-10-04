@@ -20,8 +20,8 @@ const config: Config = {
         'logo-blue': '#175A9D',
       },
       fontFamily: {
-        sans: ['var(--font-body)', 'Inter', 'system-ui', 'sans-serif'],
-        heading: ['var(--font-head)', 'Barlow Condensed', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-body)', 'DM Sans', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-head)', 'Rethink Sans', 'system-ui', 'sans-serif'],
       },
       container: {
         center: true,
