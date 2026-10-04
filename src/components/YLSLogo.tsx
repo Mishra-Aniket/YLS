@@ -48,7 +48,7 @@ export default function YLSLogo({
       {/* Wordmark: bold name on top, letterspaced tagline below (TransHub-style lockup) */}
       <span className="flex flex-col justify-center leading-none">
         <span
-          className={`font-heading font-extrabold whitespace-nowrap text-[15.5px] sm:text-[19px] ${
+          className={`font-heading font-extrabold whitespace-nowrap text-[14px] sm:text-[18px] ${
             isDark ? "text-white" : "text-dark"
           }`}
           style={{ letterSpacing: "0.01em" }}
@@ -56,7 +56,7 @@ export default function YLSLogo({
           YES LOGISTICS
         </span>
         <span
-          className="font-heading font-bold text-primary leading-none mt-[2px] sm:mt-[3px] text-[9.5px] sm:text-[11.5px]"
+          className="font-heading font-bold text-primary leading-none mt-[2px] sm:mt-[3px] text-[9px] sm:text-[11px]"
           style={{ letterSpacing: "0.36em" }}
         >
           SERVICE
