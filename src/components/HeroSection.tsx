@@ -61,7 +61,7 @@ export default function HeroSection() {
         aria-hidden="true"
       />
 
-      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 lg:pb-20 min-h-[calc(100vh-80px)] flex flex-col justify-center">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 lg:pb-20 min-h-[calc(100vh-80px)] flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
           {/* Left Column */}

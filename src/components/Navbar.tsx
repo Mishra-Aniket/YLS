@@ -65,14 +65,12 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
               : 'shadow-[0_4px_20px_rgba(6,17,46,0.04)]'
           }`}
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-14 2xl:px-16">
             <nav className="flex items-center justify-between h-[76px] sm:h-[82px] gap-2 sm:gap-4">
               
               {/* Left: Logo */}
               <div className="flex items-center shrink-0">
-                <Link href="/" className="inline-block">
-                  <YLSLogo variant="light" size="md" />
-                </Link>
+                <YLSLogo variant="light" size="md" />
               </div>
 
               {/* Center: Nav Menu (Centered in available space) */}
