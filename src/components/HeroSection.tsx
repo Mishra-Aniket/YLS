@@ -79,15 +79,6 @@ export default function HeroSection() {
 
   return (
     <section className="relative w-full bg-[#06112E] overflow-hidden select-none">
-      <div
-        className="pointer-events-none absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-primary/15 blur-[140px]"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute top-1/2 -right-40 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px]"
-        aria-hidden="true"
-      />
-
       <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 lg:pb-20 min-h-[calc(100vh-80px)] flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
@@ -96,7 +87,7 @@ export default function HeroSection() {
             
             <h1 className="font-heading font-black text-white leading-[1.08] tracking-tight text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-5 uppercase">
               Moving India:{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-amber-300">
+              <span className="text-primary font-black">
                 Any Size, Any Weight, Anywhere
               </span>
             </h1>
@@ -109,7 +100,7 @@ export default function HeroSection() {
             <div className="mb-6 sm:mb-8 max-w-xl">
               <form
                 onSubmit={handleQuickTrack}
-                className="relative flex items-center bg-white/[0.08] hover:bg-white/[0.12] focus-within:bg-white/[0.15] border border-white/20 focus-within:border-primary rounded-2xl p-1.5 backdrop-blur-lg transition-all duration-300 shadow-xl"
+                className="relative flex items-center bg-slate-900/80 hover:bg-slate-900 border border-slate-700 focus-within:border-primary rounded-2xl p-1.5 transition-all duration-300 shadow-lg"
               >
                 <div className="pl-3.5 pr-2 text-slate-400">
                   <Search className="w-4 h-4 text-primary" />
@@ -123,7 +114,7 @@ export default function HeroSection() {
                 />
                 <button
                   type="submit"
-                  className="shrink-0 px-4 sm:px-6 py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-bold font-heading uppercase tracking-wider transition-all shadow-glow flex items-center gap-2 cursor-pointer"
+                  className="shrink-0 px-4 sm:px-6 py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-bold font-heading uppercase tracking-wider transition-all shadow-md flex items-center gap-2 cursor-pointer"
                 >
                   <span>Track Status</span>
                   <i className="fa fa-arrow-right text-xs" aria-hidden="true" />
@@ -137,7 +128,7 @@ export default function HeroSection() {
             <div className="flex flex-wrap items-center gap-3.5 sm:gap-4">
               <Link
                 href="/quote"
-                className="btn-primary text-sm sm:text-base py-3.5 px-7 shadow-glow inline-flex items-center gap-2 group uppercase tracking-wider"
+                className="btn-primary text-sm sm:text-base py-3.5 px-7 shadow-md hover:shadow-lg inline-flex items-center gap-2 group uppercase tracking-wider"
               >
                 <span>Get Instant Quote</span>
                 <i

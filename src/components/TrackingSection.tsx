@@ -37,7 +37,7 @@ export default function TrackingSection() {
           <a
             href="tel:+917020057149"
             onClick={() => trackEvent('click', 'phone', 'tracking_cta')}
-            className="btn-primary py-[18px] px-9 text-base shadow-glow flex items-center justify-center gap-3"
+            className="btn-primary py-[18px] px-9 text-base shadow-md hover:shadow-lg flex items-center justify-center gap-3"
           >
             <Phone className="w-5 h-5" />
             <span>Call Dispatch: +91 70200 57149</span>
