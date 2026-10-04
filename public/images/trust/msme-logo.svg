@@ -1,28 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 140" fill="none">
-  <!-- Ashoka Lions Emblem / MSME Lockup (Govt. of India) -->
-  <g fill="#FFFFFF">
-    <!-- Emblem Pillars & Lions Representation -->
-    <path d="M25 22C25 16 30 12 36 12C42 12 47 16 47 22C47 26 44 29 40 31V37H48V42H24V37H32V31C28 29 25 26 25 22Z" fill="#F8C62E"/>
-    <path d="M16 48H56V52H16V48Z" fill="#FFFFFF"/>
-    <circle cx="36" cy="62" r="7" stroke="#F15A38" stroke-width="2" fill="none"/>
-    <path d="M36 55V69M29 62H43M31 57L41 67M31 67L41 57" stroke="#F15A38" stroke-width="1.2"/>
-    <rect x="18" y="72" width="36" height="4" rx="2" fill="#FFFFFF"/>
-    <!-- Satyamev Jayate Text Representation -->
-    <text x="36" y="86" font-family="system-ui, sans-serif" font-size="7" font-weight="bold" fill="#D1D5DB" text-anchor="middle" letter-spacing="1">सत्यमेव जयते</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" fill="none">
+  <!-- Left Side: Official Ashoka Lions Emblem -->
+  <g transform="translate(10, 10)">
+    <path d="M25 15C25 10 30 6 36 6C42 6 47 10 47 15C47 19 44 22 40 24V30H48V35H24V30H32V24C28 22 25 19 25 15Z" fill="#F8C62E"/>
+    <path d="M16 40H56V44H16V40Z" fill="#FFFFFF"/>
+    <circle cx="36" cy="55" r="7" stroke="#F15A38" stroke-width="2" fill="none"/>
+    <path d="M36 48V62M29 55H43M31 50L41 60M31 60L41 50" stroke="#F15A38" stroke-width="1.2"/>
+    <rect x="18" y="65" width="36" height="4" rx="2" fill="#FFFFFF"/>
+    <text x="36" y="78" font-family="system-ui, sans-serif" font-size="7" font-weight="700" fill="#D1D5DB" text-anchor="middle" letter-spacing="1">सत्यमेव जयते</text>
   </g>
 
-  <!-- MSME Bold Typography -->
-  <g fill="#FFFFFF">
-    <path d="M78 30H92V82H78V48L68 82H58L48 48V82H34V30H48L58 64L68 30H78Z" fill="#FFFFFF"/>
-    <!-- S -->
-    <path d="M102 30H132V42H116V48H132V82H102V70H118V62H102V30Z" fill="#FFFFFF"/>
+  <!-- Right Side: Bold MSME Typography (x offset at 85 to ensure 0 overlap) -->
+  <g fill="#FFFFFF" transform="translate(85, 0)">
     <!-- M -->
-    <path d="M176 30H190V82H176V48L166 82H156L146 48V82H132V30H146L156 64L166 30H176Z" fill="#FFFFFF"/>
+    <path d="M10 20H24V72H10V38L0 72H-10L-20 38V72H-34V20H-20L-10 54L0 20H10Z" transform="translate(34, 0)" fill="#FFFFFF"/>
+    <!-- S -->
+    <path d="M50 20H80V32H64V40H80V72H50V60H66V52H50V20Z" fill="#FFFFFF"/>
+    <!-- M -->
+    <path d="M90 20H104V72H90V38L80 72H70L60 38V72H46V20H60L70 54L80 20H90Z" transform="translate(44, 0)" fill="#FFFFFF"/>
     <!-- E -->
-    <path d="M200 30H232V42H214V50H228V62H214V70H232V82H200V30Z" fill="#FFFFFF"/>
-  </g>
+    <path d="M145 20H175V32H159V40H173V52H159V60H175V72H145V20Z" fill="#FFFFFF"/>
 
-  <!-- Subtitle Text -->
-  <text x="78" y="98" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#E5E7EB" letter-spacing="1.5">MICRO, SMALL &amp; MEDIUM ENTERPRISES</text>
-  <text x="78" y="114" font-family="system-ui, sans-serif" font-size="12" font-weight="900" fill="#F8C62E" letter-spacing="1">Ministry of MSME, Govt. of India</text>
+    <!-- Subtitles -->
+    <text x="0" y="90" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#E5E7EB" letter-spacing="1.2">MICRO, SMALL &amp; MEDIUM ENTERPRISES</text>
+    <text x="0" y="106" font-family="system-ui, sans-serif" font-size="12" font-weight="900" fill="#F8C62E" letter-spacing="1">Ministry of MSME, Govt. of India</text>
+  </g>
 </svg>
