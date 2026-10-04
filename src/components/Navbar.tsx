@@ -209,16 +209,6 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
 
               {/* Right: Actions */}
               <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-                {/* Fleet Gallery Shortcut */}
-                <Link
-                  href="/gallery"
-                  className="flex items-center justify-center w-9.5 h-9.5 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-dark transition shadow-xs cursor-pointer"
-                  aria-label="Fleet Gallery"
-                  title="View Fleet Gallery"
-                >
-                  <i className="fa-solid fa-images text-sm sm:text-base text-[#06112E]" />
-                </Link>
-
                 <button
                   type="button"
                   onClick={() => setIsContactOpen(true)}

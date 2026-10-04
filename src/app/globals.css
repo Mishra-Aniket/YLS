@@ -242,6 +242,6 @@ body::-webkit-scrollbar {
 
 @media (max-width: 639px) {
   body {
-    padding-bottom: 56px;
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 14px));
   }
 }
