@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, Search, Menu, PhoneCall } from 'lucide-react';
@@ -17,223 +17,45 @@ interface NavbarProps {
 export default function Navbar({ variant = 'floating' }: NavbarProps) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
 
+  const lastScrollY = useRef(0);
+
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      const currentScrollY = window.scrollY;
+
+      setIsScrolled(currentScrollY > 30);
+
+      if (currentScrollY > 120) {
+        if (currentScrollY > lastScrollY.current + 5) {
+          setIsVisible(false);
+        } else if (currentScrollY < lastScrollY.current - 5) {
+          setIsVisible(true);
+        }
+      } else {
+        setIsVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
-    handleScroll();
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const logoBlock = (
-    <Link href="/" className="flex items-center shrink-0">
-      <YLSLogo variant="light" size="md" />
-    </Link>
-  );
-
-  const menu = (
-    <ul className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-8 font-heading font-bold text-sm xl:text-base text-dark uppercase tracking-wide">
-      <li>
-        <Link
-          href="/"
-          className={`py-2 transition-colors duration-200 ${
-            pathname === '/' ? 'text-primary font-extrabold' : 'text-dark/90 hover:text-primary'
-          }`}
-        >
-          Home
-        </Link>
-      </li>
-
-      <li>
-        <Link
-          href="/about-us"
-          className={`py-2 transition-colors duration-200 ${
-            pathname === '/about-us' ? 'text-primary font-extrabold' : 'text-dark/90 hover:text-primary'
-          }`}
-        >
-          About Us
-        </Link>
-      </li>
-
-      <li
-        className="relative group py-2"
-        onMouseEnter={() => setActiveDropdown('services')}
-        onMouseLeave={() => setActiveDropdown(null)}
-      >
-        <Link
-          href="/services"
-          className={`inline-flex items-center gap-1 transition-colors duration-200 ${
-            pathname.startsWith('/services')
-              ? 'text-primary font-extrabold'
-              : 'text-dark/90 hover:text-primary'
-          }`}
-        >
-          <span>Services</span>
-          <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180 text-slate-400 group-hover:text-primary" />
-        </Link>
-
-        <div
-          className={`absolute top-full left-0 w-72 pt-3 z-50 transition-all duration-200 ${
-            activeDropdown === 'services'
-              ? 'opacity-100 visible translate-y-0'
-              : 'opacity-0 invisible -translate-y-2 pointer-events-none'
-          }`}
-        >
-          <div className="bg-white rounded-2xl p-2.5 shadow-2xl border border-slate-100 space-y-1 normal-case font-sans">
-            {PRIMARY_SERVICES.map((srv) => (
-              <Link
-                key={srv.id}
-                href={`/services#${srv.id}`}
-                className="flex items-center justify-between px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium transition"
-              >
-                <span className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  {srv.title}
-                </span>
-                <span className="text-[11px] font-bold text-slate-400">{srv.number}</span>
-              </Link>
-            ))}
-            <div className="pt-2 mt-1 border-t border-slate-100 font-heading uppercase">
-              <Link
-                href="/services"
-                className="flex items-center justify-between px-3.5 py-2 rounded-xl bg-slate-50 hover:bg-primary hover:text-white text-xs font-bold text-slate-700 transition"
-              >
-                <span>View All Services</span>
-                <i className="fa fa-arrow-right text-[10px]" aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <li>
-        <Link
-          href="/case-studies"
-          className={`py-2 transition-colors duration-200 ${
-            pathname.startsWith('/case-studies')
-              ? 'text-primary font-extrabold'
-              : 'text-dark/90 hover:text-primary'
-          }`}
-        >
-          Case Studies
-        </Link>
-      </li>
-
-      <li>
-        <Link
-          href="/gallery"
-          className={`py-2 transition-colors duration-200 ${
-            pathname.startsWith('/gallery')
-              ? 'text-primary font-extrabold'
-              : 'text-dark/90 hover:text-primary'
-          }`}
-        >
-          Fleet Gallery
-        </Link>
-      </li>
-
-      <li>
-        <Link
-          href="/blog"
-          className={`py-2 transition-colors duration-200 ${
-            pathname.startsWith('/blog')
-              ? 'text-primary font-extrabold'
-              : 'text-dark/90 hover:text-primary'
-          }`}
-        >
-          Blog
-        </Link>
-      </li>
-
-      <li>
-        <Link
-          href="/contact-us"
-          className={`py-2 transition-colors duration-200 ${
-            pathname === '/contact-us' ? 'text-primary font-extrabold' : 'text-dark/90 hover:text-primary'
-          }`}
-        >
-          Contact
-        </Link>
-      </li>
-    </ul>
-  );
-
-  const actions = (
-    <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-      <button
-        type="button"
-        onClick={() => setIsContactOpen(true)}
-        className="hidden xl:flex items-center gap-2 px-3.5 py-2 rounded-full bg-slate-100 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 text-dark text-xs font-bold font-heading transition-all shadow-sm group cursor-pointer"
-        title="Click to Call or WhatsApp Dispatcher"
-      >
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-        </span>
-        <div className="flex items-center gap-1.5 text-slate-700 group-hover:text-emerald-700">
-          <i className="fa-brands fa-whatsapp text-emerald-600 text-sm" />
-          <PhoneCall className="w-3.5 h-3.5 text-primary" />
-          <span className="font-extrabold tracking-tight text-dark group-hover:text-emerald-700">
-            7020057149 &bull; 7021277197
-          </span>
-        </div>
-      </button>
-
-      <button
-        type="button"
-        onClick={() => setIsContactOpen(true)}
-        className="xl:hidden flex items-center justify-center w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition shadow-sm cursor-pointer"
-        aria-label="Call or WhatsApp"
-        title="Call or WhatsApp"
-      >
-        <i className="fa-brands fa-whatsapp text-lg text-emerald-600" />
-      </button>
-
-      <button
-        onClick={() => setIsSearchOpen(true)}
-        className="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-dark flex items-center justify-center transition cursor-pointer"
-        aria-label="Search website"
-      >
-        <Search className="w-4 h-4 text-dark" />
-      </button>
-
-      <button
-        onClick={() => setIsDrawerOpen(true)}
-        className="hidden sm:flex w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-dark items-center justify-center transition cursor-pointer"
-        aria-label="Open detailed menu"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" fill="none" viewBox="0 0 14 12">
-          <path fill="#06112E" d="M0 .75Q.063.063.75 0h12.5q.687.063.75.75-.063.687-.75.75H.75Q.063 1.437 0 .75m0 5Q.063 5.063.75 5h12.5q.687.063.75.75-.063.687-.75.75H.75Q.063 6.437 0 5.75m13.25 5.75H.75q-.687-.063-.75-.75.063-.687.75-.75h12.5q.687.063.75.75-.063.687-.75.75" />
-        </svg>
-      </button>
-
-      <Link href="/quote" className="btn-primary py-2.5 px-5 text-xs font-bold hidden sm:inline-flex items-center gap-1.5">
-        <span>Free Quote</span>
-        <i className="fa fa-turn-up text-xs" aria-hidden="true" />
-      </Link>
-
-      <button
-        onClick={() => setIsDrawerOpen(true)}
-        className="lg:hidden flex items-center gap-1.5 px-3 py-2 rounded-full bg-slate-100 text-dark text-xs font-bold hover:bg-primary hover:text-white transition cursor-pointer"
-        aria-label="Toggle Navigation"
-      >
-        <Menu className="w-4 h-4" />
-        <span className="hidden xs:inline">Menu</span>
-      </button>
-    </div>
-  );
 
   return (
     <>
       <header
-        className={`w-full z-40 transition-all duration-300 ${
+        onMouseEnter={() => setIsVisible(true)}
+        className={`w-full z-40 transition-transform duration-300 ease-in-out ${
           variant === 'floating' ? 'fixed top-0 inset-x-0' : 'sticky top-0'
+        } ${
+          isVisible ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
         <div
@@ -244,10 +66,203 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
           }`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <nav className="flex items-center justify-between h-[76px] sm:h-[80px]">
-              {logoBlock}
-              {menu}
-              {actions}
+            <nav className="flex items-center justify-between h-[76px] sm:h-[82px] gap-4">
+              <Link href="/" className="flex items-center shrink-0 mr-2 sm:mr-4">
+                <YLSLogo variant="light" size="md" />
+              </Link>
+
+              <ul className="hidden lg:flex items-center gap-1.5 xl:gap-3 2xl:gap-5 font-heading font-bold text-sm xl:text-[15px] 2xl:text-base text-dark uppercase tracking-wide">
+                <li>
+                  <Link
+                    href="/"
+                    className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                      pathname === '/'
+                        ? 'text-primary font-extrabold bg-primary/5'
+                        : 'text-dark/90 hover:text-primary hover:bg-slate-50'
+                    }`}
+                  >
+                    Home
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    href="/about-us"
+                    className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                      pathname === '/about-us'
+                        ? 'text-primary font-extrabold bg-primary/5'
+                        : 'text-dark/90 hover:text-primary hover:bg-slate-50'
+                    }`}
+                  >
+                    About Us
+                  </Link>
+                </li>
+
+                <li
+                  className="relative group py-1.5"
+                  onMouseEnter={() => setActiveDropdown('services')}
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <Link
+                    href="/services"
+                    className={`inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                      pathname.startsWith('/services')
+                        ? 'text-primary font-extrabold bg-primary/5'
+                        : 'text-dark/90 hover:text-primary hover:bg-slate-50'
+                    }`}
+                  >
+                    <span>Services</span>
+                    <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-400 group-hover:text-primary" />
+                  </Link>
+
+                  <div
+                    className={`absolute top-full left-0 w-72 pt-2 z-50 transition-all duration-200 ${
+                      activeDropdown === 'services'
+                        ? 'opacity-100 visible translate-y-0'
+                        : 'opacity-0 invisible -translate-y-2 pointer-events-none'
+                    }`}
+                  >
+                    <div className="bg-white rounded-2xl p-2.5 shadow-2xl border border-slate-100 space-y-1 normal-case font-sans">
+                      {PRIMARY_SERVICES.map((srv) => (
+                        <Link
+                          key={srv.id}
+                          href={`/services#${srv.id}`}
+                          className="flex items-center justify-between px-3.5 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-primary text-sm font-medium transition"
+                        >
+                          <span className="flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                            {srv.title}
+                          </span>
+                          <span className="text-[11px] font-bold text-slate-400">{srv.number}</span>
+                        </Link>
+                      ))}
+                      <div className="pt-2 mt-1 border-t border-slate-100 font-heading uppercase">
+                        <Link
+                          href="/services"
+                          className="flex items-center justify-between px-3.5 py-2 rounded-xl bg-slate-50 hover:bg-primary hover:text-white text-xs font-bold text-slate-700 transition"
+                        >
+                          <span>View All Services</span>
+                          <i className="fa fa-arrow-right text-[10px]" aria-hidden="true" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <Link
+                    href="/case-studies"
+                    className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                      pathname.startsWith('/case-studies')
+                        ? 'text-primary font-extrabold bg-primary/5'
+                        : 'text-dark/90 hover:text-primary hover:bg-slate-50'
+                    }`}
+                  >
+                    Case Studies
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    href="/gallery"
+                    className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                      pathname.startsWith('/gallery')
+                        ? 'text-primary font-extrabold bg-primary/5'
+                        : 'text-dark/90 hover:text-primary hover:bg-slate-50'
+                    }`}
+                  >
+                    Fleet Gallery
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    href="/blog"
+                    className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                      pathname.startsWith('/blog')
+                        ? 'text-primary font-extrabold bg-primary/5'
+                        : 'text-dark/90 hover:text-primary hover:bg-slate-50'
+                    }`}
+                  >
+                    Blog
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    href="/contact-us"
+                    className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+                      pathname === '/contact-us'
+                        ? 'text-primary font-extrabold bg-primary/5'
+                        : 'text-dark/90 hover:text-primary hover:bg-slate-50'
+                    }`}
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+
+              <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setIsContactOpen(true)}
+                  className="hidden 2xl:flex items-center gap-2 px-3.5 py-2 rounded-full bg-slate-100 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 text-dark text-xs font-bold font-heading transition-all shadow-sm group cursor-pointer"
+                  title="Click to Call or WhatsApp Dispatcher"
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                  </span>
+                  <div className="flex items-center gap-1.5 text-slate-700 group-hover:text-emerald-700">
+                    <i className="fa-brands fa-whatsapp text-emerald-600 text-sm" />
+                    <span className="font-extrabold tracking-tight text-dark group-hover:text-emerald-700">
+                      7020057149 &bull; 7021277197
+                    </span>
+                  </div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setIsContactOpen(true)}
+                  className="2xl:hidden flex items-center justify-center w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition shadow-sm cursor-pointer"
+                  aria-label="Call or WhatsApp"
+                  title="Call or WhatsApp"
+                >
+                  <i className="fa-brands fa-whatsapp text-lg text-emerald-600" />
+                </button>
+
+                <button
+                  onClick={() => setIsSearchOpen(true)}
+                  className="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-dark flex items-center justify-center transition cursor-pointer"
+                  aria-label="Search website"
+                >
+                  <Search className="w-4 h-4 text-dark" />
+                </button>
+
+                <button
+                  onClick={() => setIsDrawerOpen(true)}
+                  className="hidden sm:flex w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-dark items-center justify-center transition cursor-pointer"
+                  aria-label="Open detailed menu"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" fill="none" viewBox="0 0 14 12">
+                    <path fill="#06112E" d="M0 .75Q.063.063.75 0h12.5q.687.063.75.75-.063.687-.75.75H.75Q.063 1.437 0 .75m0 5Q.063 5.063.75 5h12.5q.687.063.75.75-.063.687-.75.75H.75Q.063 6.437 0 5.75m13.25 5.75H.75q-.687-.063-.75-.75.063-.687.75-.75h12.5q.687.063.75.75-.063.687-.75.75" />
+                  </svg>
+                </button>
+
+                <Link href="/quote" className="btn-primary py-2.5 px-5 text-xs font-bold hidden sm:inline-flex items-center gap-1.5 whitespace-nowrap">
+                  <span>Free Quote</span>
+                  <i className="fa fa-turn-up text-xs" aria-hidden="true" />
+                </Link>
+
+                <button
+                  onClick={() => setIsDrawerOpen(true)}
+                  className="lg:hidden flex items-center gap-1.5 px-3 py-2 rounded-full bg-slate-100 text-dark text-xs font-bold hover:bg-primary hover:text-white transition cursor-pointer"
+                  aria-label="Toggle Navigation"
+                >
+                  <Menu className="w-4 h-4" />
+                  <span className="hidden xs:inline">Menu</span>
+                </button>
+              </div>
             </nav>
           </div>
         </div>
