@@ -69,10 +69,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
-      { url: '/logo/yls_favicon_circle.png', type: 'image/png' },
+      { url: '/logo/yls_pure_emblem_circle.svg', type: 'image/svg+xml' },
     ],
-    shortcut: '/logo/yls_favicon_circle.png',
-    apple: '/logo/yls_favicon_circle.png',
+    shortcut: '/logo/yls_pure_emblem_circle.svg',
+    apple: '/logo/yls_pure_emblem_circle.svg',
   },
 };
 
@@ -93,11 +93,11 @@ export default function RootLayout({
             __html: `
               (function() {
                 var basePath = window.location.pathname.startsWith('/YLS') ? '/YLS' : '';
-                var iconUrl = basePath + '/logo/yls_favicon_circle.png';
+                var iconUrl = basePath + '/logo/yls_pure_emblem_circle.svg';
                 
                 var iconLink = document.createElement('link');
                 iconLink.rel = 'icon';
-                iconLink.type = 'image/png';
+                iconLink.type = 'image/svg+xml';
                 iconLink.href = iconUrl;
                 document.head.appendChild(iconLink);
 
@@ -114,13 +114,13 @@ export default function RootLayout({
             `,
           }}
         />
-        <link rel="icon" type="image/png" href="/YLS/logo/yls_favicon_circle.png" />
-        <link rel="shortcut icon" href="/YLS/logo/yls_favicon_circle.png" />
-        <link rel="apple-touch-icon" href="/YLS/logo/yls_favicon_circle.png" />
+        <link rel="icon" type="image/svg+xml" href="/YLS/logo/yls_pure_emblem_circle.svg" />
+        <link rel="shortcut icon" href="/YLS/logo/yls_pure_emblem_circle.svg" />
+        <link rel="apple-touch-icon" href="/YLS/logo/yls_pure_emblem_circle.svg" />
 
-        <link rel="icon" type="image/png" href="/logo/yls_favicon_circle.png" />
-        <link rel="shortcut icon" href="/logo/yls_favicon_circle.png" />
-        <link rel="apple-touch-icon" href="/logo/yls_favicon_circle.png" />
+        <link rel="icon" type="image/svg+xml" href="/logo/yls_pure_emblem_circle.svg" />
+        <link rel="shortcut icon" href="/logo/yls_pure_emblem_circle.svg" />
+        <link rel="apple-touch-icon" href="/logo/yls_pure_emblem_circle.svg" />
 
         {/* Font Awesome for icons */}
         <link
