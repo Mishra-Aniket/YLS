@@ -92,8 +92,8 @@ export default function Footer() {
               <YLSLogo variant="dark" size="xl" />
               <p className="text-slate-300 text-sm leading-relaxed max-w-xs">
                 YES LOGISTICS SERVICE is a premier fleet owner and transport
-                contractor established in 2021. Specialist in ODC heavy haulage,
-                trailers, warehousing, and nationwide cargo across India.
+                contractor established in 2021. Providing Pickups, Taurus trucks,
+                open/closed containers, heavy trailers, and warehousing across India.
               </p>
             </div>
 

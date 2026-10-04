@@ -8,7 +8,7 @@ export default function QuickEnquiryStrip() {
   const router = useRouter();
   const [pickup, setPickup] = useState("");
   const [drop, setDrop] = useState("");
-  const [cargoType, setCargoType] = useState("ODC Consignment");
+  const [cargoType, setCargoType] = useState("Mini Truck / Pickup (1T - 3.5T)");
   const [phone, setPhone] = useState("");
   const [submitted, setSubmitted] = useState(false);
 

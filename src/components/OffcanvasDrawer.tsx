@@ -240,7 +240,7 @@ export default function OffcanvasDrawer({
           {/* Description */}
           <div>
             <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-              YES LOGISTICS SERVICE is a Pune-registered fleet owner and transport contractor (estd. 2021). We deliver safe, dependable ODC and trailer freight across India.
+              YES LOGISTICS SERVICE is a Pune-registered fleet owner and transport contractor (estd. 2021). We deliver safe, dependable freight across India — from Pickups &amp; Taurus trucks to heavy multi-axle trailers.
             </p>
           </div>
 

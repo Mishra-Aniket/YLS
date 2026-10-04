@@ -7,7 +7,7 @@ export default function YLSHeroBadge({ className = "" }: { className?: string })
   return (
     <div
       className={`relative inline-flex items-center justify-center w-32 h-32 sm:w-36 sm:h-36 lg:w-40 lg:h-40 select-none pointer-events-auto ${className}`}
-      aria-label="YES LOGISTICS SERVICE - PUNE - ODC SPECIALIST"
+      aria-label="YES LOGISTICS SERVICE - PUNE - PAN INDIA FLEET"
     >
       {/* 1. Outer Rotating Circular Text Ring */}
       <div className="absolute inset-0 w-full h-full animate-[spin_12s_linear_infinite]">
@@ -31,7 +31,7 @@ export default function YLSHeroBadge({ className = "" }: { className?: string })
               textLength="436"
               lengthAdjust="spacing"
             >
-              ★ YES LOGISTICS SERVICE ★ PUNE ★ ODC SPECIALIST ★
+              ★ YES LOGISTICS SERVICE ★ PUNE ★ PAN INDIA FLEET ★
             </textPath>
           </text>
         </svg>

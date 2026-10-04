@@ -10,9 +10,9 @@ import { Search, ShieldCheck } from 'lucide-react';
 const HERO_SLIDES = [
   {
     image: '/images/yls/yls-odc-trailer.jpg',
-    alt: 'YES Logistics Service ODC trailer fleet at an industrial site in Pune',
-    tag: 'ODC Heavy Haulage Fleet',
-    title: 'Hydraulic Axle & ODC Consignment Specialist',
+    alt: 'YES Logistics Service transport fleet at an industrial site in Pune',
+    tag: 'All-Capacity Transport Fleet',
+    title: 'Full-Spectrum Transport & Freight Contractor',
     location: 'Chakan MIDC & All India Highways',
   },
   {
@@ -93,8 +93,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-slate-300 font-sans text-base sm:text-lg leading-relaxed max-w-xl mb-6 sm:mb-8">
-              Pan-India ODC consignment, hydraulic multi-axle trailers, and heavy haulage logistics managed by{' '}
-              <strong className="text-white font-semibold">YES Logistics Service</strong> across all Indian states.
+              Your single pan-India transport partner for every requirement. Whether you need a quick Pickup for local dispatch, a Taurus for bulk freight, or a Multi-Axle Trailer for heavy haulage, YES Logistics ensures safe and timely delivery across the nation.
             </p>
 
             <div className="mb-6 sm:mb-8 max-w-xl">
@@ -151,13 +150,13 @@ export default function HeroSection() {
                 <div className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center text-primary text-[10px] font-bold">
                   ✓
                 </div>
-                <span>52m ODC Girder Specialists</span>
+                <span>Pickups to Multi-Axle Trailers</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center text-primary text-[10px] font-bold">
                   ✓
                 </div>
-                <span>Modern Hydraulic Fleet</span>
+                <span>Pan-India Transport Fleet</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center text-primary text-[10px] font-bold">

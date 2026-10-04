@@ -88,12 +88,12 @@ export default function AboutSection() {
 
             {/* Sec-Title */}
             <h2 className="sec-title">
-              ODC Consignment Specialist &amp; Fleet Owner in Chinchwad, Pune
+              Pan-India Fleet Owner &amp; Transport Contractor in Chinchwad, Pune
             </h2>
 
             {/* Paragraph */}
             <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-              YES LOGISTICS SERVICE is a Pune-registered fleet owner and transport contractor established in 2021. We provide dependable fleet, trailer, ODC, warehouse and loading support across India.
+              YES LOGISTICS SERVICE is a Pune-registered fleet owner and transport contractor established in 2021. We provide dependable transport for every requirement — from local Pickups and Taurus trucks to heavy multi-axle trailers, covered warehousing, and loading support across India.
             </p>
 
             {/* Features Strip (.about-feat) */}
@@ -124,7 +124,7 @@ export default function AboutSection() {
                   />
                 </div>
                 <h3 className="text-base font-heading font-bold text-dark leading-tight">
-                  ODC Consignment Specialist
+                  All-Capacity Transport Fleet
                 </h3>
               </div>
             </div>
@@ -149,7 +149,7 @@ export default function AboutSection() {
             {/* Checklist matching TransHub ul.check */}
             <ul className="check space-y-3">
               <li>Fleet Owner &amp; Transport Contractor with verified pan-India network</li>
-              <li>ODC Consignment Specialist with heavy hydraulic axle trailers</li>
+              <li>Complete Vehicle Fleet: Pickups, Taurus, Open/Closed Body Trucks, &amp; Heavy Trailers</li>
               <li>Experienced field staff and route escort coordinators</li>
               <li>All India operations across Maharashtra, Karnataka, Gujarat, Odisha, and UP</li>
             </ul>

@@ -65,7 +65,7 @@ export const COMPANY = {
   shortName: "YLS",
   tagline: "AN ENTIRE LOGISTICS SOLUTION",
   businessType: "Fleet Owner & Transport Contractor",
-  speciality: "ODC Consignment Specialist across India",
+  speciality: "All-Capacity Vehicle Fleet & Pan-India Transport Contractor",
   established: "1 July 2021",
   establishedYear: 2021,
   primaryPhone: "+91 70200 57149",
