@@ -1,10 +1,10 @@
 # YES LOGISTICS SERVICE (YLS)
 
-A modern, pixel-close logistics transportation website inspired by the TransHub design reference and fully branded with genuine business information from the official **YES LOGISTICS SERVICE** company credentials.
+A modern, high-performance logistics transportation website built with Next.js (App Router, TypeScript, Tailwind CSS), fully configured for static export (`output: 'export'`) and hosted on GitHub Pages or custom domain.
 
 ---
 
-## 🏢 Company Profile (From Official Credentials)
+## 🏢 Company Profile
 
 - **Company Name:** YES LOGISTICS SERVICE
 - **Tagline:** AN ENTIRE LOGISTICS SOLUTION
@@ -12,33 +12,22 @@ A modern, pixel-close logistics transportation website inspired by the TransHub 
 - **Speciality:** ODC Consignment Specialist across India
 - **Established Date:** 1 July 2021
 - **Registered Office:** CTS 1937 S1 Nilratna Apt BLD 2F, Chinchwad, Pune 411033, Maharashtra
-- **Hotline Numbers:** +91 7021277197 / +91 7020057149
+- **Hotline Numbers:** +91 70200 57149 / +91 70212 77197
 - **Official Email:** ylspune@gmail.com
-- **Registration Details:**
-  - PAN: `AYYPM5626L`
-  - GSTIN: `27AYYPM5626L1ZH`
-  - UDYAM Certificate: `UDAM-MH-26-0145431`
-  - Shop & Establishment: `2131000315404073`
-  - Banker: HDFC Bank LTD
 
 ---
 
 ## 📍 All-India Branch Network
 
 1. **Pune (MH) — Headquarters**  
-   *Contact:* Mr. Sandeep Kumar (+91 7888190624)  
-   *Address:* CTS 1937 1S Nilratan Apt, Chinchwad Gaon, Pune – 411033
+   *Address:* CTS 1937 S1 Nilratna Apt BLD 2F, Chinchwad, Pune – 411033
 2. **Bangalore (KA)**  
-   *Contact:* Mr. Dheeraj Shukla (+91 9415819488)  
    *Address:* 205 Block 2nd Floor Himalaya Plaza, Bangalore – 560053
 3. **Vadodara (GJ)**  
-   *Contact:* Mr. Umesh Chandra (+91 8469001491)  
    *Address:* B51 Kailash Pati Society, Ranoli, Vadodara – 391350
 4. **Jeypore (OD)**  
-   *Contact:* Mr. Vineet Mishra (+91 9337474004)  
    *Address:* Near Prashad Rao Peta, Sombartota Koraput, Odisha – 764001
 5. **Prayagraj (UP)**  
-   *Contact:* Mr. Aniket Mishra (+91 8858899855)  
    *Address:* C2/70 Awantika Avash, Naini, Prayagraj, Uttar Pradesh – 211008
 
 ---
@@ -46,47 +35,40 @@ A modern, pixel-close logistics transportation website inspired by the TransHub 
 ## 🛠️ Technology Stack
 
 - **Framework:** Next.js (App Router, React 19, TypeScript)
-- **Styling:** Tailwind CSS with custom YLS design tokens
-- **Icons:** Lucide React
-- **Storage:** MongoDB driver with UUID identifiers + resilient fallback
-- **Design Inspiration:** TransHub ThemeVillage Layout & Structure
+- **Styling:** Tailwind CSS with Google Fonts (Inter + Barlow Condensed)
+- **Icons:** Lucide React & FontAwesome
+- **Form Handling:** Google Apps Script Web App integration
+- **Analytics & SEO:** GA4, Google Site Verification, Schema.org JSON-LD
 
 ---
 
 ## 🎨 Color Palette
 
 - **Dark Navy:** `#06112E`
-- **Navy Blue:** `#07152F`
-- **Orange Red:** `#F15A38`
+- **Primary Orange:** `#F15A38`
 - **Brand Yellow:** `#F8C62E`
 - **Logo Blue:** `#175A9D`
-- **White:** `#FFFFFF`
-- **Light Background:** `#F5F7FA`
-- **Muted Text:** `#6C7890`
+- **Shade Background:** `#F5F7FA`
+- **Muted Text:** `#788094`
 
 ---
 
 ## 🌐 Routes & Structure
 
-- `/` — Homepage matching TransHub layout with YLS branding (Hero slider, statistics, about, services, process, why choose us, live tracking, quote, branch network, clients, testimonials, blog, footer)
-- `/about-us/` — Company history, vision, mission, quality promise, registrations, and fleet overview
-- `/services/` — Detailed breakdowns of all 15+ logistics capabilities including ODC trailers, mechanical flatbeds, warehousing, and crane arrangements
-- `/quote/` — Full-length commercial freight quote form with UUID tracking
-- `/contact-us/` — Registered office, branch directory, direct phone links, and enquiry form
-- `/case-studies/` — Documented project movements (52m Girder, Warehouse Staging, Multi-State Fleet, 50T Crane Handover)
+- `/` — Homepage (Hero, About, Services, Process, Why Choose Us, Consignment Status CTA, Quote, Service Areas, Branch Network, Testimonials, Blog, FAQs, Clients, Footer)
+- `/about-us/` — Company vision, mission, quality promise, and fleet overview
+- `/services/` — Detailed breakdowns of all 15+ logistics capabilities
+- `/quote/` — Commercial freight quote form (posts to Google Apps Script)
+- `/contact-us/` — Direct contact information, branch directory, and enquiry form
+- `/case-studies/` — Documented project movements (52m Girder, Warehouse Staging, Multi-State Fleet, Crane Handover)
 - `/blog/` — Technical freight articles on ODC movement, delay reduction, and warehousing
+- `/gallery/` — Real fleet & operations photo gallery
+- `/privacy-policy/` — Simple privacy policy page
+- `/terms/` — Simple terms & conditions page
 
 ---
 
-## 🔌 API Endpoints
-
-- `POST /api/quote` — Submit commercial freight quote request. Generates a UUID and stores in MongoDB `quotes` collection.
-- `GET /api/quote` — Fetch submitted quote requests.
-- `GET /api/track?trackingId=TRACKING_ID` — Real-time consignment status check with validation, verified timeline milestones, and not-found states.
-
----
-
-## 🚀 Running the Project
+## 🚀 Running & Building the Project
 
 ```bash
 # Install dependencies
@@ -95,7 +77,6 @@ npm install
 # Start development server
 npm run dev
 
-# Or build and run production server
+# Build for static export
 npm run build
-npm run start -p 3000
 ```

@@ -1,7 +1,7 @@
 export interface QuoteRequest {
   id: string;
   fullName: string;
-  email: string;
+  email?: string;
   phone: string;
   freightType?: string;
   goodsType?: string;
@@ -10,48 +10,53 @@ export interface QuoteRequest {
   dimensions?: string;
   shipmentDate?: string;
   notes?: string;
+  honeypot?: string;
   createdAt: string;
 }
 
-export function generateQuoteId(): string {
-  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  let random = "";
-  for (let i = 0; i < 5; i++) {
-    random += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return `YLS-QT-${random}`;
-}
+const FORM_URL = process.env.NEXT_PUBLIC_FORM_URL || '';
 
-export function saveQuoteRequest(data: Omit<QuoteRequest, "id" | "createdAt">): {
-  success: boolean;
-  quoteId: string;
-  message: string;
-} {
-  const quoteId = generateQuoteId();
-  const newQuote: QuoteRequest = {
+export async function submitQuoteRequest(
+  data: Omit<QuoteRequest, 'id' | 'createdAt'>
+): Promise<{ success: boolean; id: string; message: string }> {
+  const id = crypto.randomUUID();
+  const payload: QuoteRequest = {
     ...data,
-    id: quoteId,
+    id,
     createdAt: new Date().toISOString(),
   };
 
-  try {
-    const existing = localStorage.getItem("yls_quotes");
-    const quotes: QuoteRequest[] = existing ? JSON.parse(existing) : [];
-    quotes.unshift(newQuote);
-    localStorage.setItem("yls_quotes", JSON.stringify(quotes.slice(0, 50)));
-  } catch {
-    /* storage quota exceeded or disabled */
+  if (!FORM_URL) {
+    // Fallback: store locally
+    try {
+      const existing = localStorage.getItem('yls_quotes');
+      const quotes: QuoteRequest[] = existing ? JSON.parse(existing) : [];
+      quotes.unshift(payload);
+      localStorage.setItem('yls_quotes', JSON.stringify(quotes.slice(0, 50)));
+    } catch {
+      /* storage quota exceeded or disabled */
+    }
+    return {
+      success: true,
+      id,
+      message:
+        'Thank you, we will call you within 2 hours.',
+    };
+  }
+
+  const res = await fetch(FORM_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    throw new Error(`Form submission failed: ${res.status}`);
   }
 
   return {
     success: true,
-    quoteId,
-    message:
-      "Your quote request has been received by YES LOGISTICS SERVICE. Our Pune transport coordinator will reach out promptly.",
+    id,
+    message: 'Thank you, we will call you within 2 hours.',
   };
-}
-
-export function getWhatsAppQuoteUrl(quoteId: string, details: Partial<QuoteRequest>): string {
-  const text = `Hello Yes Logistics Service, I submitted quote request #${quoteId}.\nName: ${details.fullName || ""}\nPhone: ${details.phone || ""}\nFreight: ${details.freightType || ""}\nRoute: ${details.pickupCity || ""} to ${details.deliveryCity || ""}`;
-  return `https://wa.me/917021277197?text=${encodeURIComponent(text)}`;
 }

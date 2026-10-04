@@ -152,6 +152,20 @@ export default function Navbar({ variant = "floating" }: NavbarProps) {
         </Link>
       </li>
 
+      {/* Blog */}
+      <li>
+        <Link
+          href="/blog"
+          className={`py-2 transition-colors duration-200 ${
+            pathname.startsWith('/blog')
+              ? 'text-primary font-bold'
+              : 'text-dark/90 hover:text-primary'
+          }`}
+        >
+          Blog
+        </Link>
+      </li>
+
       {/* Contact */}
       <li>
         <Link

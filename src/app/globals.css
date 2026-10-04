@@ -3,14 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --primary: #fd5523;
-  --dark: #020e28;
-  --headings-color: #020e28;
+  --primary: #F15A38;
+  --dark: #06112E;
+  --headings-color: #06112E;
   --mute: #788094;
   --white: #fff;
   --shade: #f5f7fa;
-  --font-family-base: "DM Sans", sans-serif;
-  --font-family-headings: "Rethink Sans", sans-serif;
 }
 
 html {
@@ -21,7 +19,6 @@ html {
 body {
   background-color: #fff;
   color: var(--dark);
-  font-family: var(--font-family-base);
   overflow-x: hidden;
   font-size: 16px;
   line-height: 1.6;
@@ -32,9 +29,11 @@ body {
   color: #fff;
 }
 
-/* TransHub component classes — wrapped in @layer so Tailwind utilities can override them */
+input, select, textarea {
+  font-size: 16px;
+}
+
 @layer components {
-  /* TransHub sec-padding */
   .sec-padding {
     padding: 120px 0;
   }
@@ -51,7 +50,6 @@ body {
     }
   }
 
-  /* TransHub sub-title */
   .sub-title {
     text-transform: uppercase;
     display: inline-flex;
@@ -60,17 +58,19 @@ body {
     color: var(--primary);
     font-weight: 600;
     margin-bottom: 10px;
-    font-family: var(--font-family-headings);
+    font-family: var(--font-head), 'Barlow Condensed', sans-serif;
     font-size: 16px;
+    letter-spacing: 0.05em;
   }
 
-  /* TransHub sec-title */
   .sec-title {
-    font-family: var(--font-family-headings);
+    font-family: var(--font-head), 'Barlow Condensed', sans-serif;
     font-weight: 700;
     font-size: 48px;
     line-height: 1.2;
     color: var(--headings-color);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
   }
 
   @media (max-width: 991px) {
@@ -85,7 +85,6 @@ body {
     }
   }
 
-  /* TransHub sec-intro */
   .sec-intro {
     max-width: 600px;
     margin-bottom: 60px;
@@ -96,14 +95,13 @@ body {
     margin-right: auto;
   }
 
-  /* TransHub btn-primary */
   .btn-primary {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     background-color: var(--primary);
     color: #fff;
-    font-family: var(--font-family-headings);
+    font-family: var(--font-head), 'Barlow Condensed', sans-serif;
     font-weight: 600;
     font-size: 16px;
     padding: 14px 30px;
@@ -115,13 +113,12 @@ body {
   }
 
   .btn-primary:hover {
-    background-color: #eb3802;
+    background-color: #d94820;
     color: #fff;
   }
 
-  /* TransHub link-btn */
   .link-btn {
-    font-family: var(--font-family-headings);
+    font-family: var(--font-head), 'Barlow Condensed', sans-serif;
     font-weight: 600;
     font-size: 16px;
     color: var(--headings-color);
@@ -136,7 +133,6 @@ body {
     color: var(--primary);
   }
 
-  /* TransHub icon-lg */
   .icon-lg {
     width: 44px;
     height: 44px;
@@ -147,7 +143,6 @@ body {
   }
 }
 
-/* TransHub check list */
 ul.check {
   list-style: none;
   padding: 0;
@@ -158,26 +153,25 @@ ul.check li {
   position: relative;
   padding-left: 28px;
   margin-bottom: 12px;
-  font-family: var(--font-family-headings);
+  font-family: var(--font-head), 'Barlow Condensed', sans-serif;
   font-weight: 600;
   font-size: 16px;
   color: var(--headings-color);
 }
 
 ul.check li::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 4px;
   width: 18px;
   height: 16px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 16' fill='none' stroke='%23fd5523' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 1l6 7-6 7'/%3E%3Cpath d='M10 1l6 7-6 7'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 16' fill='none' stroke='%23F15A38' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 1l6 7-6 7'/%3E%3Cpath d='M10 1l6 7-6 7'/%3E%3C/svg%3E");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* TransHub parallax overlay */
 .parallax-overly {
   position: absolute;
   inset: 0;
@@ -185,34 +179,6 @@ ul.check li::before {
   opacity: 0.85;
 }
 
-/* TransHub link-btn */
-.link-btn {
-  font-family: var(--font-family-headings);
-  font-weight: 600;
-  font-size: 16px;
-  color: var(--headings-color);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: color 0.3s ease;
-  text-decoration: none;
-}
-
-.link-btn:hover {
-  color: var(--primary);
-}
-
-/* TransHub icon-lg */
-.icon-lg {
-  width: 44px;
-  height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-}
-
-/* Scrollbars hidden sitewide (scrolling still works via wheel/touch) */
 html {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -226,40 +192,21 @@ body::-webkit-scrollbar {
   height: 0;
 }
 
-/* TransHub rotate animation */
 @keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* TransHub jumping animation */
 @keyframes jumping {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
 }
 
-/* TransHub moveXS animation */
 @keyframes moveXS {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(10px);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
 }
 
 .anim-jumping {
@@ -270,14 +217,9 @@ body::-webkit-scrollbar {
   animation: moveXS 5s ease-in-out 2s infinite alternate;
 }
 
-/* Client marquee — seamless infinite loop (track holds two copies of the list) */
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .animate-marquee {
@@ -294,9 +236,15 @@ body::-webkit-scrollbar {
   }
 }
 
-/* Truck icon SVG for sub-titles */
 .truck-icon {
   width: 30px;
   height: 18px;
   fill: var(--primary);
+}
+
+/* Mobile bottom bar spacer */
+@media (max-width: 639px) {
+  body {
+    padding-bottom: 56px;
+  }
 }

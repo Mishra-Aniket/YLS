@@ -1,28 +1,34 @@
-"use client";
+'use client';
 
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import PageHeader from "@/components/PageHeader";
-import Footer from "@/components/Footer";
-import { ArrowRight, CheckCircle2, ShieldCheck, MapPin, Award } from "lucide-react";
-import { CASE_STUDIES } from "@/lib/constants";
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import Navbar from '@/components/Navbar';
+import PageHeader from '@/components/PageHeader';
+import Footer from '@/components/Footer';
+import { ArrowRight, CheckCircle2, MapPin } from 'lucide-react';
+import { CASE_STUDIES } from '@/lib/constants';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 
 export default function CaseStudiesPage() {
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://yeslogisticsservice.com';
+
   return (
     <main className="min-h-screen flex flex-col bg-white">
-      {/* 1. Navbar */}
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: SITE_URL },
+          { name: 'Case Studies', url: `${SITE_URL}/case-studies` },
+        ]}
+      />
       <Navbar variant="floating" />
 
-      {/* 2. Hero Banner */}
       <PageHeader
         title="Logistics Case Studies & Project Handover"
         subtitle="Explore documented execution blueprints of over-dimensional cargo (ODC), multi-state fleet coordination, and heavy mobile crane deployments."
-        breadcrumbs={[{ label: "Case Studies" }]}
+        breadcrumbs={[{ label: 'Case Studies' }]}
       />
 
-      {/* 3. Case Studies Detailed Grid */}
       <section className="py-20 lg:py-28 bg-[#F5F7FA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
@@ -32,17 +38,18 @@ export default function CaseStudiesPage() {
                 className="bg-white rounded-3xl overflow-hidden shadow-card border border-slate-100 flex flex-col justify-between group hover:-translate-y-1.5 transition-all duration-300"
               >
                 <div>
-                  {/* Thumbnail with Overlay Badge */}
                   <div className="relative w-full h-64 sm:h-72 overflow-hidden bg-slate-100">
                     <Image
                       src={study.image}
                       alt={study.title}
                       fill
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#06112E]/80 via-transparent to-transparent" />
                     <div className="absolute top-4 left-4">
-                      <span className="px-3.5 py-1 rounded-full bg-navy-dark text-brand-yellow font-bold text-xs uppercase tracking-wider shadow-sm">
+                      <span className="px-3.5 py-1 rounded-full bg-[#06112E] text-[#F8C62E] font-heading font-bold text-xs uppercase tracking-wider shadow-sm">
                         {study.category}
                       </span>
                     </div>
@@ -57,14 +64,13 @@ export default function CaseStudiesPage() {
                     </div>
                   </div>
 
-                  {/* Body Content */}
                   <div className="p-6 sm:p-8 space-y-4">
-                    <h3 className="text-xl sm:text-2xl font-black text-[#06112E] font-display group-hover:text-primary transition-colors leading-snug">
+                    <h3 className="text-xl sm:text-2xl font-heading font-black text-[#06112E] uppercase group-hover:text-primary transition-colors leading-snug">
                       {study.title}
                     </h3>
 
                     <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 text-xs">
-                      <span className="font-bold text-slate-500 uppercase block mb-1">
+                      <span className="font-heading font-bold text-slate-500 uppercase block mb-1">
                         Cargo Specification:
                       </span>
                       <p className="font-bold text-slate-800">{study.cargo}</p>
@@ -85,11 +91,10 @@ export default function CaseStudiesPage() {
                   </div>
                 </div>
 
-                {/* Footer CTA */}
                 <div className="p-6 sm:p-8 pt-0">
                   <Link
                     href="/quote"
-                    className="inline-flex items-center justify-between w-full py-3 px-5 rounded-2xl bg-slate-100 hover:bg-primary hover:text-white text-xs font-bold text-slate-800 transition"
+                    className="inline-flex items-center justify-between w-full py-3 px-5 rounded-2xl bg-slate-100 hover:bg-primary hover:text-white text-xs font-heading font-bold text-slate-800 transition"
                   >
                     <span>Request Similar Project Logistics</span>
                     <ArrowRight className="w-4 h-4" />
@@ -101,7 +106,6 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* 4. Footer */}
       <Footer />
     </main>
   );
