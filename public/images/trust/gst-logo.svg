@@ -7,10 +7,10 @@
     <path d="M25 60H85" stroke="#F15A38" stroke-width="2" opacity="0.6"/>
   </g>
 
-  <!-- Typography -->
+  <!-- Typography with Dark Navy Fill (#06112E) for 100% High-Contrast Visibility -->
   <g transform="translate(125, 0)">
-    <text x="0" y="48" font-family="system-ui, sans-serif" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="2">GST INDIA</text>
+    <text x="0" y="48" font-family="system-ui, sans-serif" font-size="30" font-weight="900" fill="#06112E" letter-spacing="2">GST INDIA</text>
     <text x="0" y="72" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#F15A38" letter-spacing="1">GOODS AND SERVICES TAX</text>
-    <text x="0" y="92" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#9CA3AF" letter-spacing="0.5">Government of India Registered Firm</text>
+    <text x="0" y="92" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#4B5563" letter-spacing="0.5">Government of India Registered Firm</text>
   </g>
 </svg>

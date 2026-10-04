@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import TruckIcon from "./TruckIcon";
 import QuickContactModal from "./QuickContactModal";
+import { GstLogoMark, MsmeLogoMark } from "./TrustBadges";
 import { COMPANY } from "@/lib/constants";
 
 export default function AboutSection() {
@@ -128,30 +129,20 @@ export default function AboutSection() {
               </div>
             </div>
 
-            {/* Statutory Registrations & Legal Verification Block */}
-            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 my-4 space-y-2">
+            {/* Statutory Registrations & Official Logo Badges */}
+            <div className="bg-slate-50 border border-slate-200/80 rounded-3xl p-5 my-5 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-heading font-extrabold uppercase tracking-wider text-[#06112E] flex items-center gap-1.5">
                   <i className="fa-solid fa-shield-check text-emerald-600" />
-                  <span>Statutory Compliance &amp; Registrations</span>
+                  <span>Statutory Compliance &amp; Government Registrations</span>
                 </span>
-                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full uppercase">
-                  Verified Enterprise
+                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full uppercase">
+                  Verified Transport Firm
                 </span>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-1 text-[11px] font-medium text-slate-700">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                  <span><strong>GST Registered Firm</strong></span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                  <span><strong>MSME Udyam Certified</strong></span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                  <span><strong>M.V. Act Compliant</strong></span>
-                </div>
+              <div className="flex flex-wrap items-center gap-4 pt-1">
+                <GstLogoMark className="h-8 sm:h-9 w-auto" />
+                <MsmeLogoMark className="h-8 sm:h-9 w-auto" />
               </div>
             </div>
 
