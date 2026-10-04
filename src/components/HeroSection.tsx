@@ -67,16 +67,16 @@ export default function HeroSection() {
           {/* Left Column */}
           <div className="order-1 lg:col-span-7 xl:col-span-6 z-20 text-white flex flex-col justify-center">
             
-            <h1 className="font-heading font-black text-white leading-[1.08] tracking-tight text-3xl sm:text-4xl lg:text-5xl xl:text-5xl mb-5 uppercase">
-              ODC Transport &amp; Heavy Haulage{' '}
+            <h1 className="font-heading font-black text-white leading-[1.08] tracking-tight text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-5 uppercase">
+              Moving India:{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-amber-300">
-                Specialists in Pune
+                Any Size, Any Weight, Anywhere
               </span>
             </h1>
 
             <p className="text-slate-300 font-sans text-base sm:text-lg leading-relaxed max-w-xl mb-6 sm:mb-8">
-              Optimizing fleet, hydraulic trailers, routes, and experienced transport teams,{' '}
-              <strong className="text-white font-semibold">YES Logistics Service</strong> delivers safe, on-time, and dependable cargo movement across India.
+              Pan-India ODC consignment, hydraulic multi-axle trailers, and heavy haulage logistics managed by{' '}
+              <strong className="text-white font-semibold">YES Logistics Service</strong> across all Indian states.
             </p>
 
             <div className="mb-6 sm:mb-8 max-w-xl">
@@ -182,7 +182,7 @@ export default function HeroSection() {
 
                 <div className="absolute top-4 right-4 z-20">
                   <span className="px-3.5 py-1.5 rounded-full bg-[#06112E]/80 backdrop-blur-md border border-white/20 text-white font-heading font-semibold text-[11px] sm:text-xs uppercase tracking-wider">
-                    ODC Specialist &bull; Pune Hub
+                    ODC Specialist &bull; All-India
                   </span>
                 </div>
 

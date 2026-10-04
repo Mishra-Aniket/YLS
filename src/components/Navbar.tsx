@@ -68,8 +68,8 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav className="flex items-center justify-between h-[76px] sm:h-[82px]">
               
-              {/* Left Logo */}
-              <div className="flex items-center shrink-0">
+              {/* Left Logo with generous right margin so menu never touches wordmark */}
+              <div className="flex items-center shrink-0 mr-6 lg:mr-8 xl:mr-12">
                 <Link href="/" className="inline-block">
                   <YLSLogo variant="light" size="md" />
                 </Link>
@@ -208,7 +208,7 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
               </ul>
 
               {/* Right Action Icons & Primary CTA */}
-              <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+              <div className="flex items-center gap-2 sm:gap-3 shrink-0 ml-4">
                 <button
                   type="button"
                   onClick={() => setIsContactOpen(true)}
