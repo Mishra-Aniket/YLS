@@ -22,10 +22,11 @@ const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || 'https://yeslogisticsservice.com';
 
 export const metadata: Metadata = {
-  title: 'ODC Transport Pune | Hydraulic Trailer | YES Logistics Service',
+  title: 'YLS — YES LOGISTICS SERVICE | ODC Transport Pune & Pan-India',
   description:
     'YES Logistics Service (YLS Pune) — Fleet owner & ODC consignment specialist in Chinchwad. Pan-India hydraulic trailers & warehousing. Call +91 70200 57149.',
   keywords: [
+    'YLS',
     'YES Logistics Service',
     'YLS Pune',
     'ODC transport in Pune',
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'ODC Transport Pune | Hydraulic Trailer | YES Logistics Service',
+    title: 'YLS — YES LOGISTICS SERVICE | ODC Transport Pune & Pan-India',
     description:
       'Pune fleet owner & ODC consignment specialist. Hydraulic trailers, heavy haulage, warehousing & crane services across India.',
     url: SITE_URL,
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ODC Transport in Pune | YES Logistics',
+    title: 'YLS — YES LOGISTICS SERVICE | ODC Transport Pune',
     description:
       'Hydraulic trailers, heavy haulage, warehousing & crane services across India.',
     images: ['/images/yls/yls-odc-trailer.jpg'],
@@ -66,7 +67,11 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || undefined,
   },
   icons: {
-    icon: '/logo/yls_monogram_crop_exact.png',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/logo/yls_monogram_crop_exact.png', type: 'image/png' },
+    ],
+    shortcut: '/logo/yls_monogram_crop_exact.png',
     apple: '/logo/yls_monogram_crop_exact.png',
   },
 };
@@ -82,6 +87,12 @@ export default function RootLayout({
       className={`scroll-smooth ${dmSans.variable} ${rethinkSans.variable}`}
     >
       <head>
+        {/* Favicon & Logo for Browser Tabs */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" href="/logo/yls_monogram_crop_exact.png" />
+        <link rel="apple-touch-icon" href="/logo/yls_monogram_crop_exact.png" />
+        <link rel="shortcut icon" href="/logo/yls_monogram_crop_exact.png" />
+
         {/* Font Awesome for icons */}
         <link
           rel="stylesheet"
