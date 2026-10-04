@@ -208,21 +208,21 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
               </div>
 
               {/* Right: Actions */}
-              <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+              <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                 {/* Fleet Gallery Shortcut */}
                 <Link
                   href="/gallery"
-                  className="flex items-center justify-center w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-dark transition shadow-xs cursor-pointer"
+                  className="flex items-center justify-center w-9.5 h-9.5 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-dark transition shadow-xs cursor-pointer"
                   aria-label="Fleet Gallery"
                   title="View Fleet Gallery"
                 >
-                  <i className="fa-solid fa-images text-xs sm:text-sm text-[#06112E]" />
+                  <i className="fa-solid fa-images text-sm sm:text-base text-[#06112E]" />
                 </Link>
 
                 <button
                   type="button"
                   onClick={() => setIsContactOpen(true)}
-                  className="flex items-center justify-center w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition shadow-sm cursor-pointer"
+                  className="flex items-center justify-center w-9.5 h-9.5 sm:w-10 sm:h-10 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition shadow-sm cursor-pointer"
                   aria-label="Call or WhatsApp"
                   title="Call or WhatsApp"
                 >
@@ -231,10 +231,10 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
 
                 <button
                   onClick={() => setIsSearchOpen(true)}
-                  className="w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-dark flex items-center justify-center transition cursor-pointer"
+                  className="w-9.5 h-9.5 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-dark flex items-center justify-center transition cursor-pointer"
                   aria-label="Search website"
                 >
-                  <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-dark" />
+                  <Search className="w-4 h-4 text-dark" />
                 </button>
 
                 <button
@@ -254,11 +254,10 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
 
                 <button
                   onClick={() => setIsDrawerOpen(true)}
-                  className="lg:hidden flex items-center gap-1.5 px-3 py-2 rounded-full bg-slate-100 text-dark text-xs font-bold hover:bg-primary hover:text-white transition cursor-pointer"
+                  className="lg:hidden flex items-center justify-center w-9.5 h-9.5 sm:w-10 sm:h-10 rounded-full bg-slate-100 text-dark hover:bg-primary hover:text-white transition cursor-pointer"
                   aria-label="Toggle Navigation"
                 >
-                  <Menu className="w-4 h-4" />
-                  <span className="hidden xs:inline">Menu</span>
+                  <Menu className="w-4.5 h-4.5" />
                 </button>
               </div>
 
