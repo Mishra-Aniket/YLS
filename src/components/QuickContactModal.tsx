@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { X, Phone, MessageSquare, Clock, ShieldCheck } from "lucide-react";
+import React, { useEffect, useState, useRef } from "react";
+import { X, Phone, Clock, ShieldCheck, ChevronDown } from "lucide-react";
 
 interface QuickContactModalProps {
   isOpen: boolean;
@@ -32,6 +32,16 @@ export const CONTACT_NUMBERS = [
 ];
 
 export default function QuickContactModal({ isOpen, onClose }: QuickContactModalProps) {
+  const [dragY, setDragY] = useState<number>(0);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const startXRef = useRef<number>(0);
+  const startYRef = useRef<number>(0);
+  const startTimeRef = useRef<number>(0);
+  const isDraggingRef = useRef<boolean>(false);
+  const currentDragYRef = useRef<number>(0);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -39,6 +49,10 @@ export default function QuickContactModal({ isOpen, onClose }: QuickContactModal
     if (isOpen) {
       document.body.style.overflow = "hidden";
       window.addEventListener("keydown", handleKeyDown);
+      setDragY(0);
+      setIsDragging(false);
+      isDraggingRef.current = false;
+      currentDragYRef.current = 0;
     } else {
       document.body.style.overflow = "";
     }
@@ -48,19 +62,100 @@ export default function QuickContactModal({ isOpen, onClose }: QuickContactModal
     };
   }, [isOpen, onClose]);
 
+  // Touch & Mouse Drag-to-Close Listeners
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || !isOpen) return;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length !== 1) return;
+      startXRef.current = e.touches[0].clientX;
+      startYRef.current = e.touches[0].clientY;
+      startTimeRef.current = Date.now();
+      isDraggingRef.current = false;
+      currentDragYRef.current = 0;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length !== 1) return;
+      const diffX = e.touches[0].clientX - startXRef.current;
+      const diffY = e.touches[0].clientY - startYRef.current;
+
+      if (!isDraggingRef.current) {
+        if ((diffY > 6 && diffY > Math.abs(diffX)) || (diffX > 8 && diffX > Math.abs(diffY))) {
+          isDraggingRef.current = true;
+          setIsDragging(true);
+        }
+      }
+
+      if (isDraggingRef.current) {
+        if (e.cancelable) {
+          e.preventDefault();
+        }
+        const effectiveDrag = Math.max(0, Math.max(diffY, diffX));
+        currentDragYRef.current = effectiveDrag;
+        setDragY(effectiveDrag);
+      }
+    };
+
+    const handleTouchEnd = () => {
+      if (isDraggingRef.current) {
+        const timeDiff = Date.now() - startTimeRef.current;
+        const velocity = currentDragYRef.current / (timeDiff || 1);
+
+        if (currentDragYRef.current > 45 || velocity > 0.15) {
+          onClose();
+        }
+      }
+      setIsDragging(false);
+      setDragY(0);
+      isDraggingRef.current = false;
+      currentDragYRef.current = 0;
+    };
+
+    el.addEventListener("touchstart", handleTouchStart, { passive: true });
+    el.addEventListener("touchmove", handleTouchMove, { passive: false });
+    el.addEventListener("touchend", handleTouchEnd, { passive: true });
+    el.addEventListener("touchcancel", handleTouchEnd, { passive: true });
+
+    return () => {
+      el.removeEventListener("touchstart", handleTouchStart);
+      el.removeEventListener("touchmove", handleTouchMove);
+      el.removeEventListener("touchend", handleTouchEnd);
+      el.removeEventListener("touchcancel", handleTouchEnd);
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
+
+  const backdropOpacity = isDragging ? Math.max(0, 1 - dragY / 250) : 1;
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-dark/70 backdrop-blur-sm animate-in fade-in duration-200"
+      ref={containerRef}
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6 bg-dark/70 backdrop-blur-sm transition-opacity duration-200"
+      style={{ opacity: backdropOpacity }}
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden animate-in zoom-in-95 duration-200"
+        style={{
+          transform: `translateY(${isDragging ? Math.max(0, dragY) : 0}px)`,
+          transition: isDragging ? "none" : "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
+        className="relative w-full max-w-lg bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl border border-slate-100 overflow-hidden select-none"
         onClick={(e) => e.stopPropagation()}
       >
+        {/* Swipe Down Hint on Mobile */}
+        <div className="flex flex-col items-center justify-center pt-2 pb-1 bg-[#020e28] sm:hidden">
+          <div className="w-12 h-1.5 rounded-full bg-white/20 mb-1" />
+          <div className="flex items-center gap-1 text-[10px] font-heading font-bold text-slate-300 tracking-wider uppercase">
+            <ChevronDown className="w-3.5 h-3.5 animate-bounce text-emerald-400" />
+            <span>Swipe down to hide</span>
+          </div>
+        </div>
+
         {/* Header with Brand Gradient Accent */}
-        <div className="relative bg-[#020e28] text-white p-6 sm:p-7">
+        <div className="relative bg-[#020e28] text-white p-5 sm:p-7">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <span className="relative flex h-2.5 w-2.5">
@@ -73,7 +168,7 @@ export default function QuickContactModal({ isOpen, onClose }: QuickContactModal
             </div>
             <button
               onClick={onClose}
-              className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition cursor-pointer"
+              className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition cursor-pointer active:scale-95"
               aria-label="Close dialog"
             >
               <X className="w-4 h-4" />
@@ -89,8 +184,8 @@ export default function QuickContactModal({ isOpen, onClose }: QuickContactModal
         </div>
 
         {/* Content with Both Numbers */}
-        <div className="p-6 sm:p-7 space-y-5 bg-slate-50/50">
-          {CONTACT_NUMBERS.map((contact, idx) => (
+        <div className="p-5 sm:p-7 space-y-4 sm:space-y-5 bg-slate-50/50">
+          {CONTACT_NUMBERS.map((contact) => (
             <div
               key={contact.rawNumber}
               className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm hover:border-primary/40 hover:shadow-md transition-all duration-200"
@@ -133,7 +228,7 @@ export default function QuickContactModal({ isOpen, onClose }: QuickContactModal
         </div>
 
         {/* Footer reassurance */}
-        <div className="px-6 py-4 bg-white border-t border-slate-100 flex items-center justify-between text-[11px] sm:text-xs text-slate-500">
+        <div className="px-5 py-4 bg-white border-t border-slate-100 flex items-center justify-between text-[11px] sm:text-xs text-slate-500">
           <div className="flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
             <span>Fast reply within 5-10 minutes on WhatsApp</span>

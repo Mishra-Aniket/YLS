@@ -201,19 +201,20 @@ export default function OffcanvasDrawer({
             ? "none"
             : "transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
         }}
-        className="relative w-full max-w-md bg-white h-full shadow-2xl z-10 flex flex-col justify-between p-6 sm:p-8 overflow-y-auto select-none"
+        className="relative w-full max-w-md bg-white h-full shadow-2xl z-10 flex flex-col justify-between overflow-hidden select-none"
       >
         {/* Left Edge Drag Catch Strip for easy thumb swiping */}
         <div
-          className="absolute top-0 bottom-0 -left-6 w-10 flex items-center justify-center cursor-grab active:cursor-grabbing"
+          className="absolute top-0 bottom-0 -left-6 w-10 flex items-center justify-center cursor-grab active:cursor-grabbing z-20"
           aria-hidden="true"
         >
           <div className="w-1.5 h-16 bg-slate-300/80 rounded-full shadow-sm" />
         </div>
 
-        <div>
+        {/* 1. TOP HEADER (Fixed / shrink-0) */}
+        <div className="shrink-0 p-5 sm:p-6 pb-4 border-b border-slate-100 bg-white z-10">
           {/* Touch Drag Indicator Bar & Swipe Hint on Mobile */}
-          <div className="flex items-center justify-between pb-3 sm:hidden border-b border-slate-100/80 mb-2">
+          <div className="flex items-center justify-between pb-2 sm:hidden border-b border-slate-100/60 mb-3">
             <div className="flex items-center gap-1 text-[11px] font-heading font-bold text-primary tracking-wide uppercase">
               <ChevronRight className="w-4 h-4 animate-pulse text-primary" />
               <span>Swipe right to hide menu</span>
@@ -222,7 +223,7 @@ export default function OffcanvasDrawer({
           </div>
 
           {/* Header */}
-          <div className="flex items-center justify-between pb-6 border-b border-slate-100">
+          <div className="flex items-center justify-between">
             <YLSLogo variant="light" size="sm" />
             <button
               onClick={onClose}
@@ -232,25 +233,28 @@ export default function OffcanvasDrawer({
               <X className="w-5 h-5" />
             </button>
           </div>
+        </div>
 
+        {/* 2. MIDDLE SCROLLABLE CONTENT (flex-1 overflow-y-auto) */}
+        <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-6">
           {/* Description */}
-          <div className="py-6 border-b border-slate-100">
-            <p className="text-slate-600 text-sm leading-relaxed">
+          <div>
+            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
               YES LOGISTICS SERVICE is a Pune-registered fleet owner and transport contractor (estd. 2021). We deliver safe, dependable ODC and trailer freight across India.
             </p>
           </div>
 
           {/* Navigation Links */}
-          <div className="py-6 border-b border-slate-100">
-            <h5 className="text-xs font-heading font-bold text-dark uppercase tracking-wider mb-4">
+          <div className="border-t border-slate-100 pt-5">
+            <h5 className="text-[11px] font-heading font-bold text-slate-400 uppercase tracking-wider mb-3">
               Navigation Menu
             </h5>
-            <ul className="space-y-3 font-heading font-semibold text-base text-dark">
+            <ul className="space-y-2.5 font-heading font-semibold text-base text-dark">
               <li>
                 <Link
                   href="/"
                   onClick={onClose}
-                  className="block hover:text-primary transition-colors py-1"
+                  className="block hover:text-primary transition-colors py-0.5"
                 >
                   Home
                 </Link>
@@ -259,7 +263,7 @@ export default function OffcanvasDrawer({
                 <Link
                   href="/about-us"
                   onClick={onClose}
-                  className="block hover:text-primary transition-colors py-1"
+                  className="block hover:text-primary transition-colors py-0.5"
                 >
                   About Us
                 </Link>
@@ -268,7 +272,7 @@ export default function OffcanvasDrawer({
                 <Link
                   href="/services"
                   onClick={onClose}
-                  className="block hover:text-primary transition-colors py-1"
+                  className="block hover:text-primary transition-colors py-0.5"
                 >
                   Services
                 </Link>
@@ -277,7 +281,7 @@ export default function OffcanvasDrawer({
                 <Link
                   href="/case-studies"
                   onClick={onClose}
-                  className="block hover:text-primary transition-colors py-1"
+                  className="block hover:text-primary transition-colors py-0.5"
                 >
                   Case Studies
                 </Link>
@@ -286,7 +290,7 @@ export default function OffcanvasDrawer({
                 <Link
                   href="/blog"
                   onClick={onClose}
-                  className="block hover:text-primary transition-colors py-1"
+                  className="block hover:text-primary transition-colors py-0.5"
                 >
                   Blog &amp; News
                 </Link>
@@ -295,7 +299,7 @@ export default function OffcanvasDrawer({
                 <Link
                   href="/gallery"
                   onClick={onClose}
-                  className="block hover:text-primary transition-colors py-1"
+                  className="block hover:text-primary transition-colors py-0.5"
                 >
                   Gallery
                 </Link>
@@ -304,7 +308,7 @@ export default function OffcanvasDrawer({
                 <Link
                   href="/contact-us"
                   onClick={onClose}
-                  className="block hover:text-primary transition-colors py-1"
+                  className="block hover:text-primary transition-colors py-0.5"
                 >
                   Contact Us
                 </Link>
@@ -313,7 +317,7 @@ export default function OffcanvasDrawer({
           </div>
 
           {/* Contact Details with both numbers and WhatsApp / Call buttons */}
-          <div className="py-6 space-y-4 text-xs text-slate-600">
+          <div className="border-t border-slate-100 pt-5 space-y-4 text-xs text-slate-600">
             <div className="space-y-2">
               <span className="text-[11px] font-heading font-bold text-slate-400 uppercase tracking-wider block">
                 24/7 Dispatch Desk (Call / WhatsApp)
@@ -363,7 +367,7 @@ export default function OffcanvasDrawer({
               </div>
             </div>
 
-            <div className="flex items-center gap-3 pt-2">
+            <div className="flex items-center gap-3 pt-1">
               <Mail className="w-4 h-4 text-primary shrink-0" />
               <a href={`mailto:${COMPANY.email}`} className="hover:text-primary font-medium text-dark">
                 {COMPANY.email}
@@ -377,12 +381,12 @@ export default function OffcanvasDrawer({
           </div>
         </div>
 
-        {/* CTA Button */}
-        <div className="pt-6 border-t border-slate-100">
+        {/* 3. BOTTOM PINNED CTA BUTTON (Fixed / shrink-0 - ALWAYS VISIBLE!) */}
+        <div className="shrink-0 p-4 sm:p-5 bg-white border-t border-slate-100 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] z-10 pb-[max(env(safe-area-inset-bottom),16px)]">
           <Link
             href="/quote"
             onClick={onClose}
-            className="btn-primary w-full justify-center py-3.5 text-sm"
+            className="btn-primary w-full justify-center py-3.5 text-sm font-bold shadow-md active:scale-98"
           >
             <span>Get a Free Quote</span>
             <i className="fa fa-arrow-right text-xs"></i>
