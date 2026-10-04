@@ -257,7 +257,7 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
         </div>
       </header>
 
-      <div className="fixed bottom-6 right-5 sm:right-6 z-40 flex items-center">
+      <div className="hidden sm:flex fixed bottom-6 right-5 sm:right-6 z-40 items-center">
         <button
           type="button"
           onClick={() => setIsContactOpen(true)}
