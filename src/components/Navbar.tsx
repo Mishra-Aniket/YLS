@@ -208,31 +208,31 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
               </div>
 
               {/* Right: Actions */}
-              <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+              <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
                 <button
                   type="button"
                   onClick={() => setIsContactOpen(true)}
-                  className="flex items-center justify-center w-9.5 h-9.5 sm:w-10 sm:h-10 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition shadow-sm cursor-pointer"
+                  className="flex items-center justify-center w-11 h-11 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition shadow-sm cursor-pointer"
                   aria-label="Call or WhatsApp"
                   title="Call or WhatsApp"
                 >
-                  <i className="fa-brands fa-whatsapp text-base sm:text-lg text-emerald-600" />
+                  <i className="fa-brands fa-whatsapp text-xl sm:text-2xl text-emerald-600" />
                 </button>
 
                 <button
                   onClick={() => setIsSearchOpen(true)}
-                  className="w-9.5 h-9.5 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-dark flex items-center justify-center transition cursor-pointer"
+                  className="w-11 h-11 rounded-full bg-slate-100 hover:bg-slate-200 text-dark flex items-center justify-center transition cursor-pointer"
                   aria-label="Search website"
                 >
-                  <Search className="w-4 h-4 text-dark" />
+                  <Search className="w-5.5 h-5.5 text-dark" />
                 </button>
 
                 <button
                   onClick={() => setIsDrawerOpen(true)}
-                  className="hidden sm:flex w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-dark items-center justify-center transition cursor-pointer"
+                  className="hidden sm:flex w-11 h-11 rounded-full bg-slate-100 hover:bg-slate-200 text-dark items-center justify-center transition cursor-pointer"
                   aria-label="Open detailed menu"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" fill="none" viewBox="0 0 14 12">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" fill="none" viewBox="0 0 14 12">
                     <path fill="#06112E" d="M0 .75Q.063.063.75 0h12.5q.687.063.75.75-.063.687-.75.75H.75Q.063 1.437 0 .75m0 5Q.063 5.063.75 5h12.5q.687.063.75.75-.063.687-.75.75H.75Q.063 6.437 0 5.75m13.25 5.75H.75q-.687-.063-.75-.75.063-.687.75-.75h12.5q.687.063.75.75-.063.687-.75.75" />
                   </svg>
                 </button>
@@ -244,10 +244,10 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
 
                 <button
                   onClick={() => setIsDrawerOpen(true)}
-                  className="lg:hidden flex items-center justify-center w-9.5 h-9.5 sm:w-10 sm:h-10 rounded-full bg-slate-100 text-dark hover:bg-primary hover:text-white transition cursor-pointer"
+                  className="lg:hidden flex items-center justify-center w-11 h-11 rounded-full bg-slate-100 text-dark hover:bg-primary hover:text-white transition cursor-pointer"
                   aria-label="Toggle Navigation"
                 >
-                  <Menu className="w-4.5 h-4.5" />
+                  <Menu className="w-6 h-6" />
                 </button>
               </div>
 
