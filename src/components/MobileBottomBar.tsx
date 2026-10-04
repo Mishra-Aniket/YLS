@@ -55,15 +55,15 @@ export default function MobileBottomBar() {
 
   return (
     <>
-      {/* Sticky Bottom Bar (Mobile Only) */}
-      <div className="fixed bottom-0 inset-x-0 z-40 sm:hidden flex border-t border-slate-200 bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.12)]">
+      {/* Sticky Bottom Bar (Mobile Only with Safe Area Gesture Bar Padding) */}
+      <div className="fixed bottom-0 inset-x-0 z-40 sm:hidden flex border-t border-slate-800 bg-[#06112E] shadow-[0_-4px_25px_rgba(0,0,0,0.25)] pb-[max(env(safe-area-inset-bottom),12px)]">
         <button
           type="button"
           onClick={() => {
             openModal('call');
             trackEvent('click', 'phone_menu_open', 'mobile_bottom_bar');
           }}
-          className="flex-1 flex items-center justify-center gap-2 py-3.5 min-h-[56px] text-sm font-bold font-heading uppercase text-white bg-[#06112E] active:bg-[#175A9D] transition cursor-pointer"
+          className="flex-1 flex items-center justify-center gap-2 pt-3.5 pb-2.5 min-h-[58px] text-sm font-bold font-heading uppercase text-white bg-[#06112E] active:bg-[#175A9D] transition cursor-pointer border-r border-slate-700/50"
         >
           <Phone className="w-4 h-4 text-white" />
           <span>Call Now</span>
@@ -75,7 +75,7 @@ export default function MobileBottomBar() {
             openModal('whatsapp');
             trackEvent('click', 'whatsapp_menu_open', 'mobile_bottom_bar');
           }}
-          className="flex-1 flex items-center justify-center gap-2 py-3.5 min-h-[56px] text-sm font-bold font-heading uppercase text-white bg-[#25D366] active:bg-[#20bd5a] transition cursor-pointer"
+          className="flex-1 flex items-center justify-center gap-2 pt-3.5 pb-2.5 min-h-[58px] text-sm font-bold font-heading uppercase text-white bg-[#25D366] active:bg-[#20bd5a] transition cursor-pointer"
         >
           <i className="fa-brands fa-whatsapp text-lg" />
           <span>WhatsApp</span>

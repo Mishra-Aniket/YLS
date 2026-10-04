@@ -208,23 +208,33 @@ export default function Navbar({ variant = 'floating' }: NavbarProps) {
               </div>
 
               {/* Right: Actions */}
-              <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+              <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+                {/* Fleet Gallery Shortcut */}
+                <Link
+                  href="/gallery"
+                  className="flex items-center justify-center w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-dark transition shadow-xs cursor-pointer"
+                  aria-label="Fleet Gallery"
+                  title="View Fleet Gallery"
+                >
+                  <i className="fa-solid fa-images text-xs sm:text-sm text-[#06112E]" />
+                </Link>
+
                 <button
                   type="button"
                   onClick={() => setIsContactOpen(true)}
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition shadow-sm cursor-pointer"
+                  className="flex items-center justify-center w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 transition shadow-sm cursor-pointer"
                   aria-label="Call or WhatsApp"
                   title="Call or WhatsApp"
                 >
-                  <i className="fa-brands fa-whatsapp text-lg text-emerald-600" />
+                  <i className="fa-brands fa-whatsapp text-base sm:text-lg text-emerald-600" />
                 </button>
 
                 <button
                   onClick={() => setIsSearchOpen(true)}
-                  className="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-dark flex items-center justify-center transition cursor-pointer"
+                  className="w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-dark flex items-center justify-center transition cursor-pointer"
                   aria-label="Search website"
                 >
-                  <Search className="w-4 h-4 text-dark" />
+                  <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-dark" />
                 </button>
 
                 <button
